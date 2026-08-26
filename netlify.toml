@@ -1,0 +1,81 @@
+# Cabeceras de caché
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# --- URL canónica única -------------------------------------------------
+# Netlify servía cada página con y sin ".html", las dos con 200.
+# El canonical, el sitemap y todos los enlaces internos usan ".html",
+# así que la versión sin extensión redirige 301 a la versión con ".html".
+
+[[redirects]]
+  from = "/index"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impressum"
+  to = "/impressum.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/datenschutz"
+  to = "/datenschutz.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/service-seo"
+  to = "/service-seo.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/service-ki"
+  to = "/service-ki.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/service-ai"
+  to = "/service-ai.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/service-crm"
+  to = "/service-crm.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/service-software"
+  to = "/service-software.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/01_beleg-scanner"
+  to = "/01_beleg-scanner.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/02_konto-abgleich"
+  to = "/02_konto-abgleich.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/03_treuhand-assistent"
+  to = "/03_treuhand-assistent.html"
+  status = 301
+  force = true

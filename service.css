@@ -1,0 +1,103 @@
+/* =====================================================================
+   KUSNACHT PRACTICE — service page layer
+   Each programme gets its own page. It inherits the brand system from
+   style.css and leads with its own film, so it "wears" its service.
+   A per-service accent token lets each page feel distinct without
+   breaking the one identity.
+   ===================================================================== */
+
+/* Per-service accent — set on <body data-svc="...">.
+   One terracotta family: the brand IS the accent; services vary the shade. */
+body[data-svc="seo"]{ --accent:#C56B47; }   /* map light */
+body[data-svc="ki"] { --accent:#D07A56; }   /* lamplight */
+body[data-svc="sw"] { --accent:#B98A4E; }   /* brass */
+:root{ --accent:var(--terra-l); }
+
+/* ---------------- Service hero ---------------- */
+.shero{position:relative;height:96svh;min-height:600px;overflow:hidden;
+  display:flex;align-items:flex-end;color:#fff;background:#100D08}
+.shero .sbg{position:absolute;inset:0;z-index:0}
+.shero .sbg video{width:100%;height:100%;object-fit:cover}
+.shero .sveil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(16,13,8,.44),rgba(16,13,8,.18) 40%,rgba(16,13,8,.82))}
+.shero .sin{position:relative;z-index:2;width:100%;max-width:1360px;margin:0 auto;
+  padding:0 var(--gutter) clamp(54px,9vh,110px)}
+.shero .snum{font-family:var(--serif);font-weight:300;font-size:clamp(15px,1.4vw,20px);
+  letter-spacing:.3em;color:var(--accent);margin-bottom:20px}
+.shero h1{font-family:var(--serif);font-weight:300;line-height:1.0;letter-spacing:.01em;
+  font-size:clamp(44px,8vw,120px);max-width:14ch;text-shadow:0 2px 60px rgba(16,13,8,.5)}
+.shero .slede{margin-top:26px;max-width:56ch;font-size:clamp(16px,1.4vw,20px);
+  line-height:1.7;color:rgba(255,255,255,.86)}
+.shero .scue{position:absolute;left:var(--gutter);bottom:22px;z-index:2;
+  display:flex;align-items:center;gap:12px}
+.shero .scue .ln{width:1px;height:40px;background:rgba(255,255,255,.4);position:relative;overflow:hidden}
+.shero .scue .ln::after{content:"";position:absolute;inset:0;background:#fff;
+  animation:drip 2.6s var(--ease) infinite}
+
+/* ---------------- Content sections ---------------- */
+.sblock{padding:clamp(80px,13vh,170px) 0}
+.sblock.tight{padding:clamp(56px,9vh,120px) 0}
+.s-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:30px}
+.s-eyebrow .k{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent)}
+.s-eyebrow .rule{height:1px;flex:1;background:var(--f12)}
+.s-h{font-family:var(--serif);font-weight:300;line-height:1.02;letter-spacing:-.01em;
+  font-size:clamp(30px,4.4vw,64px);max-width:18ch}
+.s-lead{font-size:clamp(16px,1.4vw,19px);line-height:1.75;color:var(--f60);max-width:62ch;margin-top:22px}
+.s-split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,90px);align-items:start}
+@media(max-width:900px){.s-split{grid-template-columns:1fr;gap:30px}}
+
+/* Capability grid — the "what it includes" list */
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px;
+  border-top:1px solid var(--f12)}
+@media(max-width:820px){.caps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.caps{grid-template-columns:1fr}}
+.cap{padding:20px 22px 20px 0;border-bottom:1px solid var(--f12);
+  font-family:var(--serif);font-weight:300;font-size:clamp(16px,1.5vw,21px);
+  letter-spacing:.01em;color:var(--on-surface);display:flex;gap:14px;align-items:baseline;
+  opacity:0}
+.cap .i{font-size:11px;font-variant-numeric:tabular-nums;color:var(--accent);
+  font-family:var(--sans);letter-spacing:.1em;flex:none;padding-top:.35em}
+
+/* Philosophy band — full-bleed film with a pulled quote */
+.sband{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;
+  color:#fff;background:#100D08}
+.sband .bbg{position:absolute;inset:0;z-index:0}
+.sband .bbg video{width:100%;height:100%;object-fit:cover}
+.sband .bveil{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(90deg,rgba(16,13,8,.72),rgba(16,13,8,.3) 60%,rgba(16,13,8,.5))}
+.sband .bin{position:relative;z-index:2;max-width:1360px;margin:0 auto;width:100%;
+  padding:0 var(--gutter)}
+.sband .q{font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:clamp(26px,3.6vw,52px);line-height:1.16;max-width:22ch;
+  text-shadow:0 1px 50px rgba(16,13,8,.5)}
+.sband .qby{margin-top:26px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(255,255,255,.6)}
+
+/* Related / other services */
+.others{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+@media(max-width:820px){.others{grid-template-columns:1fr}}
+.oth{position:relative;display:block;border-radius:3px;overflow:hidden;aspect-ratio:4/3;
+  text-decoration:none;color:#fff;background:#100D08}
+.oth video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.66;
+  transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.oth:hover video{opacity:.8;transform:scale(1.05)}
+.oth .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,13,8,.1),rgba(16,13,8,.72))}
+.oth .lab{position:absolute;left:20px;bottom:18px;z-index:2}
+.oth .lab .kn{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.oth .lab .nm{font-family:var(--serif);font-weight:300;font-size:clamp(19px,2vw,26px);margin-top:5px}
+
+/* back-to-home crumb in the nav */
+.crumb{display:inline-flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--f60)}
+.crumb:hover{color:var(--accent)}
+
+@media(prefers-reduced-motion:reduce){
+  .cap{opacity:1!important}
+  .shero .scue .ln::after{animation:none}
+}
+body[data-svc="ai"] { --accent:#B98A4E; }   /* brass status light */
+body[data-svc="crm"]{ --accent:#C56B47; }   /* card warmth */
+
+/* editorial still under the approach heading */
+.sfig{margin:36px 0 0;border-radius:4px;overflow:hidden;aspect-ratio:4/3;background:#100D08}
+.sfig img{width:100%;height:100%;object-fit:cover;display:block}

@@ -1,0 +1,830 @@
+/* =====================================================================
+   ESTEBAN MARCO — estebanmarco.ch
+   Zürich · KI, SEO & Software nach Mass für KMU und Treuhänder
+
+   Design thesis: craft over spectacle. Silence, space and discretion —
+   scroll craft with zero visual noise. Crema, espresso, terracotta.
+   ===================================================================== */
+
+:root{
+  /* Esteban Marco brand: crema, espresso, terracotta.
+     Variable names kept from the validated base; values re-skinned. */
+  --bone:#ECE4D5;          /* crema — main surface */
+  --bone-2:#E6DCC9;        /* crema deep */
+  --sage:#D9CFBC;          /* warm neutral for frames/standbys */
+  --moss:#B0593A;          /* terracotta — selection, intro accents */
+  --forest:#1C1710;        /* deep espresso — dark/inverted surface */
+  --ink:#211C14;           /* espresso — text on light */
+  --brass:#974A2E;         /* terracotta-dark: 4.99:1 on crema, for text accents */
+
+  /* Ink on bone */
+  --i80:rgba(26,28,23,.86); --i60:rgba(26,28,23,.68); --i40:rgba(26,28,23,.50);
+  --i20:rgba(26,28,23,.26); --i12:rgba(26,28,23,.15); --i06:rgba(26,28,23,.08);
+  /* Bone on forest */
+  --b80:rgba(244,241,234,.88); --b60:rgba(244,241,234,.70); --b40:rgba(244,241,234,.52);
+  --b20:rgba(244,241,234,.28); --b12:rgba(244,241,234,.16); --b06:rgba(244,241,234,.09);
+
+  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --terra-l:#D07A56;       /* terracotta-light: 5.32:1 on espresso, for dark contexts */
+  --sans:'Inter','Helvetica Neue',Arial,sans-serif;
+
+  --gutter:clamp(24px,5vw,88px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --slow:cubic-bezier(.16,1,.3,1);
+
+  /* Live surface — inverted by the privacy chapter */
+  --surface:var(--bone);
+  --on-surface:var(--ink);
+  --f80:var(--i80); --f60:var(--i60); --f40:var(--i40);
+  --f20:var(--i20); --f12:var(--i12); --f06:var(--i06);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}   /* nunca scroll-behavior: rompe ScrollTrigger */
+body{
+  background:var(--surface);color:var(--on-surface);
+  font-family:var(--sans);font-size:16px;line-height:1.6;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background-color 1.1s var(--ease),color 1.1s var(--ease);
+}
+::selection{background:var(--moss);color:var(--bone)}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--gutter);width:100%}
+
+/* ---------------------------------------------------------------
+   TYPOGRAPHY
+   Wide tracking on the small stuff, generous scale on the large.
+   The brand's voice is quiet, so the type carries the presence.
+   --------------------------------------------------------------- */
+.display{font-family:var(--serif);font-weight:300;line-height:1.02;letter-spacing:.005em}
+.d-hero{font-size:clamp(38px,6.6vw,104px);text-transform:uppercase;letter-spacing:.05em;
+  font-weight:300;line-height:1.12}
+.d-1{font-size:clamp(34px,5.4vw,84px)}
+.d-2{font-size:clamp(28px,3.6vw,56px)}
+.d-3{font-size:clamp(23px,2.4vw,34px)}
+
+.label{font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--f40)}
+.label.brass{color:var(--brass)}
+.lede{font-size:clamp(16px,1.35vw,19px);line-height:1.75;color:var(--f60);max-width:60ch}
+.body{font-size:clamp(15px,1.15vw,17px);line-height:1.8;color:var(--f60);max-width:64ch}
+
+.rule{height:1px;background:var(--f12);width:100%}
+
+/* Line-mask reveal — the only "effect" in the whole site */
+.mask{display:block;overflow:hidden}
+.mask > span{display:block;transform:translateY(110%)}
+/* Word reveal */
+.w{display:inline-block;opacity:0;transform:translateY(.5em)}
+
+/* ---------------------------------------------------------------
+   NAV
+   --------------------------------------------------------------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;
+  justify-content:space-between;padding:22px var(--gutter);
+  transition:background-color .6s var(--ease),padding .6s var(--ease);
+  mix-blend-mode:difference;color:#fff}
+nav.solid{mix-blend-mode:normal;color:var(--on-surface);
+  background:color-mix(in srgb,var(--surface) 90%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:16px var(--gutter)}
+.wordmark{font-family:var(--serif);font-weight:300;font-size:clamp(15px,1.35vw,19px);
+  letter-spacing:.34em;text-transform:uppercase;display:flex;align-items:center;gap:14px}
+.monogram{width:26px;height:26px;border:1px solid currentColor;border-radius:50%;
+  display:grid;place-items:center;font-size:11px;letter-spacing:0;flex:none}
+.nav-r{display:flex;align-items:center;gap:clamp(16px,2.4vw,34px)}
+.nav-r a{font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+@media(max-width:900px){.nav-r .hide-s{display:none}}
+.btn{display:inline-flex;align-items:center;gap:11px;font-family:var(--sans);font-size:11px;
+  font-weight:500;letter-spacing:.22em;text-transform:uppercase;border:1px solid currentColor;
+  border-radius:100px;padding:13px 26px;transition:all .5s var(--ease);white-space:nowrap}
+.btn:hover{background:currentColor}
+.btn:hover span{color:var(--surface)}
+.btn .dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+
+/* ---------------------------------------------------------------
+   HERO
+   --------------------------------------------------------------- */
+/* The hero owns 260vh of scroll: the pinned frame gets scrubbed inside it. */
+.heroscroll{position:relative;height:260vh}
+.hero{position:relative;height:100svh;min-height:560px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.hero .bg{position:absolute;inset:-6%;z-index:0;will-change:transform}
+.hero .bg video,.hero .bg .stand{width:100%;height:100%;object-fit:cover}
+/* Pillar footage fills its frame */
+.pillar .frame video{width:100%;height:100%;object-fit:cover;display:block}
+/* Placeholder atmosphere until the client's own footage is dropped in */
+.stand{background:
+  radial-gradient(130% 90% at 24% 18%,#DCE0CE 0%,#C2C9B0 34%,#8E9878 68%,#5A6247 100%);
+  filter:saturate(.72)}
+.hero .veil{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(35,42,30,.42),rgba(35,42,30,.12) 42%,rgba(35,42,30,.55))}
+.hero .inner{position:relative;z-index:3;padding:0 var(--gutter)}
+.hero .d-hero{text-shadow:0 1px 40px rgba(35,42,30,.35)}
+.hero .scrollhint{position:absolute;left:50%;bottom:38px;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(255,255,255,.8)}
+.hero .scrollhint .line{width:1px;height:46px;background:rgba(255,255,255,.4);position:relative;overflow:hidden}
+.hero .scrollhint .line::after{content:"";position:absolute;inset:0;background:#fff;
+  animation:drip 2.6s var(--ease) infinite}
+@keyframes drip{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+
+/* ---------------------------------------------------------------
+   SECTIONS
+   --------------------------------------------------------------- */
+section.block{padding:clamp(90px,15vh,190px) 0;position:relative}
+.eyebrow{display:flex;align-items:center;gap:18px;margin-bottom:34px}
+.eyebrow .rule{flex:1}
+
+/* Manifesto — video set inline inside the headline */
+.manifest .d-1{max-width:19ch}
+.inlinemedia{display:inline-block;vertical-align:middle;width:clamp(150px,20vw,320px);
+  height:clamp(78px,10vw,150px);border-radius:3px;overflow:hidden;margin:0 .24em;
+  transform:translateY(-.04em);background:var(--sage);flex:none;
+  box-shadow:0 30px 60px rgba(26,28,23,.14)}
+.inlinemedia video{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---------------------------------------------------------------
+   PILLARS — horizontal rail (pinned)
+   --------------------------------------------------------------- */
+.railwrap{position:relative;overflow:hidden}
+.rail{display:flex;flex-wrap:nowrap;will-change:transform}
+.panel{flex:0 0 100vw;width:100vw;min-height:100svh;display:flex;align-items:center;
+  position:relative;padding:clamp(96px,14vh,150px) 0}
+.panel-in{width:100%;max-width:1360px;margin:0 auto;padding:0 var(--gutter)}
+.pillar{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,90px);align-items:center}
+@media(max-width:940px){.pillar{grid-template-columns:1fr;gap:36px}}
+.pillar .num{font-family:var(--serif);font-size:clamp(56px,7vw,120px);font-weight:300;
+  color:var(--f20);line-height:.9;margin-bottom:18px}
+.pillar .frame{aspect-ratio:4/5;border-radius:2px;overflow:hidden;background:var(--sage)}
+.pillar .frame .stand{width:100%;height:100%}
+.pillar .go{display:inline-flex;align-items:center;gap:12px;margin-top:30px;font-size:11px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--on-surface);
+  border-bottom:1px solid var(--f20);padding-bottom:7px;transition:border-color .5s}
+.pillar .go:hover{border-color:var(--on-surface)}
+
+/* Progress for the rail */
+.railprog{position:fixed;left:var(--gutter);right:var(--gutter);bottom:26px;z-index:55;
+  display:flex;align-items:center;gap:18px;pointer-events:none;opacity:0;transition:opacity .6s}
+.railprog.on{opacity:1}
+.railprog .bar{flex:1;height:1px;background:var(--f12);position:relative}
+.railprog .bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);
+  background:var(--on-surface);display:block}
+@media(max-width:940px){.railprog{display:none}}
+
+/* ---------------------------------------------------------------
+   CINEMATIC — a full-bleed film moment.
+   The clip is pinned to the viewport and scrubbed by the scroll:
+   the figure walks toward the light because the visitor descends.
+   Type reveals over the footage. This is the awwwards beat — it
+   breaks the rhythm of text → rail → text with one held breath.
+   --------------------------------------------------------------- */
+/* SCROLLYTELLING STAGE
+   One sticky frame holds the viewport. The films are stacked and cross-
+   fade into one another by opacity alone — the frame never moves, so
+   there is no seam and no travelling rectangle. The scroll drives the
+   fade and the type 1:1, so it tracks the wheel exactly.
+   Height = one viewport of scroll per film. */
+.cinemazone{position:relative;background:#100D08;height:300vh}  /* 3 films × 100vh */
+.cinemastage{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden;
+  color:#fff;background:#100D08}
+.clayers{position:absolute;inset:0;z-index:0;pointer-events:none}
+.clayer{position:absolute;inset:0;opacity:0;will-change:opacity}
+.clayer:first-child{opacity:1}
+.clayer video{width:100%;height:100%;object-fit:cover;transform:scale(1.05)}
+.ctexts{position:absolute;inset:0;z-index:3;pointer-events:none}
+/* Stacked captions: only the visible one accepts clicks, otherwise the
+   invisible top caption would swallow every Discover link. JS toggles it. */
+.ctext{position:absolute;inset:0;display:flex;align-items:center;opacity:0;
+  pointer-events:none;will-change:opacity,transform}
+.ctext:first-child{opacity:1;pointer-events:auto}
+.cinemastage .cveil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(20,17,10,.64),rgba(20,17,10,.14) 55%,rgba(20,17,10,.44))}
+.ctext{padding:0 var(--gutter)}
+.ctext .cinner{max-width:1360px;margin:0 auto;width:100%}
+.ctext .num{font-family:var(--serif);font-size:clamp(56px,7vw,120px);font-weight:300;
+  color:rgba(255,255,255,.28);line-height:.9;margin-bottom:14px}
+.ctext .label{color:rgba(255,255,255,.72)}
+.ctext .d-2{color:#fff;text-shadow:0 1px 50px rgba(20,17,10,.4);max-width:14ch}
+.ctext .body{color:rgba(255,255,255,.82);max-width:46ch;margin-top:22px}
+.ctext .go{display:inline-flex;align-items:center;gap:12px;margin-top:30px;font-size:11px;
+  letter-spacing:.24em;text-transform:uppercase;color:#fff;border-bottom:1px solid rgba(255,255,255,.4);
+  padding-bottom:7px;transition:border-color .5s}
+.ctext .go:hover{border-color:#fff}
+
+/* ---------------------------------------------------------------
+   SANCTUARY — the colour inversion.
+   Light opens the site; here it closes around the client.
+   --------------------------------------------------------------- */
+.sanctuary{position:relative}
+/* The window in the trees lives behind the whole privacy chapter, dim,
+   so the forest-green inversion feels lit from one discreet window. */
+.sanctuary .sbg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:0;
+  transition:opacity 1.4s var(--ease)}
+.sanctuary.lit .sbg{opacity:.5}
+.sanctuary .sbg video{width:100%;height:100%;object-fit:cover}
+.sanctuary .sbg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(35,42,30,.72),rgba(35,42,30,.5) 40%,rgba(35,42,30,.86))}
+.sanctuary .wrap{position:relative;z-index:2}
+.sanctuary .vill{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:52px}
+@media(max-width:940px){.sanctuary .vill{grid-template-columns:repeat(2,1fr)}}
+.vcell{aspect-ratio:3/4;border-radius:2px;background:linear-gradient(180deg,#39412F,#232A1E);
+  border:1px solid var(--b12);position:relative;overflow:hidden;opacity:0}
+.vcell span{position:absolute;left:12px;bottom:11px;font-size:10px;letter-spacing:.2em;
+  color:var(--b40)}
+
+/* Ten villas as a typographic count — no empty cards */
+.villines{margin-top:56px;padding-top:30px;border-top:1px solid var(--f12);
+  display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.villines-l{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--f40)}
+.romans{display:flex;gap:clamp(10px,2vw,26px);flex-wrap:wrap}
+.romans i{font-family:var(--serif);font-style:normal;font-size:clamp(20px,2.4vw,34px);
+  font-weight:300;color:var(--f40);transition:color .5s}
+.romans i:hover{color:var(--brass)}
+
+/* Media plate floating in perspective */
+.plate-scene{perspective:1400px;margin-top:60px}
+.plate{aspect-ratio:16/9;border-radius:3px;overflow:hidden;background:var(--sage);
+  transform-style:preserve-3d;will-change:transform;
+  box-shadow:0 60px 120px rgba(0,0,0,.35)}
+.plate video,.plate .stand{width:100%;height:100%;object-fit:cover}
+
+/* ---------------------------------------------------------------
+   TEAM
+   --------------------------------------------------------------- */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:46px;
+  border-top:1px solid var(--f12)}
+@media(max-width:900px){.team{grid-template-columns:1fr}}
+.team li{list-style:none;padding:22px 4px;border-bottom:1px solid var(--f12);
+  font-size:clamp(15px,1.4vw,19px);font-family:var(--serif);font-weight:300;
+  letter-spacing:.03em;opacity:0}
+.figures{display:flex;flex-wrap:wrap;gap:clamp(30px,6vw,96px);margin-top:56px;
+  border-top:1px solid var(--f12);padding-top:38px}
+.fig .n{font-family:var(--serif);font-weight:300;font-size:clamp(46px,6vw,92px);line-height:.94}
+.fig .c{color:var(--f40);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-top:10px;
+  max-width:22ch;line-height:1.6}
+
+/* ---------------------------------------------------------------
+   CTA + FOOTER
+   --------------------------------------------------------------- */
+.cta{position:relative;text-align:center;padding:clamp(140px,26vh,300px) 0;
+  overflow:hidden;color:#fff;background:#100D08}
+.cta .ctabg{position:absolute;inset:0;z-index:0}
+.cta .ctabg video{width:100%;height:100%;object-fit:cover;transform:scale(1.04)}
+.cta .ctaveil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(16,13,8,.62),rgba(16,13,8,.34) 45%,rgba(16,13,8,.72))}
+.cta .wrap{position:relative;z-index:2}
+.cta .d-1{max-width:16ch;margin:0 auto;color:#fff;text-shadow:0 1px 50px rgba(16,13,8,.5)}
+.cta .d-1 .it{color:var(--terra-l)}
+.cta .label.brass{color:var(--terra-l)}
+.cta .lede{margin:26px auto 0;text-align:center;color:rgba(255,255,255,.82)}
+.cta .btnrow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+.cta .btn{color:#fff;border-color:rgba(255,255,255,.4)}
+.cta .btn:hover{background:#fff}
+.cta .btn:hover span{color:#100D08}
+
+footer{border-top:1px solid var(--f12);padding:54px var(--gutter) 60px}
+footer .row{max-width:1360px;margin:0 auto;display:flex;justify-content:space-between;
+  gap:30px;flex-wrap:wrap}
+footer .col{min-width:180px}
+footer .col h4{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--f40);
+  margin-bottom:16px;font-weight:500}
+footer .col a,footer .col p{display:block;font-size:14px;color:var(--f60);margin-bottom:9px}
+footer .legal{margin-top:44px;font-size:11.5px;color:var(--f40);max-width:70ch;line-height:1.7}
+
+/* ---------------------------------------------------------------
+   GRAIN — a whisper, not a texture
+   --------------------------------------------------------------- */
+.grain{position:fixed;inset:-120px;z-index:90;pointer-events:none;opacity:.035;
+  mix-blend-mode:multiply;background-repeat:repeat;will-change:background-position}
+
+/* ---------------------------------------------------------------
+   CINEMATIC INTRO (home only)
+   Monogram draws · name resolves · double curtain lifts.
+   --------------------------------------------------------------- */
+#intro{position:fixed;inset:0;z-index:9999;pointer-events:none}
+.intro-panel{position:absolute;inset:0;will-change:transform}
+.intro-panel.back{background:var(--moss);z-index:1}
+.intro-panel.front{background:var(--bone);z-index:2;display:grid;place-items:center}
+.intro-stage{text-align:center;will-change:opacity;padding:24px}
+.intro-mono{width:clamp(66px,8vw,104px);height:auto;display:block;margin:0 auto 30px;overflow:visible}
+.intro-mono .im-ring{fill:none;stroke:var(--moss);stroke-width:1.4}
+.intro-mono .im-k{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round}
+.intro-mono .im-em{font-family:var(--serif);font-size:30px;letter-spacing:.04em;
+  fill:var(--ink);opacity:0}
+.intro-name{font-family:var(--serif);font-weight:300;text-transform:uppercase;
+  letter-spacing:.42em;font-size:clamp(15px,1.7vw,22px);line-height:1.5;color:var(--ink)}
+.intro-name .im-w{display:inline-block;overflow:hidden;padding:0 .12em .1em}
+.intro-name .im-w > span{display:inline-block;transform:translateY(112%)}
+.intro-sub{margin-top:16px;overflow:hidden}
+.intro-sub > span{display:inline-block;transform:translateY(120%);
+  font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--i40)}
+.intro-bar{width:min(180px,46vw);height:1px;background:var(--i12);margin:34px auto 0;
+  position:relative;overflow:hidden}
+.intro-bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);
+  background:var(--moss);display:block}
+body.done #intro{display:none}
+/* No JS / GSAP missing / reduced motion → no curtain, straight to the site */
+html:not(.js) #intro,body.fallback #intro{display:none!important}
+@media(prefers-reduced-motion:reduce){#intro{display:none!important}}
+
+/* ---------------------------------------------------------------
+   PRELOADER (service pages)
+   --------------------------------------------------------------- */
+#pre{position:fixed;inset:0;z-index:9999;background:var(--bone);display:grid;place-items:center;
+  text-align:center}
+#pre .mono{width:54px;height:54px;border:1px solid var(--i20);border-radius:50%;
+  display:grid;place-items:center;font-family:var(--serif);font-size:20px;margin:0 auto 22px}
+#pre .nm{font-family:var(--serif);letter-spacing:.4em;text-transform:uppercase;font-size:13px;
+  color:var(--i60)}
+#pre .ld{width:min(210px,54vw);height:1px;background:var(--i12);margin:26px auto 0;position:relative}
+#pre .ld i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);
+  background:var(--moss);display:block}
+body.ready #pre{opacity:0;pointer-events:none;transition:opacity .9s var(--ease)}
+body.done #pre{display:none}
+
+/* ---------------------------------------------------------------
+   FALLBACK — the page must read without JS or if GSAP never loads
+   --------------------------------------------------------------- */
+html:not(.js) #pre,body.fallback #pre{display:none!important}
+html:not(.js) .railprog,body.fallback .railprog{display:none!important}
+html:not(.js) .rail,body.fallback .rail{flex-direction:column;transform:none!important}
+html:not(.js) .panel,body.fallback .panel{flex:0 0 auto;width:100%;min-height:auto;
+  padding:clamp(64px,10vh,110px) 0;border-bottom:1px solid var(--f12)}
+html:not(.js) .railwrap,body.fallback .railwrap{overflow:visible}
+html:not(.js) .mask > span,body.fallback .mask > span{transform:none!important}
+html:not(.js) .w,body.fallback .w,
+html:not(.js) .vcell,body.fallback .vcell,
+html:not(.js) .team li,body.fallback .team li{opacity:1!important;transform:none!important}
+
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------------------------------------------------------------
+   MOBILE + REDUCED MOTION
+   --------------------------------------------------------------- */
+@media(max-width:940px){
+  .heroscroll{height:auto}
+  .rail{flex-direction:column;transform:none!important}
+  .panel{flex:0 0 auto;width:100%;min-height:auto;padding:clamp(64px,10vh,110px) 0;
+    border-bottom:1px solid var(--f12)}
+  .railwrap{overflow:visible}
+  .inlinemedia{width:clamp(96px,26vw,150px);height:clamp(50px,13vw,76px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .heroscroll{height:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .grain{display:none}
+  .mask > span{transform:none!important}
+  .w,.vcell,.team li{opacity:1!important;transform:none!important}
+  .rail{flex-direction:column;transform:none!important}
+  .panel{flex:0 0 auto;width:100%;min-height:auto}
+  .railwrap{overflow:visible}
+  .railprog{display:none}
+}
+
+/* =====================================================================
+   ESTEBAN MARCO — identity layer (beyond the shared base)
+   What Kusnacht could never have: the product, working, on screen.
+   ===================================================================== */
+
+/* ---- Real logomark (circle + EM glyphs) ---- */
+.logomark{width:24px;height:24px;flex:none;display:inline-block;vertical-align:middle}
+.logomark circle{fill:none;stroke:currentColor;stroke-width:5}
+.logomark path,.logomark rect{fill:currentColor}
+
+/* ---- Serif marquee — his live-site signature ---- */
+.marquee{border-top:1px solid var(--f12);border-bottom:1px solid var(--f12);
+  padding:16px 0;overflow:hidden;white-space:nowrap;background:var(--surface)}
+.marquee .track{display:inline-block;animation:mqx 32s linear infinite;will-change:transform}
+.marquee span{font-family:var(--serif);font-weight:400;font-size:clamp(20px,2.2vw,30px);
+  color:var(--f40);margin:0 26px}
+.marquee span i{font-style:normal;color:var(--brass)}
+@keyframes mqx{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee .track{animation:none}}
+
+/* ---- Cinema captions become two columns: words + working product ---- */
+.ctext .cinner{display:grid;grid-template-columns:1.02fr .98fr;
+  gap:clamp(26px,4vw,72px);align-items:center}
+@media(max-width:940px){.ctext .cinner{grid-template-columns:1fr;gap:22px}}
+
+/* ---- Product mock window (glass over the film) ---- */
+.mockwin{background:rgba(20,16,10,.74);border:1px solid rgba(255,255,255,.13);
+  border-radius:14px;overflow:hidden;max-width:470px;width:100%;
+  box-shadow:0 40px 90px rgba(0,0,0,.45);justify-self:end}
+@media(max-width:940px){.mockwin{justify-self:start;max-width:430px}}
+.mwbar{display:flex;align-items:center;gap:6px;padding:11px 14px;
+  border-bottom:1px solid rgba(255,255,255,.09)}
+.mwbar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22)}
+.mwbar i:first-child{background:var(--terra-l)}
+.mwbar span{margin-left:8px;font-size:10px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.55)}
+.mwbody{padding:14px 16px}
+
+/* SEO mock — the SERP where your row climbs to Rang 1 */
+.srow{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:11px 12px;border-radius:9px;margin-bottom:8px;
+  background:rgba(255,255,255,.05);will-change:transform}
+.srow:last-child{margin-bottom:0}
+.srow .st{font-size:12.5px;color:rgba(255,255,255,.75)}
+.srow.you{background:rgba(197,107,71,.18);border:1px solid rgba(208,122,86,.4)}
+.srow.you .st{color:#fff;font-weight:500}
+.spin{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:var(--moss);border-radius:100px;padding:3px 9px;
+  opacity:0;transform:scale(.6)}
+
+/* KI mock — the scanner: beam, fields checking themselves, booking line */
+.scanmock{display:grid;grid-template-columns:.85fr 1.15fr;gap:12px}
+.mdoc{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;padding:10px;font-size:9.5px;line-height:1.9;
+  color:rgba(255,255,255,.5);background:rgba(255,255,255,.04)}
+.mdoc b{color:rgba(255,255,255,.8)}
+.mdoc .beam{position:absolute;left:0;right:0;height:34px;top:-34px;
+  background:linear-gradient(180deg,transparent,rgba(208,122,86,.3),transparent);
+  animation:mbeam 3s ease-in-out infinite}
+@keyframes mbeam{0%{top:-34px}100%{top:110%}}
+@media(prefers-reduced-motion:reduce){.mdoc .beam{animation:none}}
+.mfields .frow{display:flex;justify-content:space-between;align-items:center;
+  padding:7px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:11.5px}
+.mfields .frow:last-of-type{border-bottom:0}
+.mfields .k{color:rgba(255,255,255,.5)}
+.mfields .v{display:flex;align-items:center;gap:7px;color:#fff;font-weight:500}
+.mchk{width:14px;height:14px;border-radius:50%;background:var(--moss);
+  display:grid;place-items:center;transform:scale(0)}
+.mchk svg{stroke:#fff;width:8px;height:8px}
+.mbk{margin-top:10px;border-top:1px solid rgba(255,255,255,.1);padding-top:9px;
+  display:flex;justify-content:space-between;align-items:center;opacity:0}
+.mbk .lab{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.mbk .acc{font-weight:600;color:var(--terra-l);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+/* SW mock — the nightly job terminal */
+.termmock{font-size:11px;line-height:2;color:rgba(255,255,255,.82);
+  font-variant-numeric:tabular-nums}
+.termmock .tl{opacity:0;transform:translateX(-6px);white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis}
+.termmock .pr{color:var(--terra-l);margin-right:6px}
+.termmock .cm{color:rgba(255,255,255,.4)}
+.termmock .ok{color:#9FCB8A}
+
+/* Secondary link inside cinema captions */
+.go2{display:inline-flex;align-items:center;gap:9px;margin-top:14px;margin-left:26px;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.go2:hover{color:#fff}
+@media(max-width:600px){.go2{margin-left:0;display:flex}}
+
+/* ---- On-Premise: film + feats (replaces the villines row) ---- */
+.sanctuary{position:relative;overflow:hidden}
+.sanctuary .sbg{position:absolute;inset:0;z-index:0;opacity:.42}
+.sanctuary .sbg video{width:100%;height:100%;object-fit:cover}
+.sanctuary .sveil2{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(16,13,8,.78),rgba(16,13,8,.3) 60%,rgba(16,13,8,.55))}
+.sanctuary .wrap{position:relative;z-index:2}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
+@media(max-width:820px){.feats{grid-template-columns:1fr}}
+.feat{border-top:1px solid var(--terra-l);padding-top:14px}
+.feat h4{font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.8vw,24px);
+  margin-bottom:6px}
+.feat p{font-size:13px;line-height:1.6;color:var(--f60)}
+
+/* ---- Ablauf steps ---- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,30px);
+  margin-top:44px}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+.step{border-top:1px solid var(--f20);padding-top:18px}
+.step .n{font-family:var(--serif);font-size:19px;color:var(--brass)}
+.step h4{font-family:var(--serif);font-weight:400;font-size:clamp(21px,2vw,27px);margin:8px 0}
+.step p{font-size:14px;line-height:1.6;color:var(--f60)}
+
+/* ---- Contact form in the CTA (mailto-based, no backend) ---- */
+.kform{display:flex;flex-direction:column;gap:11px;max-width:460px;margin:34px auto 18px}
+.kform input,.kform textarea{font-family:var(--sans);font-size:14px;color:#fff;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);
+  border-radius:12px;padding:13px 15px;resize:vertical}
+.kform input::placeholder,.kform textarea::placeholder{color:rgba(255,255,255,.45)}
+.kform input:focus,.kform textarea:focus{outline:2px solid var(--terra-l);outline-offset:1px}
+.kform .btn{align-self:center}
+.kmsg{font-size:12.5px;color:var(--terra-l);min-height:16px;text-align:center}
+.kmsg.err{color:#E0A47E}
+
+/* =====================================================================
+   UNIQUE LAYOUT v2 — split hero, iris intro, horizontal gallery rail.
+   Distinct from any client build: asymmetric editorial, framed media
+   cards gliding sideways, serif wordmark like the live site.
+   ===================================================================== */
+
+/* Wordmark: serif with © — the live-site identity, not tracked caps */
+.wordmark{font-family:var(--serif);font-weight:400;font-size:clamp(18px,1.6vw,22px);
+  letter-spacing:0;text-transform:none;gap:10px}
+.wordmark sup{font-size:10px;color:var(--terra-l);font-family:var(--sans)}
+nav.solid .wordmark sup{color:var(--brass)}
+
+/* En móvil la marca se partía en dos líneas y se metía debajo de DE·EN·FR.
+   Se le prohíbe partirse y se aprieta lo justo el lado derecho para que quepa. */
+@media(max-width:560px){
+  #nav{padding-left:20px;padding-right:20px}
+  .wordmark{white-space:nowrap;font-size:17px;flex:none}
+  .nav-r{gap:10px}
+  .lang{gap:0;font-size:10px;letter-spacing:.05em}
+  .lang button{padding:4px 3px}
+  .nav-r .btn{padding:11px 15px;letter-spacing:.14em;gap:8px}
+}
+@media(max-width:370px){
+  #nav{padding-left:16px;padding-right:16px}
+  .wordmark{font-size:15px}
+  .lang .d{display:none}
+  .lang button{padding:4px 2px}
+  .nav-r .btn{padding:10px 11px;gap:6px}
+}
+/* Por debajo de 335 px ya no cabe el botón sin recortarse: se retira de la barra.
+   No se pierde nada — el «Gespräch» del héroe está justo debajo. */
+@media(max-width:335px){ .nav-r .btn{display:none} }
+
+/* Language switcher */
+.lang{display:flex;align-items:center;gap:4px;font-size:11px;letter-spacing:.14em}
+.lang button{background:none;border:0;color:inherit;opacity:.45;cursor:pointer;
+  font:inherit;padding:4px 5px;letter-spacing:inherit;transition:opacity .3s}
+.lang button.on,.lang button:hover{opacity:1}
+.lang .d{opacity:.3}
+
+/* ---------------- SPLIT HERO ---------------- */
+.heroX{display:grid;grid-template-columns:1.04fr .96fr;min-height:100svh;
+  background:var(--bone)}
+.heroX .hleft{display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(110px,16vh,180px) clamp(28px,4.5vw,72px) clamp(60px,9vh,110px)}
+.heroX .hx{font-family:var(--serif);font-weight:400;line-height:.98;
+  letter-spacing:-.015em;font-size:clamp(52px,6.4vw,108px)}
+.heroX .hx em{font-style:italic;color:var(--brass)}
+.heroX .hlede{margin-top:26px;max-width:44ch;font-size:clamp(15.5px,1.3vw,18px);
+  line-height:1.7;color:var(--f60)}
+.heroX .hbtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.heroX .hfigs{display:flex;gap:clamp(22px,3.4vw,54px);flex-wrap:wrap;
+  margin-top:clamp(40px,7vh,72px);border-top:1px solid var(--f12);padding-top:26px}
+.heroX .hfig .n{font-family:var(--serif);font-size:clamp(30px,3vw,44px);line-height:1}
+.heroX .hfig .n b{font-weight:400;color:var(--brass)}
+.heroX .hfig .c{font-size:11.5px;color:var(--f40);margin-top:6px;max-width:17ch;line-height:1.5}
+.heroX .hright{position:relative;overflow:hidden;min-height:44vh}
+.heroX .hright video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.heroX .hright .hveil{position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(236,228,213,.16),transparent 26%)}
+@media(max-width:940px){.heroX{grid-template-columns:1fr}
+  .heroX .hleft{padding-top:120px}.heroX .hright{min-height:52vh}}
+
+/* ---------------- IRIS INTRO ---------------- */
+.intro-panel{will-change:clip-path,opacity}
+.intro-name{letter-spacing:.02em;text-transform:none;font-size:clamp(24px,2.6vw,34px);
+  line-height:1.25}
+.intro-name .im-w{padding:0 .1em}
+
+/* ---------------- HORIZONTAL GALLERY RAIL ---------------- */
+.railwrap{position:relative;overflow:hidden;background:#100D08;color:#fff}
+.rail{display:flex;flex-wrap:nowrap;will-change:transform}
+.rpanel{flex:0 0 100vw;width:100vw;min-height:100svh;display:flex;align-items:center;
+  position:relative;padding:clamp(96px,13vh,140px) 0 clamp(70px,10vh,110px)}
+.rpanel .rin{width:100%;max-width:1400px;margin:0 auto;padding:0 var(--gutter);
+  display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(30px,4.5vw,84px);
+  align-items:center}
+.rpanel:nth-child(even) .rin{grid-template-columns:1.08fr .92fr}
+.rpanel:nth-child(even) .rtxt{order:2}
+.rpanel:nth-child(even) .rmediawrap{order:1}
+@media(max-width:940px){.rpanel .rin,.rpanel:nth-child(even) .rin{grid-template-columns:1fr}
+  .rpanel:nth-child(even) .rtxt{order:1}.rpanel:nth-child(even) .rmediawrap{order:2}}
+.rtxt .rnum{font-family:var(--serif);font-weight:400;font-size:clamp(15px,1.3vw,19px);
+  letter-spacing:.28em;color:var(--terra-l);margin-bottom:16px}
+.rtxt .rpain{font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.7vw,23px);
+  color:rgba(255,255,255,.66);margin-bottom:14px;line-height:1.35}
+.rtxt h2{font-family:var(--serif);font-weight:400;line-height:1.0;letter-spacing:-.01em;
+  font-size:clamp(38px,4.6vw,72px);color:#fff}
+.rtxt .rbody{margin-top:20px;max-width:44ch;font-size:clamp(14.5px,1.25vw,17px);
+  line-height:1.7;color:rgba(255,255,255,.78)}
+.rtxt .rlinks{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:26px}
+.rtxt .go{color:#fff;border-bottom-color:rgba(255,255,255,.35)}
+.rtxt .go:hover{border-bottom-color:#fff}
+.rtxt .go2{margin:0}
+/* framed media card — tilted, settles as it arrives */
+.rmediawrap{position:relative}
+.rmedia{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10;
+  box-shadow:0 60px 120px rgba(0,0,0,.55);will-change:transform;background:#1a140d}
+.rmedia video{position:absolute;inset:-8% ;width:116%;height:116%;object-fit:cover;
+  will-change:transform}
+.rmediawrap .mockwin{position:absolute;right:-14px;bottom:-22px;transform:scale(.82);
+  transform-origin:bottom right;max-width:380px}
+@media(max-width:1180px){.rmediawrap .mockwin{display:none}}
+/* progress: index + thin bar, fixed while the rail is pinned */
+.rprog{position:fixed;left:var(--gutter);right:var(--gutter);bottom:24px;z-index:55;
+  display:flex;align-items:center;gap:16px;pointer-events:none;opacity:0;transition:opacity .5s}
+.rprog.on{opacity:1}
+.rprog .bar{flex:1;height:1px;background:rgba(255,255,255,.18);position:relative}
+.rprog .bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);
+  background:var(--terra-l);display:block}
+.rprog .idx{font-family:var(--serif);font-size:15px;color:rgba(255,255,255,.6);
+  min-width:64px}
+.rprog .idx b{color:#fff;font-weight:400}
+.rprog .plabel{font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.45)}
+@media(max-width:940px){.rprog{display:none}
+  .railwrap{overflow:visible}
+  .rail{flex-direction:column;transform:none!important}
+  .rpanel{flex:0 0 auto;width:100%;min-height:auto;border-bottom:1px solid rgba(255,255,255,.08)}}
+@media(prefers-reduced-motion:reduce){
+  .rail{flex-direction:column;transform:none!important}
+  .rpanel{flex:0 0 auto;width:100%;min-height:auto}
+  .railwrap{overflow:visible}.rprog{display:none}
+  .rmedia{transform:none!important}}
+
+/* ===== RAIL v3: full-bleed film per panel (no framed cards) ===== */
+.rpanel .rbg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.rpanel .rbg video{width:100%;height:100%;object-fit:cover;will-change:transform;
+  transform:scale(1.12)}
+.rveil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(16,13,8,.74),rgba(16,13,8,.30) 55%,rgba(16,13,8,.42))}
+.rpanel:nth-child(even) .rveil{
+  background:linear-gradient(270deg,rgba(16,13,8,.74),rgba(16,13,8,.30) 55%,rgba(16,13,8,.42))}
+.rpanel .rin{position:relative;z-index:3;display:flex;grid-template-columns:none}
+.rpanel:nth-child(even) .rin{grid-template-columns:none}
+.rpanel .rtxt{max-width:52ch}
+.rpanel:nth-child(even) .rtxt{margin-left:auto;order:0}
+.rpanel .mockwin{position:absolute;z-index:3;right:var(--gutter);bottom:11%;
+  max-width:400px;transform:none}
+.rpanel:nth-child(even) .mockwin{left:var(--gutter);right:auto}
+@media(max-width:1180px){.rpanel .mockwin{display:none}}
+
+/* ===== Accordion — what does this mean for you? ===== */
+.acc{margin-top:40px;border-top:1px solid var(--f12)}
+.acc-it{border-bottom:1px solid var(--f12)}
+.acc-q{width:100%;background:none;border:0;cursor:pointer;display:flex;
+  justify-content:space-between;align-items:center;gap:20px;padding:22px 4px;
+  font-family:var(--serif);font-weight:400;font-size:clamp(18px,1.9vw,26px);
+  color:var(--on-surface);text-align:left}
+.acc-q .pl{flex:none;width:26px;height:26px;border:1px solid var(--f20);border-radius:50%;
+  display:grid;place-items:center;font-family:var(--sans);font-size:15px;
+  color:var(--accent,var(--brass));transition:transform .45s var(--ease)}
+.acc-it.open .acc-q .pl{transform:rotate(45deg)}
+.acc-a{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+.acc-a p{padding:2px 4px 24px;max-width:72ch;color:var(--f60);line-height:1.75;
+  font-size:clamp(14.5px,1.2vw,16.5px)}
+
+/* ===== In-page demo modal ===== */
+#demoModal{position:fixed;inset:0;z-index:9998;background:rgba(16,13,8,.92);
+  display:none;padding:clamp(10px,3vw,42px)}
+#demoModal.open{display:block}
+#demoModal iframe{width:100%;height:100%;border:1px solid rgba(255,255,255,.16);
+  border-radius:12px;background:#fff}
+#demoModal .dm-close{position:absolute;top:14px;right:16px;z-index:2;width:42px;height:42px;
+  border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(16,13,8,.6);
+  color:#fff;font-size:17px;cursor:pointer;display:grid;place-items:center}
+#demoModal .dm-close:hover{background:#fff;color:#100D08}
+.rpanel{position:relative;overflow:hidden}
+
+/* ===== HERO v3: full-screen film, text over the image ===== */
+.heroX{display:block;position:relative;min-height:100svh;overflow:hidden;
+  background:#100D08;color:#fff}
+.heroX .hright{position:absolute;inset:0;min-height:0}
+.heroX .hright video{height:116%;top:-8%}
+.heroX .hright .hveil{background:linear-gradient(90deg,rgba(16,13,8,.80),rgba(16,13,8,.40) 52%,rgba(16,13,8,.24))}
+.heroX .hleft{position:relative;z-index:2;min-height:100svh;max-width:1400px;margin:0 auto;
+  padding-left:var(--gutter);padding-right:var(--gutter)}
+.heroX .hx{color:#fff}
+.heroX .hx em{color:var(--terra-l)}
+.heroX .hlede{color:rgba(255,255,255,.86)}
+.heroX .hfigs{border-color:rgba(255,255,255,.18)}
+.heroX .hfig .n{color:#fff}
+.heroX .hfig .n b{color:var(--terra-l)}
+.heroX .hfig .c{color:rgba(255,255,255,.58)}
+.heroX .hbtns .btn{border-color:rgba(255,255,255,.42);color:#fff}
+
+/* En vertical, «cover» recorta por los lados y se comía la pantalla del
+   escritorio, que está a un 62 % del ancho. Se desplaza el encuadre y el velo
+   pasa a ser vertical, que es por donde cae el texto en móvil. */
+@media(max-width:940px){
+  .heroX .hright video{object-position:58% center}
+  .heroX .hright .hveil{background:linear-gradient(180deg,rgba(16,13,8,.93),rgba(16,13,8,.86) 40%,rgba(16,13,8,.60) 70%,rgba(16,13,8,.80))}
+}
+
+/* ===== RAIL v4: deck wipe — the next film covers the previous one.
+   Panels are stacked layers; each new panel slides in OVER the last,
+   so there is never a visible seam between two videos. ===== */
+@media(min-width:941px) and (prefers-reduced-motion:no-preference){
+  html.js .rail{position:relative;height:100svh;display:block}
+  html.js .rpanel{position:absolute;top:0;left:0;width:100%;height:100%;min-height:0;
+    will-change:transform}
+  html.js .rpanel::before{content:"";position:absolute;top:0;bottom:0;left:-120px;width:120px;
+    z-index:4;background:linear-gradient(270deg,rgba(0,0,0,.5),transparent);pointer-events:none}
+}
+body.fallback .rail{height:auto!important;display:block!important}
+body.fallback .rpanel{position:relative!important;height:auto!important;
+  min-height:100svh!important;transform:none!important}
+
+/* ═══════════════════════════════════════════════════════════
+   MÁRMOL — sustituye el color en cada superficie
+   Beige  -> donde había crema (--bone / --sage / --surface)
+   Terra  -> donde había terracota (--moss) en superficie grande
+   Los elementos diminutos (puntos, barras 3px, ::selection)
+   mantienen color plano: el mármol a ese tamaño no se lee.
+   ═══════════════════════════════════════════════════════════ */
+
+:root{
+  --m-beige:url("assets/marmol_beige.webp");
+  --m-terra:url("assets/marmol_terra.webp");
+  --pulido:linear-gradient(122deg,rgba(255,255,255,.40) 0%,rgba(255,255,255,0) 40%);
+}
+
+/* ── 1. SUPERFICIE PRINCIPAL (línea 45: body) ── */
+body{
+  background-image:
+    linear-gradient(rgba(240,233,220,.74),rgba(232,223,205,.80)),
+    var(--m-beige);
+  background-size:auto,cover;
+  background-position:center,center;
+  background-attachment:fixed,fixed;
+  background-repeat:no-repeat,no-repeat;
+}
+
+/* ── 2. NAVEGACIÓN (90) ── */
+nav.solid{
+  background-image:linear-gradient(rgba(243,237,226,.86),rgba(236,228,212,.89)),var(--m-beige);
+  background-size:auto,cover;background-attachment:scroll,fixed;
+  border-bottom:1px solid rgba(58,42,28,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 10px 30px -18px rgba(58,42,28,.30);
+}
+
+/* ── 3. MARCOS Y PLACAS DE MEDIA (143 .inlinemedia · 159 .pillar .frame · 247 .plate)
+      Aquí NO va velo: son marcos de piedra tras el vídeo. ── */
+.inlinemedia,
+.pillar .frame,
+.plate{
+  background-image:var(--m-beige);
+  background-size:cover;background-position:center;
+}
+
+/* ── 4. PANTALLAS COMPLETAS (308 intro front · 334 #pre · 530 .heroX) ── */
+.intro-panel.front,
+#pre{
+  background-image:linear-gradient(rgba(238,231,217,.70),rgba(229,219,200,.76)),var(--m-beige);
+  background-size:auto,cover;background-position:center,center;
+}
+.heroX{
+  background-image:linear-gradient(rgba(240,233,220,.72),rgba(231,222,203,.78)),var(--m-beige);
+  background-size:auto,cover;background-position:center,center;
+}
+
+/* ── 5. FRANJA MARQUEE (398) ── */
+.marquee{
+  background-image:linear-gradient(rgba(242,236,224,.82),rgba(235,226,210,.85)),var(--m-beige);
+  background-size:auto,cover;background-attachment:scroll,fixed;
+}
+
+/* ── 6. TERRACOTA: panel de revelado del intro (307) — losa entera, sin velo ── */
+.intro-panel.back{
+  background-image:var(--m-terra);
+  background-size:cover;background-position:center;
+}
+
+/* ── 7. BLOQUES: piezas cortadas de la misma losa ── */
+.feat,.step{
+  position:relative;border-radius:14px;padding:20px 19px 22px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.70);border-bottom-color:rgba(58,42,28,.15);
+  background-image:linear-gradient(rgba(250,246,238,.60),rgba(242,235,221,.66)),var(--m-beige);
+  background-size:auto,900px auto;background-position:center,center;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(58,42,28,.06),
+    0 2px 5px rgba(58,42,28,.07),
+    0 20px 44px -16px rgba(58,42,28,.22);
+  transition:transform .55s var(--slow),box-shadow .55s var(--slow);
+}
+.feat::after,.step::after{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:var(--pulido);
+}
+.feat::before,.step::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;z-index:1;
+  background:linear-gradient(90deg,transparent,var(--terra-l),transparent);opacity:.7;
+}
+.feat:hover,.step:hover{
+  transform:translateY(-2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,1),0 2px 6px rgba(58,42,28,.08),
+             0 30px 62px -16px rgba(58,42,28,.30);
+}
+.feat h4,.feat p,.step h4,.step p,.step .n{position:relative;z-index:2}
+
+/* ── 8. CAPÍTULO OSCURO: la misma terracota, oscurecida ── */
+.sanctuary .feat{
+  border:1px solid rgba(255,255,255,.15);
+  border-top-color:rgba(214,138,104,.34);
+  border-bottom-color:rgba(0,0,0,.40);
+  background-image:linear-gradient(rgba(30,20,14,.80),rgba(18,12,8,.87)),var(--m-terra);
+  background-size:auto,820px auto;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -1px 0 rgba(0,0,0,.32),
+             0 2px 6px rgba(0,0,0,.32),0 26px 56px -18px rgba(0,0,0,.64);
+}
+.sanctuary .feat::after{background:linear-gradient(122deg,rgba(255,225,205,.14),rgba(255,255,255,0) 42%)}
+.sanctuary .feat h4{color:#F6F1E9}
+.sanctuary .feat p{color:rgba(246,241,233,.80)}
+
+/* ── 9. ACENTOS grandes en terracota (433 .spin y similares) ── */
+.chip,.tag,.pill,.spin{
+  background-image:linear-gradient(rgba(178,92,58,.70),rgba(148,70,44,.78)),var(--m-terra);
+  background-size:auto,420px auto;
+  border:1px solid rgba(255,255,255,.26);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 2px 5px rgba(120,52,30,.24);
+}
