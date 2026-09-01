@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """Genera index.html, las 6 fichas de servicio y nude-i18n.js (DE/EN/FR).
    Fuente única de verdad del sitio estebanmarco.ch (rediseño Nude)."""
 import json, io, os
@@ -436,8 +436,8 @@ def footer():
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="nude-i18n.js?v=5"></script>
-<script src="nude.js?v=5"></script>'''
+<script src="nude-i18n.js?v=6"></script>
+<script src="nude.js?v=6"></script>'''
 
 def card(s):
     p = s["slug"].replace("service-","")
@@ -487,7 +487,7 @@ def build_index():
 "makesOffer":[
 {offers}]}}
 </script>
-<link rel="stylesheet" href="nude.css?v=5">
+<link rel="stylesheet" href="nude.css?v=6">
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
@@ -706,7 +706,7 @@ def build_pdp(s):
 <script type="application/ld+json">
 {jsonld(s)}
 </script>
-<link rel="stylesheet" href="nude.css?v=5">
+<link rel="stylesheet" href="nude.css?v=6">
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
