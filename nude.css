@@ -342,7 +342,14 @@ footer{background:var(--white);color:var(--ink75);overflow:hidden;border-top:1px
 @media(max-width:600px){
   .grid{grid-template-columns:1fr}
   .f-top{grid-template-columns:1fr}
-  .hd-r .lang{display:none}
-  .wordmark{font-size:16px}
+  .wordmark{font-size:15px}
+  .hd-r{gap:8px}
+  .hd-r .lang{gap:3px}
+  .hd-r .lang button{font-size:11px;padding:4px 1px}
+  .pill{padding:7px 13px;font-size:12px;min-height:34px}
   .strip .card{flex-basis:70vw}
+  .f-mark{font-size:11.2vw;letter-spacing:-.05em}
+  .hero{margin:10px 12px 0;border-radius:20px}
+  .banner{margin:0 12px;border-radius:20px;min-height:480px}
+  .qband{margin:0 12px 20px;border-radius:20px}
 }
