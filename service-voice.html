@@ -23,7 +23,7 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@graph": [{"@type": "Service", "name": "KI-Voice-Agents", "url": "https://estebanmarco.ch/service-voice.html", "description": "KI-Telefonagenten rufen jeden neuen Lead in unter 30 Sekunden an, qualifizieren ihn und buchen den Termin — mit automatischem Follow-up. Für KMU in Zürich.", "areaServed": "Kanton Zürich", "provider": {"@id": "https://estebanmarco.ch/#business"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://estebanmarco.ch/"}, {"@type": "ListItem", "position": 2, "name": "KI-Voice-Agents", "item": "https://estebanmarco.ch/service-voice.html"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Was macht dieser Service genau?", "acceptedAnswer": {"@type": "Answer", "text": "Ein KI-Telefonagent ruft jeden neuen Lead in unter 30 Sekunden an, qualifiziert ihn im Gespräch und bucht den Termin für Ihr Team — mit Follow-up, bis er jemanden erreicht."}}, {"@type": "Question", "name": "Für wen ist er gedacht?", "acceptedAnswer": {"@type": "Answer", "text": "Für Firmen, deren Anfragen erkalten, weil niemand sofort zurückruft: Immobilien, Treuhand, Praxen, Handwerk und Vertrieb."}}, {"@type": "Question", "name": "Was bringt er Ihnen konkret?", "acceptedAnswer": {"@type": "Answer", "text": "Kein Lead bleibt liegen: sofortige Antwort auf jede Anfrage und mehr Termine im Kalender — ohne zusätzliches Personal."}}]}]}
 </script>
-<link rel="stylesheet" href="nude.css?v=4">
+<link rel="stylesheet" href="nude.css?v=5">
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
@@ -35,13 +35,15 @@
 <header class="hd">
   <a class="wordmark" href="index.html">Esteban Marco<sup>®</sup></a>
   <nav>
-    <a href="index.html#leistungen">← Alle Leistungen</a>
-    <a href="index.html#suite">Treuhand-Suite</a>
-    <a href="index.html#privat">On-Premise</a>
+    <a href="index.html#leistungen" data-i="pdp.back">← Alle Leistungen</a>
+    <a href="index.html#suite" data-i="nav.suite">Treuhand-Suite</a>
+    <a href="index.html#privat" data-i="nav.priv">On-Premise</a>
   </nav>
   <div class="hd-r">
-    <span class="lang"><b>DE</b> · EN · FR</span>
-    <a class="pill line" href="index.html#kontakt">Gespräch</a>
+    <div class="lang" role="group" aria-label="Sprache">
+      <button type="button" data-lang="de">DE</button><span>·</span><button type="button" data-lang="en">EN</button><span>·</span><button type="button" data-lang="fr">FR</button>
+    </div>
+    <a class="pill line" href="index.html#kontakt" data-i="nav.cta">Gespräch</a>
   </div>
 </header>
 
@@ -50,7 +52,7 @@
   <div class="pdp-media">
     <div class="m">
       <img src="media/card-voice.jpg" alt="Cremefarbenes Telefon an heller Wand — KI-Voice-Agents" fetchpriority="high">
-      <div class="tag"><span class="badge">Neu</span></div>
+      <div class="tag"><span class="badge" data-i="badge.neu">Neu</span></div>
     </div>
     <div class="m">
       <img src="media/pdp-voice-2.jpg" alt="KI-Voice-Agents — Esteban Marco, Zürich" loading="lazy">
@@ -58,34 +60,34 @@
   </div>
   <div class="pdp-info">
     <div class="pdp-in">
-      <div class="pdp-crumb" data-r><a href="index.html">Start</a><span>/</span><a href="index.html#leistungen">Leistungen</a><span>/</span><span>Leistung 06 — ZH26</span></div>
-      <h1 data-r>KI-Voice-<br>Agents</h1>
-      <div class="pdp-price" data-r>auf Anfrage<small>Setup einmalig + Betrieb pro Monat</small></div>
-      <p class="pdp-lede" data-r>Ein Lead, der eine Stunde wartet, ist kein Lead mehr. Der Voice-Agent ruft in unter 30 Sekunden zurück — freundlich, zu jeder Uhrzeit, und er gibt nicht auf, bis der Kontakt steht.</p>
+      <div class="pdp-crumb" data-r><a href="index.html" data-i="pdp.start">Start</a><span>/</span><a href="index.html#leistungen" data-i="nav.lei">Leistungen</a><span>/</span><span data-i="voice.crumb">Leistung 06 — ZH26</span></div>
+      <h1 data-r data-i="voice.h1">KI-Voice-<br>Agents</h1>
+      <div class="pdp-price" data-r><span data-i="voice.pr">auf Anfrage</span><small data-i="voice.prnote">Setup einmalig + Betrieb pro Monat</small></div>
+      <p class="pdp-lede" data-r data-i="voice.lede">Ein Lead, der eine Stunde wartet, ist kein Lead mehr. Der Voice-Agent ruft in unter 30 Sekunden zurück — freundlich, zu jeder Uhrzeit, und er gibt nicht auf, bis der Kontakt steht.</p>
       <div class="pdp-sec" data-r>
-        <span class="label">Was drinsteckt</span>
-        <div class="mods"><span>Anruf in &lt; 30 Sekunden</span><span>Lead-Qualifizierung</span><span>Terminbuchung im Kalender</span><span>Automatisches Follow-up</span><span>Inbound &amp; Outbound</span><span>Mehrsprachig DE / EN / FR</span><span>Gesprächsprotokoll &amp; Zusammenfassung</span><span>CRM-Anbindung</span><span>nDSG-konform</span></div>
+        <span class="label" data-i="voice.modeye">Was drinsteckt</span>
+        <div class="mods"><span data-i="voice.c1">Anruf in &lt; 30 Sekunden</span><span data-i="voice.c2">Lead-Qualifizierung</span><span data-i="voice.c3">Terminbuchung im Kalender</span><span data-i="voice.c4">Automatisches Follow-up</span><span data-i="voice.c5">Inbound &amp; Outbound</span><span data-i="voice.c6">Mehrsprachig DE / EN / FR</span><span data-i="voice.c7">Gesprächsprotokoll &amp; Zusammenfassung</span><span data-i="voice.c8">CRM-Anbindung</span><span data-i="voice.c9">nDSG-konform</span></div>
       </div>
       <div class="pdp-cta" data-r>
-        <a class="pill solid" href="mailto:info@estebanmarco.ch?subject=KI-Voice-Agents%20%E2%80%93%20Gespr%C3%A4ch">Gespräch buchen</a>
+        <a class="pill solid" href="index.html#kontakt" data-i="pdp.book">Gespräch buchen</a>
         <a class="pill line" href="tel:+41767421548">+41 76 742 15 48</a>
       </div>
       <div class="acc" data-r>
     <div class="acc-it">
-      <button class="acc-q" type="button"><span>Der Ansatz</span><span class="pl">+</span></button>
-      <div class="acc-a"><p>Der Agent meldet sich sofort nach jeder Anfrage, stellt die richtigen Fragen, erkennt echtes Interesse und bucht den Termin direkt in Ihren Kalender. Erreicht er niemanden, fasst er automatisch nach.</p><p style="padding-top:0">Jedes Gespräch wird protokolliert und zusammengefasst — Ihr Team übernimmt nur noch die Termine. Der Einstieg: ein Pilot an Ihren echten Anfragen.</p></div>
+      <button class="acc-q" type="button"><span data-i="pdp.approach">Der Ansatz</span><span class="pl">+</span></button>
+      <div class="acc-a"><p data-i="voice.p1">Der Agent meldet sich sofort nach jeder Anfrage, stellt die richtigen Fragen, erkennt echtes Interesse und bucht den Termin direkt in Ihren Kalender. Erreicht er niemanden, fasst er automatisch nach.</p><p style="padding-top:0" data-i="voice.p2">Jedes Gespräch wird protokolliert und zusammengefasst — Ihr Team übernimmt nur noch die Termine. Der Einstieg: ein Pilot an Ihren echten Anfragen.</p></div>
     </div>
     <div class="acc-it">
-      <button class="acc-q" type="button"><span>Was macht dieser Service genau?</span><span class="pl">+</span></button>
-      <div class="acc-a"><p>Ein KI-Telefonagent ruft jeden neuen Lead in unter 30 Sekunden an, qualifiziert ihn im Gespräch und bucht den Termin für Ihr Team — mit Follow-up, bis er jemanden erreicht.</p></div>
+      <button class="acc-q" type="button"><span data-i="acc.q1">Was macht dieser Service genau?</span><span class="pl">+</span></button>
+      <div class="acc-a"><p data-i="voice.a1">Ein KI-Telefonagent ruft jeden neuen Lead in unter 30 Sekunden an, qualifiziert ihn im Gespräch und bucht den Termin für Ihr Team — mit Follow-up, bis er jemanden erreicht.</p></div>
     </div>
     <div class="acc-it">
-      <button class="acc-q" type="button"><span>Für wen ist er gedacht?</span><span class="pl">+</span></button>
-      <div class="acc-a"><p>Für Firmen, deren Anfragen erkalten, weil niemand sofort zurückruft: Immobilien, Treuhand, Praxen, Handwerk und Vertrieb.</p></div>
+      <button class="acc-q" type="button"><span data-i="acc.q2">Für wen ist er gedacht?</span><span class="pl">+</span></button>
+      <div class="acc-a"><p data-i="voice.a2">Für Firmen, deren Anfragen erkalten, weil niemand sofort zurückruft: Immobilien, Treuhand, Praxen, Handwerk und Vertrieb.</p></div>
     </div>
     <div class="acc-it">
-      <button class="acc-q" type="button"><span>Was bringt er Ihnen konkret?</span><span class="pl">+</span></button>
-      <div class="acc-a"><p>Kein Lead bleibt liegen: sofortige Antwort auf jede Anfrage und mehr Termine im Kalender — ohne zusätzliches Personal.</p></div>
+      <button class="acc-q" type="button"><span data-i="acc.q3">Was bringt er Ihnen konkret?</span><span class="pl">+</span></button>
+      <div class="acc-a"><p data-i="voice.a3">Kein Lead bleibt liegen: sofortige Antwort auf jede Anfrage und mehr Termine im Kalender — ohne zusätzliches Personal.</p></div>
     </div>
       </div>
     </div>
@@ -96,74 +98,78 @@
 <section class="qband">
   <div class="veil"></div>
   <div class="qin">
-    <p class="q">Kein Lead wartet länger als 30 Sekunden.</p>
-    <p class="qby" data-r>KI-Voice-Agents · Esteban Marco</p>
+    <p class="q" data-i="voice.q">Kein Lead wartet länger als 30 Sekunden.</p>
+    <p class="qby" data-r data-i="voice.qby">KI-Voice-Agents · Esteban Marco</p>
   </div>
 </section>
 
 <!-- Weitere Leistungen -->
 <div class="shead">
-  <h2>Weitere Leistungen</h2>
-  <a class="more" href="index.html#leistungen">Alle ansehen</a>
+  <h2 data-i="pdp.more">Weitere Leistungen</h2>
+  <a class="more" href="index.html#leistungen" data-i="pdp.all">Alle ansehen</a>
 </div>
 <div class="grid">
   <a class="card" href="service-seo.html">
     <div class="cmedia">
       <img src="media/card-seo.jpg" alt="Sichtbarkeit & SEO" loading="lazy">
-      <span class="badge">Bestseller</span><span class="fav">+</span>
+      <span class="badge" data-i="badge.best">Bestseller</span>
+      <span class="fav">+</span>
     </div>
-    <div class="cinfo"><span class="nm">Sichtbarkeit & SEO</span><span class="pr">ab CHF 690 / Mt.</span></div>
+    <div class="cinfo"><span class="nm" data-i="seo.nm">Sichtbarkeit &amp; SEO</span><span class="pr" data-i="seo.pr">ab CHF 690 / Monat</span></div>
   </a>
   <a class="card" href="service-ki.html">
     <div class="cmedia">
       <img src="media/card-ki.jpg" alt="KI-Automatisierung" loading="lazy">
-      <span class="badge">Neu</span><span class="fav">+</span>
+      <span class="badge" data-i="badge.neu">Neu</span>
+      <span class="fav">+</span>
     </div>
-    <div class="cinfo"><span class="nm">KI-Automatisierung</span><span class="pr">Pilot zum Festpreis</span></div>
+    <div class="cinfo"><span class="nm" data-i="ki.nm">KI-Automatisierung</span><span class="pr" data-i="ki.pr">Pilot zum Festpreis</span></div>
   </a>
   <a class="card" href="service-ai.html">
     <div class="cmedia">
       <img src="media/card-ai.jpg" alt="Private KI · lokal" loading="lazy">
-      <span class="badge">On-Premise</span><span class="fav">+</span>
+      <span class="badge" data-i="badge.onp">On-Premise</span>
+      <span class="fav">+</span>
     </div>
-    <div class="cinfo"><span class="nm">Private KI · lokal</span><span class="pr">auf Anfrage</span></div>
+    <div class="cinfo"><span class="nm" data-i="ai.nm">Private KI · lokal</span><span class="pr" data-i="ai.pr">auf Anfrage</span></div>
   </a>
   <a class="card" href="service-crm.html">
     <div class="cmedia">
       <img src="media/card-crm.jpg" alt="CRM nach Mass" loading="lazy">
       <span class="fav">+</span>
     </div>
-    <div class="cinfo"><span class="nm">CRM nach Mass</span><span class="pr">auf Anfrage</span></div>
+    <div class="cinfo"><span class="nm" data-i="crm.nm">CRM nach Mass</span><span class="pr" data-i="crm.pr">Festpreis</span></div>
   </a>
 </div>
 
 <footer>
   <div class="f-top">
     <div class="f-news">
-      <h3>Ein Ansprechpartner, der baut.</h3>
-      <p>KI · SEO · Software — für KMU und Treuhänder in Zürich. Direkt, ohne Agentur-Overhead.</p>
-      <div class="row">
-        <input type="email" placeholder="Ihre E-Mail" aria-label="E-Mail">
-        <button onclick="location.href='mailto:info@estebanmarco.ch'">Senden</button>
-      </div>
+      <h3 data-i="f.h3">Ein Ansprechpartner, der baut.</h3>
+      <p data-i="f.p">KI · SEO · Software — für KMU und Treuhänder in Zürich. Direkt, ohne Agentur-Overhead.</p>
+      <form class="row" id="nlform">
+        <input type="email" name="email" placeholder="Ihre E-Mail" data-i-ph="cta.fe" aria-label="E-Mail" required>
+        <button type="submit" data-i="f.send">Senden</button>
+      </form>
+      <div class="kmsg" id="nlmsg" role="status"></div>
     </div>
     <div class="f-col">
-      <h4>Leistungen</h4>
-      <a href="service-seo.html">Sichtbarkeit &amp; SEO</a>
-      <a href="service-ki.html">KI-Automatisierung</a>
-      <a href="service-ai.html">Private KI · lokal</a>
-      <a href="service-crm.html">CRM nach Mass</a>
-      <a href="service-software.html">Software nach Mass</a>
-      <a href="service-voice.html">KI-Voice-Agents</a>
+      <h4 data-i="f.lei">Leistungen</h4>
+      <a href="service-seo.html" data-i="seo.nm">Sichtbarkeit &amp; SEO</a>
+      <a href="service-ki.html" data-i="ki.nm">KI-Automatisierung</a>
+      <a href="service-ai.html" data-i="ai.nm">Private KI · lokal</a>
+      <a href="service-crm.html" data-i="crm.nm">CRM nach Mass</a>
+      <a href="service-software.html" data-i="software.nm">Software nach Mass</a>
+      <a href="service-voice.html" data-i="voice.nm">KI-Voice-Agents</a>
     </div>
     <div class="f-col">
-      <h4>Live-Demos</h4>
+      <h4 data-i="f.demos">Live-Demos</h4>
       <a href="01_beleg-scanner.html">Beleg-Scanner</a>
       <a href="02_konto-abgleich.html">Konto-Abgleich</a>
       <a href="03_treuhand-assistent.html">Treuhand-Assistent</a>
     </div>
     <div class="f-col">
-      <h4>Kontakt</h4>
+      <h4 data-i="f.kont">Kontakt</h4>
       <a href="mailto:info@estebanmarco.ch">info@estebanmarco.ch</a>
       <a href="tel:+41767421548">+41 76 742 15 48</a>
       <a href="impressum.html">Impressum</a>
@@ -172,13 +178,14 @@
   </div>
   <div class="f-mark" aria-hidden="true">ESTEBAN MARCO<sup>®</sup></div>
   <div class="f-bot">
-    <span>© 2026 Esteban Marco — Zürich, Schweiz</span>
-    <span>KI · SEO · Software nach Mass</span>
+    <span data-i="f.copy">© 2026 Esteban Marco — Zürich, Schweiz</span>
+    <span data-i="f.tag">KI · SEO · Software nach Mass</span>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="nude.js?v=3"></script>
+<script src="nude-i18n.js?v=5"></script>
+<script src="nude.js?v=5"></script>
 </body>
 </html>

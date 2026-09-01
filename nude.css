@@ -54,8 +54,11 @@ header.hd{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.72);
   white-space:nowrap;opacity:.85}
 .hd nav a:hover{opacity:1}
 .hd-r{display:flex;justify-content:flex-end;align-items:center;gap:16px}
-.hd-r .lang{font-size:12px;font-weight:400;letter-spacing:0;color:var(--ink50)}
-.hd-r .lang b{color:var(--ink);font-weight:400}
+.hd-r .lang{font-size:12px;font-weight:400;letter-spacing:0;color:var(--ink50);
+  display:flex;align-items:center;gap:6px}
+.hd-r .lang button{font-size:12px;color:var(--ink50);padding:4px 2px;transition:color var(--t)}
+.hd-r .lang button:hover{color:var(--ink)}
+.hd-r .lang button.on{color:var(--ink);border-bottom:1px solid var(--ink)}
 
 /* ---------- Pills (Nude: radius 60, .3s) + neumorfismo ---------- */
 .pill{display:inline-flex;align-items:center;justify-content:center;border-radius:60px;

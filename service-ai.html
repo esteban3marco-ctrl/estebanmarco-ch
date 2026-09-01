@@ -18,12 +18,12 @@
 <meta property="og:title" content="Private KI lokal — eigenes Sprachmodell, DSG-konform | Esteban Marco">
 <meta property="og:description" content="Ihr eigenes Sprachmodell auf Ihrer Hardware: KI-Antworten aus Ihren Dokumenten, ohne Cloud, ohne Abo, ohne Datenabfluss. Für Firmen in Zürich und der Schweiz.">
 <meta property="og:url" content="https://estebanmarco.ch/service-ai.html">
-<meta property="og:image" content="https://estebanmarco.ch/assets/ai_still.jpg">
+<meta property="og:image" content="https://estebanmarco.ch/media/card-ai.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@graph": [{"@type": "Service", "name": "Private KI · lokal", "url": "https://estebanmarco.ch/service-ai.html", "description": "Ihr eigenes Sprachmodell auf Ihrer Hardware: KI-Antworten aus Ihren Dokumenten, ohne Cloud, ohne Abo, ohne Datenabfluss. Für Firmen in Zürich und der Schweiz.", "areaServed": "Kanton Zürich", "provider": {"@id": "https://estebanmarco.ch/#business"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://estebanmarco.ch/"}, {"@type": "ListItem", "position": 2, "name": "Private KI · lokal", "item": "https://estebanmarco.ch/service-ai.html"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Was macht dieser Service genau?", "acceptedAnswer": {"@type": "Answer", "text": "Ich installiere ein eigenes Sprachmodell (wie ChatGPT, aber privat) auf Ihrer Hardware und verbinde es mit Ihren Dokumenten."}}, {"@type": "Question", "name": "Für wen ist er gedacht?", "acceptedAnswer": {"@type": "Answer", "text": "Für alle, die KI nutzen wollen, deren Daten aber vertraulich sind: Mandate, Verträge, Personal- oder Patientenakten."}}, {"@type": "Question", "name": "Was bringt er Ihnen konkret?", "acceptedAnswer": {"@type": "Answer", "text": "KI-Antworten mit Quellenangabe aus Ihren eigenen Akten — ohne Abo pro Kopf, und kein Byte verlässt das Haus."}}]}]}
 </script>
-<link rel="stylesheet" href="nude.css?v=4">
+<link rel="stylesheet" href="nude.css?v=5">
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
@@ -35,13 +35,15 @@
 <header class="hd">
   <a class="wordmark" href="index.html">Esteban Marco<sup>®</sup></a>
   <nav>
-    <a href="index.html#leistungen">← Alle Leistungen</a>
-    <a href="index.html#suite">Treuhand-Suite</a>
-    <a href="index.html#privat">On-Premise</a>
+    <a href="index.html#leistungen" data-i="pdp.back">← Alle Leistungen</a>
+    <a href="index.html#suite" data-i="nav.suite">Treuhand-Suite</a>
+    <a href="index.html#privat" data-i="nav.priv">On-Premise</a>
   </nav>
   <div class="hd-r">
-    <span class="lang"><b>DE</b> · EN · FR</span>
-    <a class="pill line" href="index.html#kontakt">Gespräch</a>
+    <div class="lang" role="group" aria-label="Sprache">
+      <button type="button" data-lang="de">DE</button><span>·</span><button type="button" data-lang="en">EN</button><span>·</span><button type="button" data-lang="fr">FR</button>
+    </div>
+    <a class="pill line" href="index.html#kontakt" data-i="nav.cta">Gespräch</a>
   </div>
 </header>
 
@@ -49,8 +51,8 @@
 <section class="pdp">
   <div class="pdp-media">
     <div class="m">
-      <img src="media/card-ai.jpg" alt="Walnussholz-Server mit Messinglicht — private KI im Haus" fetchpriority="high">
-      <div class="tag"><span class="badge">On-Premise</span></div>
+      <img src="media/card-ai.jpg" alt="Kleiner Computer auf beigem Studiohintergrund — private KI" fetchpriority="high">
+      <div class="tag"><span class="badge" data-i="badge.onp">On-Premise</span></div>
     </div>
     <div class="m">
       <img src="media/pdp-ai-2.jpg" alt="Private KI · lokal — Esteban Marco, Zürich" loading="lazy">
@@ -58,34 +60,34 @@
   </div>
   <div class="pdp-info">
     <div class="pdp-in">
-      <div class="pdp-crumb" data-r><a href="index.html">Start</a><span>/</span><a href="index.html#leistungen">Leistungen</a><span>/</span><span>Leistung 03 — ZH26</span></div>
-      <h1 data-r>Private KI<br>· lokal</h1>
-      <div class="pdp-price" data-r>auf Anfrage<small>einmalig — kein Abo pro Nutzer</small></div>
-      <p class="pdp-lede" data-r>ChatGPT ist stark — aber Ihre Dossiers gehören nicht in fremde Clouds. Die Alternative: Ihr eigenes Sprachmodell, auf Ihrer Hardware, hinter Ihrer Tür.</p>
+      <div class="pdp-crumb" data-r><a href="index.html" data-i="pdp.start">Start</a><span>/</span><a href="index.html#leistungen" data-i="nav.lei">Leistungen</a><span>/</span><span data-i="ai.crumb">Leistung 03 — ZH26</span></div>
+      <h1 data-r data-i="ai.h1">Private KI<br>· lokal</h1>
+      <div class="pdp-price" data-r><span data-i="ai.pr">auf Anfrage</span><small data-i="ai.prnote">einmalig — kein Abo pro Nutzer</small></div>
+      <p class="pdp-lede" data-r data-i="ai.lede">ChatGPT ist stark — aber Ihre Dossiers gehören nicht in fremde Clouds. Die Alternative: Ihr eigenes Sprachmodell, auf Ihrer Hardware, hinter Ihrer Tür.</p>
       <div class="pdp-sec" data-r>
-        <span class="label">Was drinsteckt</span>
-        <div class="mods"><span>Lokales Sprachmodell auf Ihrer Box</span><span>Fragen an Ihre Dokumente (RAG)</span><span>Antworten mit Quellenangabe</span><span>Komplett offline möglich</span><span>Kein Abo pro Nutzer</span><span>Mandantentrennung</span><span>AVV · nDSG-konform</span><span>Wartung &amp; Modell-Updates</span><span>Schulung Ihres Teams</span></div>
+        <span class="label" data-i="ai.modeye">Was drinsteckt</span>
+        <div class="mods"><span data-i="ai.c1">Lokales Sprachmodell auf Ihrer Box</span><span data-i="ai.c2">Fragen an Ihre Dokumente (RAG)</span><span data-i="ai.c3">Antworten mit Quellenangabe</span><span data-i="ai.c4">Komplett offline möglich</span><span data-i="ai.c5">Kein Abo pro Nutzer</span><span data-i="ai.c6">Mandantentrennung</span><span data-i="ai.c7">AVV · nDSG-konform</span><span data-i="ai.c8">Wartung &amp; Modell-Updates</span><span data-i="ai.c9">Schulung Ihres Teams</span></div>
       </div>
       <div class="pdp-cta" data-r>
-        <a class="pill solid" href="mailto:info@estebanmarco.ch?subject=Private%20KI%20·%20lokal%20%E2%80%93%20Gespr%C3%A4ch">Gespräch buchen</a>
+        <a class="pill solid" href="index.html#kontakt" data-i="pdp.book">Gespräch buchen</a>
         <a class="pill line" href="tel:+41767421548">+41 76 742 15 48</a>
       </div>
       <div class="acc" data-r>
     <div class="acc-it">
-      <button class="acc-q" type="button"><span>Der Ansatz</span><span class="pl">+</span></button>
-      <div class="acc-a"><p>Ich installiere ein offenes Sprachmodell auf Ihrer eigenen Box und verbinde es mit Ihren Dokumenten: Fragen in natürlicher Sprache, Antworten mit Quellenangabe — komplett offline möglich.</p><p style="padding-top:0">Einmal eingerichtet, gehört das System Ihnen: kein Abo pro Nutzer, keine Datenübermittlung, kein Anbieter, der die Regeln ändert.</p></div>
+      <button class="acc-q" type="button"><span data-i="pdp.approach">Der Ansatz</span><span class="pl">+</span></button>
+      <div class="acc-a"><p data-i="ai.p1">Ich installiere ein offenes Sprachmodell auf Ihrer eigenen Box und verbinde es mit Ihren Dokumenten: Fragen in natürlicher Sprache, Antworten mit Quellenangabe — komplett offline möglich.</p><p style="padding-top:0" data-i="ai.p2">Einmal eingerichtet, gehört das System Ihnen: kein Abo pro Nutzer, keine Datenübermittlung, kein Anbieter, der die Regeln ändert.</p></div>
     </div>
     <div class="acc-it">
-      <button class="acc-q" type="button"><span>Was macht dieser Service genau?</span><span class="pl">+</span></button>
-      <div class="acc-a"><p>Ich installiere ein eigenes Sprachmodell (wie ChatGPT, aber privat) auf Ihrer Hardware und verbinde es mit Ihren Dokumenten.</p></div>
+      <button class="acc-q" type="button"><span data-i="acc.q1">Was macht dieser Service genau?</span><span class="pl">+</span></button>
+      <div class="acc-a"><p data-i="ai.a1">Ich installiere ein eigenes Sprachmodell (wie ChatGPT, aber privat) auf Ihrer Hardware und verbinde es mit Ihren Dokumenten.</p></div>
     </div>
     <div class="acc-it">
-      <button class="acc-q" type="button"><span>Für wen ist er gedacht?</span><span class="pl">+</span></button>
-      <div class="acc-a"><p>Für alle, die KI nutzen wollen, deren Daten aber vertraulich sind: Mandate, Verträge, Personal- oder Patientenakten.</p></div>
+      <button class="acc-q" type="button"><span data-i="acc.q2">Für wen ist er gedacht?</span><span class="pl">+</span></button>
+      <div class="acc-a"><p data-i="ai.a2">Für alle, die KI nutzen wollen, deren Daten aber vertraulich sind: Mandate, Verträge, Personal- oder Patientenakten.</p></div>
     </div>
     <div class="acc-it">
-      <button class="acc-q" type="button"><span>Was bringt er Ihnen konkret?</span><span class="pl">+</span></button>
-      <div class="acc-a"><p>KI-Antworten mit Quellenangabe aus Ihren eigenen Akten — ohne Abo pro Kopf, und kein Byte verlässt das Haus.</p></div>
+      <button class="acc-q" type="button"><span data-i="acc.q3">Was bringt er Ihnen konkret?</span><span class="pl">+</span></button>
+      <div class="acc-a"><p data-i="ai.a3">KI-Antworten mit Quellenangabe aus Ihren eigenen Akten — ohne Abo pro Kopf, und kein Byte verlässt das Haus.</p></div>
     </div>
       </div>
     </div>
@@ -96,74 +98,77 @@
 <section class="qband">
   <div class="veil"></div>
   <div class="qin">
-    <p class="q">Die Intelligenz im Haus — nicht im Abo.</p>
-    <p class="qby" data-r>Private KI · lokal</p>
+    <p class="q" data-i="ai.q">Die Intelligenz im Haus — nicht im Abo.</p>
+    <p class="qby" data-r data-i="ai.qby">Private KI · lokal</p>
   </div>
 </section>
 
 <!-- Weitere Leistungen -->
 <div class="shead">
-  <h2>Weitere Leistungen</h2>
-  <a class="more" href="index.html#leistungen">Alle ansehen</a>
+  <h2 data-i="pdp.more">Weitere Leistungen</h2>
+  <a class="more" href="index.html#leistungen" data-i="pdp.all">Alle ansehen</a>
 </div>
 <div class="grid">
   <a class="card" href="service-seo.html">
     <div class="cmedia">
       <img src="media/card-seo.jpg" alt="Sichtbarkeit & SEO" loading="lazy">
-      <span class="badge">Bestseller</span><span class="fav">+</span>
+      <span class="badge" data-i="badge.best">Bestseller</span>
+      <span class="fav">+</span>
     </div>
-    <div class="cinfo"><span class="nm">Sichtbarkeit & SEO</span><span class="pr">ab CHF 690 / Mt.</span></div>
+    <div class="cinfo"><span class="nm" data-i="seo.nm">Sichtbarkeit &amp; SEO</span><span class="pr" data-i="seo.pr">ab CHF 690 / Monat</span></div>
   </a>
   <a class="card" href="service-ki.html">
     <div class="cmedia">
       <img src="media/card-ki.jpg" alt="KI-Automatisierung" loading="lazy">
-      <span class="badge">Neu</span><span class="fav">+</span>
+      <span class="badge" data-i="badge.neu">Neu</span>
+      <span class="fav">+</span>
     </div>
-    <div class="cinfo"><span class="nm">KI-Automatisierung</span><span class="pr">Pilot zum Festpreis</span></div>
+    <div class="cinfo"><span class="nm" data-i="ki.nm">KI-Automatisierung</span><span class="pr" data-i="ki.pr">Pilot zum Festpreis</span></div>
   </a>
   <a class="card" href="service-crm.html">
     <div class="cmedia">
       <img src="media/card-crm.jpg" alt="CRM nach Mass" loading="lazy">
       <span class="fav">+</span>
     </div>
-    <div class="cinfo"><span class="nm">CRM nach Mass</span><span class="pr">auf Anfrage</span></div>
+    <div class="cinfo"><span class="nm" data-i="crm.nm">CRM nach Mass</span><span class="pr" data-i="crm.pr">Festpreis</span></div>
   </a>
   <a class="card" href="service-software.html">
     <div class="cmedia">
       <img src="media/card-sw.jpg" alt="Software nach Mass" loading="lazy">
       <span class="fav">+</span>
     </div>
-    <div class="cinfo"><span class="nm">Software nach Mass</span><span class="pr">Quellcode gehört Ihnen</span></div>
+    <div class="cinfo"><span class="nm" data-i="software.nm">Software nach Mass</span><span class="pr" data-i="software.pr">Festpreis pro Phase</span></div>
   </a>
 </div>
 
 <footer>
   <div class="f-top">
     <div class="f-news">
-      <h3>Ein Ansprechpartner, der baut.</h3>
-      <p>KI · SEO · Software — für KMU und Treuhänder in Zürich. Direkt, ohne Agentur-Overhead.</p>
-      <div class="row">
-        <input type="email" placeholder="Ihre E-Mail" aria-label="E-Mail">
-        <button onclick="location.href='mailto:info@estebanmarco.ch'">Senden</button>
-      </div>
+      <h3 data-i="f.h3">Ein Ansprechpartner, der baut.</h3>
+      <p data-i="f.p">KI · SEO · Software — für KMU und Treuhänder in Zürich. Direkt, ohne Agentur-Overhead.</p>
+      <form class="row" id="nlform">
+        <input type="email" name="email" placeholder="Ihre E-Mail" data-i-ph="cta.fe" aria-label="E-Mail" required>
+        <button type="submit" data-i="f.send">Senden</button>
+      </form>
+      <div class="kmsg" id="nlmsg" role="status"></div>
     </div>
     <div class="f-col">
-      <h4>Leistungen</h4>
-      <a href="service-seo.html">Sichtbarkeit &amp; SEO</a>
-      <a href="service-ki.html">KI-Automatisierung</a>
-      <a href="service-ai.html">Private KI · lokal</a>
-      <a href="service-crm.html">CRM nach Mass</a>
-      <a href="service-software.html">Software nach Mass</a>
-      <a href="service-voice.html">KI-Voice-Agents</a>
+      <h4 data-i="f.lei">Leistungen</h4>
+      <a href="service-seo.html" data-i="seo.nm">Sichtbarkeit &amp; SEO</a>
+      <a href="service-ki.html" data-i="ki.nm">KI-Automatisierung</a>
+      <a href="service-ai.html" data-i="ai.nm">Private KI · lokal</a>
+      <a href="service-crm.html" data-i="crm.nm">CRM nach Mass</a>
+      <a href="service-software.html" data-i="software.nm">Software nach Mass</a>
+      <a href="service-voice.html" data-i="voice.nm">KI-Voice-Agents</a>
     </div>
     <div class="f-col">
-      <h4>Live-Demos</h4>
+      <h4 data-i="f.demos">Live-Demos</h4>
       <a href="01_beleg-scanner.html">Beleg-Scanner</a>
       <a href="02_konto-abgleich.html">Konto-Abgleich</a>
       <a href="03_treuhand-assistent.html">Treuhand-Assistent</a>
     </div>
     <div class="f-col">
-      <h4>Kontakt</h4>
+      <h4 data-i="f.kont">Kontakt</h4>
       <a href="mailto:info@estebanmarco.ch">info@estebanmarco.ch</a>
       <a href="tel:+41767421548">+41 76 742 15 48</a>
       <a href="impressum.html">Impressum</a>
@@ -172,13 +177,14 @@
   </div>
   <div class="f-mark" aria-hidden="true">ESTEBAN MARCO<sup>®</sup></div>
   <div class="f-bot">
-    <span>© 2026 Esteban Marco — Zürich, Schweiz</span>
-    <span>KI · SEO · Software nach Mass</span>
+    <span data-i="f.copy">© 2026 Esteban Marco — Zürich, Schweiz</span>
+    <span data-i="f.tag">KI · SEO · Software nach Mass</span>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="nude.js?v=3"></script>
+<script src="nude-i18n.js?v=5"></script>
+<script src="nude.js?v=5"></script>
 </body>
 </html>
