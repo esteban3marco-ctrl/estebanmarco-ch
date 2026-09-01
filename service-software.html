@@ -1,124 +1,184 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Software nach Mass Zürich — Web-Apps &amp; Schnittstellen | Esteban Marco</title>
-<meta name="description" content="Individuelle Web-Apps, Portale, interne Werkzeuge und Schnittstellen für KMU in Zürich — für jede Branche. On-Premise möglich, der Quellcode gehört Ihnen.">
-<meta name="robots" content="index,follow"><meta name="theme-color" content="#ECE4D5">
+<meta name="description" content="Individuelle Web-Apps, Portale und Schnittstellen (Abacus, Bexio, CAMT.053) für KMU in Zürich. On-Premise möglich — der Quellcode gehört Ihnen.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="preload" href="assets/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=8"><link rel="stylesheet" href="service.css?v=4">
-<script>document.documentElement.className += ' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="canonical" href="https://estebanmarco.ch/service-software.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_CH">
 <meta property="og:site_name" content="Esteban Marco">
-<meta property="og:title" content="Software nach Mass Zürich — Web-Apps & Schnittstellen">
-<meta property="og:description" content="Individuelle Web-Apps, Portale und interne Werkzeuge für KMU in Zürich — gebaut auf Ihren Prozess.">
+<meta property="og:title" content="Software nach Mass Zürich — Web-Apps &amp; Schnittstellen | Esteban Marco">
+<meta property="og:description" content="Individuelle Web-Apps, Portale und Schnittstellen (Abacus, Bexio, CAMT.053) für KMU in Zürich. On-Premise möglich — der Quellcode gehört Ihnen.">
 <meta property="og:url" content="https://estebanmarco.ch/service-software.html">
 <meta property="og:image" content="https://estebanmarco.ch/assets/sw_still.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"Service","name":"Software nach Mass","url":"https://estebanmarco.ch/service-software.html",
-"description":"Individuelle Tools, Web-Apps und Schnittstellen für Ihren Prozess — on-premise möglich.","areaServed":"Kanton Zürich",
-"provider":{"@id":"https://estebanmarco.ch/#business"}},
-{"@type":"BreadcrumbList","itemListElement":[
-{"@type":"ListItem","position":1,"name":"Start","item":"https://estebanmarco.ch/"},
-{"@type":"ListItem","position":2,"name":"Software nach Mass","item":"https://estebanmarco.ch/service-software.html"}]},
-{"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Was macht dieser Service genau?","acceptedAnswer":{"@type":"Answer","text":"Ich baue das Werkzeug, das es für Ihren Prozess nicht zu kaufen gibt — als Web-App, Portal oder Schnittstelle."}},
-{"@type":"Question","name":"Für wen ist er gedacht?","acceptedAnswer":{"@type":"Answer","text":"Für Firmen, deren Abläufe in zu gross gewordenen Excel-Dateien leben oder deren Systeme nicht miteinander sprechen."}},
-{"@type":"Question","name":"Was bringt er Ihnen konkret?","acceptedAnswer":{"@type":"Answer","text":"Ein Werkzeug, das exakt passt, in Etappen geliefert — und am Ende gehört der Quellcode Ihnen."}}]}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "Service", "name": "Software nach Mass", "url": "https://estebanmarco.ch/service-software.html", "description": "Individuelle Web-Apps, Portale und Schnittstellen (Abacus, Bexio, CAMT.053) für KMU in Zürich. On-Premise möglich — der Quellcode gehört Ihnen.", "areaServed": "Kanton Zürich", "provider": {"@id": "https://estebanmarco.ch/#business"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Start", "item": "https://estebanmarco.ch/"}, {"@type": "ListItem", "position": 2, "name": "Software nach Mass", "item": "https://estebanmarco.ch/service-software.html"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Was macht dieser Service genau?", "acceptedAnswer": {"@type": "Answer", "text": "Ich baue das Werkzeug, das es für Ihren Prozess nicht zu kaufen gibt — als Web-App, Portal oder Schnittstelle."}}, {"@type": "Question", "name": "Für wen ist er gedacht?", "acceptedAnswer": {"@type": "Answer", "text": "Für Firmen, deren Abläufe in zu gross gewordenen Excel-Dateien leben oder deren Systeme nicht miteinander sprechen."}}, {"@type": "Question", "name": "Was bringt er Ihnen konkret?", "acceptedAnswer": {"@type": "Answer", "text": "Ein Werkzeug, das exakt passt, in Etappen geliefert — und am Ende gehört der Quellcode Ihnen."}}]}]}
 </script>
+<link rel="stylesheet" href="nude.css?v=4">
+<script>document.documentElement.className+=' js';</script>
 </head>
-<body data-svc="sw">
-<div id="pre"><div><div class="mono">EM</div><div class="nm">Esteban Marco</div><div class="ld"><i></i></div></div></div>
-<nav id="nav">
-  <a class="wordmark" href="index.html">Esteban Marco<sup>©</sup></a>
-  <div class="nav-r">
-    <a class="navlink hide-s crumb" href="index.html" data-i="sp.crumb">← Alle Leistungen</a>
-    <div class="lang"><button data-lang="de" class="on">DE</button><span class="d">·</span><button data-lang="en">EN</button><span class="d">·</span><button data-lang="fr">FR</button></div>
-    <a class="btn" href="index.html#kontakt"><span class="dot"></span><span data-i="nav.cta">Gespräch</span></a>
+<body>
+
+<!-- Ticker -->
+<div class="ticker" aria-hidden="true"><div class="tk" id="tk"></div></div>
+
+<!-- Header -->
+<header class="hd">
+  <a class="wordmark" href="index.html">Esteban Marco<sup>®</sup></a>
+  <nav>
+    <a href="index.html#leistungen">← Alle Leistungen</a>
+    <a href="index.html#suite">Treuhand-Suite</a>
+    <a href="index.html#privat">On-Premise</a>
+  </nav>
+  <div class="hd-r">
+    <span class="lang"><b>DE</b> · EN · FR</span>
+    <a class="pill line" href="index.html#kontakt">Gespräch</a>
   </div>
-</nav>
-<header class="shero">
-  <div class="sbg"><video src="assets/sw_blueprint.mp4" poster="assets/poster_sw_blueprint.jpg" muted loop playsinline autoplay data-inview aria-hidden="true"></video></div>
-  <div class="sveil" aria-hidden="true"></div>
-  <div class="sin">
-    <div class="snum" data-i="sw.num">Leistung 05</div>
-    <h1 class="mask"><span data-i="sw.h">Software<br>nach Mass</span></h1>
-    <p class="slede" data-rise data-i="sw.lede">Irgendwann passt keine Standardsoftware mehr: der Prozess ist zu speziell, drei Systeme sprechen nicht miteinander. Dann baut man das Werkzeug selbst.</p>
-  </div>
-  <div class="scue" aria-hidden="true"><span class="ln"></span><span class="label" style="color:rgba(255,255,255,.7)" data-i="sp.scroll">Scrollen</span></div>
 </header>
-<section class="sblock"><div class="wrap"><div class="s-split">
-  <div><div class="s-eyebrow" data-rise><span class="k" data-i="sw.aeye">Der Ansatz</span></div>
-  <h2 class="s-h" data-rise data-i="sw.ah">Zuerst der Plan. Dann Blöcke, die laufen.</h2><figure class="sfig" data-rise><img src="assets/sw_still.jpg" alt="Baupläne und Messingzirkel — Software nach Mass" loading="lazy"></figure></div>
-  <div><p class="s-lead" data-rise data-i="sw.p1">Bevor Code entsteht, steht das Zielbild: Prozessaufnahme vor Ort, Datenmodell schriftlich. Gebaut wird in kleinen, nutzbaren Blöcken — nach jedem Block läuft etwas.</p>
-  <p class="s-lead" data-rise data-i="sw.p2">Festpreis pro Phase, Ausstieg jederzeit. Übergabe heisst Übergabe: Quellcode und Dokumentation gehören Ihnen.</p></div>
-</div></div></section>
-<section class="sblock tight"><div class="wrap">
-  <div class="s-eyebrow" data-rise><span class="k" data-i="acc.h">Was bedeutet das für Sie?</span><span class="rule"></span></div>
-  <div class="acc" data-rise>
-    <div class="acc-it"><button class="acc-q" type="button"><span data-i="acc.q1">Was macht dieser Service genau?</span><span class="pl">+</span></button><div class="acc-a"><p data-i="sw.a1">Ich baue das Werkzeug, das es für Ihren Prozess nicht zu kaufen gibt — als Web-App, Portal oder Schnittstelle.</p></div></div>
-    <div class="acc-it"><button class="acc-q" type="button"><span data-i="acc.q2">Für wen ist er gedacht?</span><span class="pl">+</span></button><div class="acc-a"><p data-i="sw.a2">Für Firmen, deren Abläufe in zu gross gewordenen Excel-Dateien leben oder deren Systeme nicht miteinander sprechen.</p></div></div>
-    <div class="acc-it"><button class="acc-q" type="button"><span data-i="acc.q3">Was bringt er Ihnen konkret?</span><span class="pl">+</span></button><div class="acc-a"><p data-i="sw.a3">Ein Werkzeug, das exakt passt, in Etappen geliefert — und am Ende gehört der Quellcode Ihnen.</p></div></div>
+
+<!-- PDP -->
+<section class="pdp">
+  <div class="pdp-media">
+    <div class="m">
+      <img src="media/card-sw.jpg" alt="Bauplan und Messinglineal — Software nach Mass" fetchpriority="high">
+      <div class="tag"></div>
+    </div>
+    <div class="m">
+      <img src="media/pdp-sw-2.jpg" alt="Software nach Mass — Esteban Marco, Zürich" loading="lazy">
+    </div>
   </div>
-</div></section>
-<section class="sblock tight"><div class="wrap">
-  <div class="s-eyebrow" data-rise><span class="k" data-i="sw.ceye">Was gebaut wird</span><span class="rule"></span></div>
-  <div class="caps">
-    <div class="cap"><span class="i">01</span><span data-i="sw.c1">Interne Web-Apps</span></div>
-    <div class="cap"><span class="i">02</span><span data-i="sw.c2">Kundenportale</span></div>
-    <div class="cap"><span class="i">03</span><span data-i="sw.c3">Dashboards &amp; Daten-Werkzeuge</span></div>
-    <div class="cap"><span class="i">04</span><span data-i="sw.c4">Buchungs- &amp; Terminsysteme</span></div>
-    <div class="cap"><span class="i">05</span><span data-i="sw.c5">Automatisierte Abläufe</span></div>
-    <div class="cap"><span class="i">06</span><span data-i="sw.c6">Schnittstellen zu Ihren Systemen</span></div>
-    <div class="cap"><span class="i">07</span><span data-i="sw.c7">Microsoft 365 / Google Workspace</span></div>
-    <div class="cap"><span class="i">08</span><span data-i="sw.c8">REST &amp; Webhooks</span></div>
-    <div class="cap"><span class="i">09</span><span data-i="sw.c9">On-Premise oder CH-Hosting</span></div>
-  </div>
-</div></section>
-<section class="sband">
-  <div class="bbg"><video src="assets/sw_blocks.mp4" muted loop playsinline data-inview aria-hidden="true"></video></div>
-  <div class="bveil" aria-hidden="true"></div>
-  <div class="bin"><p class="q" data-rise data-i="sw.q">Übergabe heisst wirklich Übergabe — Quellcode und Dokumentation gehören Ihnen.</p>
-  <p class="qby" data-rise data-i="sw.qby">Software nach Mass · Esteban Marco</p></div>
-</section>
-<section class="sblock tight"><div class="wrap">
-  <div class="s-eyebrow" data-rise><span class="k" data-i="sp.weitere">Weitere Leistungen</span><span class="rule"></span></div>
-  <div class="others">
-    <a class="oth" href="service-ki.html"><video src="assets/ki_desk.mp4" muted loop playsinline data-inview></video><div class="ov"></div><div class="lab"><div class="kn">02</div><div class="nm" data-i="s2.t">KI-<br>Automatisierung</div></div></a>
-    <a class="oth" href="service-ai.html"><video src="assets/ai_box.mp4" muted loop playsinline data-inview></video><div class="ov"></div><div class="lab"><div class="kn">03</div><div class="nm" data-i="s3.t">Private KI<br>· lokal</div></div></a>
-    <a class="oth" href="service-crm.html"><video src="assets/crm_cards.mp4" muted loop playsinline data-inview></video><div class="ov"></div><div class="lab"><div class="kn">04</div><div class="nm" data-i="s4.t">CRM<br>nach Mass</div></div></a>
-  </div>
-</div></section>
-<section class="cta" id="kontakt">
-  <div class="ctabg" aria-hidden="true"><video src="assets/cta_watch.mp4" muted loop playsinline data-inview></video></div>
-  <div class="ctaveil" aria-hidden="true"></div>
-  <div class="wrap">
-    <p class="label brass" data-rise data-i="cta.eye">Beginnen</p>
-    <h2 class="display d-1" data-rise style="margin-top:22px" data-i="cta.h">Bereit, <em>Zeit</em> zurückzugewinnen?</h2>
-    <p class="lede" data-rise data-i="cta.lede">15 Minuten genügen, um zu sehen, wo bei Ihnen am meisten Handarbeit anfällt — und ob sich etwas automatisieren lässt. Unverbindlich.</p>
-    <div class="btnrow" data-rise>
-      <a class="btn" href="mailto:info@estebanmarco.ch?subject=Software%20%E2%80%93%20Gespr%C3%A4ch"><span class="dot"></span><span data-i="cta.b1">Gespräch vereinbaren</span></a>
-      <a class="btn" href="tel:+41767421548"><span class="dot"></span><span>+41 76 742 15 48</span></a>
+  <div class="pdp-info">
+    <div class="pdp-in">
+      <div class="pdp-crumb" data-r><a href="index.html">Start</a><span>/</span><a href="index.html#leistungen">Leistungen</a><span>/</span><span>Leistung 05 — ZH26</span></div>
+      <h1 data-r>Software<br>nach Mass</h1>
+      <div class="pdp-price" data-r>Festpreis pro Phase<small>Ausstieg jederzeit</small></div>
+      <p class="pdp-lede" data-r>Irgendwann passt keine Standardsoftware mehr: der Prozess ist zu speziell, drei Systeme sprechen nicht miteinander. Dann baut man das Werkzeug selbst.</p>
+      <div class="pdp-sec" data-r>
+        <span class="label">Was gebaut wird</span>
+        <div class="mods"><span>Interne Web-Apps</span><span>Kundenportale</span><span>Dashboards &amp; Daten-Werkzeuge</span><span>Abacus-Anbindung</span><span>Bexio-Anbindung</span><span>CAMT.053 &amp; Bankdaten</span><span>Microsoft 365 / Google Workspace</span><span>REST &amp; Webhooks</span><span>On-Premise oder CH-Hosting</span></div>
+      </div>
+      <div class="pdp-cta" data-r>
+        <a class="pill solid" href="mailto:info@estebanmarco.ch?subject=Software%20nach%20Mass%20%E2%80%93%20Gespr%C3%A4ch">Gespräch buchen</a>
+        <a class="pill line" href="tel:+41767421548">+41 76 742 15 48</a>
+      </div>
+      <div class="acc" data-r>
+    <div class="acc-it">
+      <button class="acc-q" type="button"><span>Der Ansatz</span><span class="pl">+</span></button>
+      <div class="acc-a"><p>Bevor Code entsteht, steht das Zielbild: Prozessaufnahme vor Ort, Datenmodell schriftlich. Gebaut wird in kleinen, nutzbaren Blöcken — nach jedem Block läuft etwas.</p><p style="padding-top:0">Festpreis pro Phase, Ausstieg jederzeit. Übergabe heisst Übergabe: Quellcode und Dokumentation gehören Ihnen.</p></div>
+    </div>
+    <div class="acc-it">
+      <button class="acc-q" type="button"><span>Was macht dieser Service genau?</span><span class="pl">+</span></button>
+      <div class="acc-a"><p>Ich baue das Werkzeug, das es für Ihren Prozess nicht zu kaufen gibt — als Web-App, Portal oder Schnittstelle.</p></div>
+    </div>
+    <div class="acc-it">
+      <button class="acc-q" type="button"><span>Für wen ist er gedacht?</span><span class="pl">+</span></button>
+      <div class="acc-a"><p>Für Firmen, deren Abläufe in zu gross gewordenen Excel-Dateien leben oder deren Systeme nicht miteinander sprechen.</p></div>
+    </div>
+    <div class="acc-it">
+      <button class="acc-q" type="button"><span>Was bringt er Ihnen konkret?</span><span class="pl">+</span></button>
+      <div class="acc-a"><p>Ein Werkzeug, das exakt passt, in Etappen geliefert — und am Ende gehört der Quellcode Ihnen.</p></div>
+    </div>
+      </div>
     </div>
   </div>
 </section>
-<footer><div class="row">
-  <div class="col"><div class="wordmark">Esteban Marco<sup>©</sup></div><p style="margin-top:16px" data-i="foot.city">Zürich, Schweiz</p></div>
-  <div class="col"><h4 data-i="foot.lei">Leistungen</h4><a href="service-seo.html" data-i="s1.t">Sichtbarkeit<br>&amp; SEO</a><a href="service-ki.html" data-i="s2.t">KI-<br>Automatisierung</a><a href="service-ai.html" data-i="s3.t">Private KI<br>· lokal</a><a href="service-crm.html" data-i="s4.t">CRM<br>nach Mass</a><a href="service-software.html" data-i="s5.t">Software<br>nach Mass</a></div>
-  <div class="col"><h4 data-i="foot.demos">Live-Demos</h4><a href="01_beleg-scanner.html" data-demo>Beleg-Scanner</a><a href="02_konto-abgleich.html" data-demo>Konto-Abgleich</a><a href="03_treuhand-assistent.html" data-demo>Treuhand-Assistent</a></div>
-  <div class="col"><h4 data-i="foot.kont">Kontakt</h4><a href="mailto:info@estebanmarco.ch">info@estebanmarco.ch</a><a href="tel:+41767421548">+41 76 742 15 48</a><a href="https://estebanmarco.ch/impressum.html">Impressum</a><a href="https://estebanmarco.ch/datenschutz.html">Datenschutz</a></div>
-</div></footer>
-<script src="assets/js/gsap.min.js"></script>
-<script src="assets/js/ScrollTrigger.min.js"></script>
-<script src="i18n.js?v=3"></script><script src="service.js?v=3"></script>
-<script>setTimeout(function(){if(!window.__kpAlive)document.body.classList.add('fallback');},6000);</script>
-<script src="chat.js" defer></script>
+
+<!-- Quote band -->
+<section class="qband">
+  <div class="veil"></div>
+  <div class="qin">
+    <p class="q">Übergabe heisst wirklich Übergabe — Quellcode und Dokumentation gehören Ihnen.</p>
+    <p class="qby" data-r>Software nach Mass · Esteban Marco</p>
+  </div>
+</section>
+
+<!-- Weitere Leistungen -->
+<div class="shead">
+  <h2>Weitere Leistungen</h2>
+  <a class="more" href="index.html#leistungen">Alle ansehen</a>
+</div>
+<div class="grid">
+  <a class="card" href="service-seo.html">
+    <div class="cmedia">
+      <img src="media/card-seo.jpg" alt="Sichtbarkeit & SEO" loading="lazy">
+      <span class="badge">Bestseller</span><span class="fav">+</span>
+    </div>
+    <div class="cinfo"><span class="nm">Sichtbarkeit & SEO</span><span class="pr">ab CHF 690 / Mt.</span></div>
+  </a>
+  <a class="card" href="service-ki.html">
+    <div class="cmedia">
+      <img src="media/card-ki.jpg" alt="KI-Automatisierung" loading="lazy">
+      <span class="badge">Neu</span><span class="fav">+</span>
+    </div>
+    <div class="cinfo"><span class="nm">KI-Automatisierung</span><span class="pr">Pilot zum Festpreis</span></div>
+  </a>
+  <a class="card" href="service-ai.html">
+    <div class="cmedia">
+      <img src="media/card-ai.jpg" alt="Private KI · lokal" loading="lazy">
+      <span class="badge">On-Premise</span><span class="fav">+</span>
+    </div>
+    <div class="cinfo"><span class="nm">Private KI · lokal</span><span class="pr">auf Anfrage</span></div>
+  </a>
+  <a class="card" href="service-crm.html">
+    <div class="cmedia">
+      <img src="media/card-crm.jpg" alt="CRM nach Mass" loading="lazy">
+      <span class="fav">+</span>
+    </div>
+    <div class="cinfo"><span class="nm">CRM nach Mass</span><span class="pr">auf Anfrage</span></div>
+  </a>
+</div>
+
+<footer>
+  <div class="f-top">
+    <div class="f-news">
+      <h3>Ein Ansprechpartner, der baut.</h3>
+      <p>KI · SEO · Software — für KMU und Treuhänder in Zürich. Direkt, ohne Agentur-Overhead.</p>
+      <div class="row">
+        <input type="email" placeholder="Ihre E-Mail" aria-label="E-Mail">
+        <button onclick="location.href='mailto:info@estebanmarco.ch'">Senden</button>
+      </div>
+    </div>
+    <div class="f-col">
+      <h4>Leistungen</h4>
+      <a href="service-seo.html">Sichtbarkeit &amp; SEO</a>
+      <a href="service-ki.html">KI-Automatisierung</a>
+      <a href="service-ai.html">Private KI · lokal</a>
+      <a href="service-crm.html">CRM nach Mass</a>
+      <a href="service-software.html">Software nach Mass</a>
+      <a href="service-voice.html">KI-Voice-Agents</a>
+    </div>
+    <div class="f-col">
+      <h4>Live-Demos</h4>
+      <a href="01_beleg-scanner.html">Beleg-Scanner</a>
+      <a href="02_konto-abgleich.html">Konto-Abgleich</a>
+      <a href="03_treuhand-assistent.html">Treuhand-Assistent</a>
+    </div>
+    <div class="f-col">
+      <h4>Kontakt</h4>
+      <a href="mailto:info@estebanmarco.ch">info@estebanmarco.ch</a>
+      <a href="tel:+41767421548">+41 76 742 15 48</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+  <div class="f-mark" aria-hidden="true">ESTEBAN MARCO<sup>®</sup></div>
+  <div class="f-bot">
+    <span>© 2026 Esteban Marco — Zürich, Schweiz</span>
+    <span>KI · SEO · Software nach Mass</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="nude.js?v=3"></script>
 </body>
 </html>

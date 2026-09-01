@@ -1,19 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KI, SEO &amp; Software für KMU in Zürich — Esteban Marco</title>
 <meta name="description" content="Digitalisierung aus einer Hand für KMU und Treuhänder in Zürich: private KI on-premise, CRM und Software nach Mass, SEO-Sichtbarkeit.">
-
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#ECE4D5">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="preload" href="assets/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts/fonts.css">
-<link rel="stylesheet" href="style.css?v=8">
-<script>document.documentElement.className += ' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="canonical" href="https://estebanmarco.ch/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_CH">
@@ -28,317 +25,275 @@
 "name":"Esteban Marco — KI, SEO & Software für KMU",
 "url":"https://estebanmarco.ch/","email":"info@estebanmarco.ch","telephone":"+41 76 742 15 48",
 "image":"https://estebanmarco.ch/assets/seo_still.jpg",
-"logo":"https://estebanmarco.ch/favicon.svg",
-"address":{"@type":"PostalAddress","streetAddress":"Dufourstrasse 27","addressLocality":"Zollikon","addressRegion":"ZH","postalCode":"8702","addressCountry":"CH"},
+"address":{"@type":"PostalAddress","addressLocality":"Zollikon","addressRegion":"ZH","postalCode":"8702","addressCountry":"CH"},
 "areaServed":[{"@type":"City","name":"Zürich"},{"@type":"AdministrativeArea","name":"Kanton Zürich"},{"@type":"Country","name":"Schweiz"}],
-"sameAs":["https://www.linkedin.com/in/esteban-marco-dev/","https://www.instagram.com/estebanmarco3/"],
-"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}],
-"founder":{"@type":"Person","name":"Esteban Marco","jobTitle":"Digitalisierung, KI & Software für KMU","sameAs":["https://www.linkedin.com/in/esteban-marco-dev/"]},
 "priceRange":"CHF","knowsLanguage":["de","en","fr","es"],
 "makesOffer":[
 {"@type":"Offer","itemOffered":{"@type":"Service","name":"Lokale SEO & KI-SEO","url":"https://estebanmarco.ch/service-seo.html"}},
 {"@type":"Offer","itemOffered":{"@type":"Service","name":"KI-Automatisierung für Treuhänder & KMU","url":"https://estebanmarco.ch/service-ki.html"}},
 {"@type":"Offer","itemOffered":{"@type":"Service","name":"Private KI on-premise","url":"https://estebanmarco.ch/service-ai.html"}},
 {"@type":"Offer","itemOffered":{"@type":"Service","name":"CRM nach Mass","url":"https://estebanmarco.ch/service-crm.html"}},
-{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software nach Mass","url":"https://estebanmarco.ch/service-software.html"}}]}
+{"@type":"Offer","itemOffered":{"@type":"Service","name":"Software nach Mass","url":"https://estebanmarco.ch/service-software.html"}},
+{"@type":"Offer","itemOffered":{"@type":"Service","name":"KI-Voice-Agents","url":"https://estebanmarco.ch/service-voice.html"}}]}
 </script>
+<link rel="stylesheet" href="nude.css?v=4">
+<script>document.documentElement.className+=' js';</script>
 </head>
 <body>
 
 <h1 class="sr">Esteban Marco — KI-Automatisierung, private KI, CRM, SEO und Software nach Mass für KMU und Treuhänder in Zürich.</h1>
 
-<!-- ================== IRIS INTRO ================== -->
-<div id="intro">
-  <div class="intro-panel back"></div>
-  <div class="intro-panel front">
-    <div class="intro-stage">
-      <svg class="intro-mono" viewBox="0 0 120 120" aria-hidden="true">
-        <circle class="im-ring" cx="60" cy="60" r="50"/>
-        <g class="im-em">
-          <path d="M33 38 H55 V46 H41 V56 H51 V63 H41 V74 H55 V82 H33 Z"/>
-          <rect x="57" y="38" width="8" height="44"/>
-          <rect x="79" y="38" width="8" height="44"/>
-          <path d="M57 38 H65 L72 52 L79 38 H87 L72 62 Z"/>
-        </g>
-      </svg>
-      <div class="intro-name">
-        <span class="im-w"><span>Esteban Marco<sup style="font-size:.4em;color:#B0593A">©</sup></span></span>
-      </div>
-      <div class="intro-sub"><span data-i="hero.lbl">KI · SEO · Software · Zürich</span></div>
-      <div class="intro-bar"><i></i></div>
-    </div>
-  </div>
+<!-- Ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="tk" id="tk"></div>
 </div>
 
-<nav id="nav">
-  <a class="wordmark" href="#top">Esteban Marco<sup>©</sup></a>
-  <div class="nav-r">
-    <a class="hide-s" href="#leistungen" data-i="nav.lei">Leistungen</a>
-    <a class="hide-s" href="#privat" data-i="nav.priv">On-Premise</a>
-    <a class="hide-s" href="#ablauf" data-i="nav.abl">Ablauf</a>
-    <div class="lang" aria-label="Sprache">
-      <button data-lang="de" class="on">DE</button><span class="d">·</span><button data-lang="en">EN</button><span class="d">·</span><button data-lang="fr">FR</button>
-    </div>
-    <a class="btn" href="#kontakt"><span class="dot"></span><span data-i="nav.cta">Gespräch</span></a>
-  </div>
-</nav>
-
-<!-- ================== SPLIT HERO ================== -->
-<header class="heroX" id="top">
-  <div class="hleft">
-    <p class="label brass" data-i="hero.lbl" style="margin-bottom:26px">KI · SEO · Software · Zürich</p>
-    <h2 class="hx">
-      <span class="mask"><span data-i="hero.h1">Weniger Routine.</span></span>
-      <span class="mask"><span><em data-i="hero.h2">Mehr Kunden.</em></span></span>
-    </h2>
-    <p class="hlede" data-rise data-i="man.lede">Für KMU und Treuhänder in Zürich: private KI auf Ihrem eigenen Server, Sichtbarkeit bei Google und Software nach Mass. Ein Ansprechpartner, der baut — kein Beratungsprojekt, das Folien liefert.</p>
-    <div class="hbtns" data-rise>
-      <a class="btn" href="#kontakt" style="background:var(--moss);border-color:var(--moss);color:#fff"><span class="dot" style="background:#fff"></span><span data-i="nav.cta">Gespräch</span></a>
-      <a class="btn" href="#leistungen"><span class="dot"></span><span data-i="nav.lei">Leistungen</span></a>
-    </div>
-    <div class="hfigs" data-rise>
-      <div class="hfig"><div class="n"><b><span data-count="80">80</span>%</b></div><div class="c" data-i="man.f1">weniger manuelle Belegerfassung</div></div>
-      <div class="hfig"><div class="n" data-i="man.f2n">~4 Sek.</div><div class="c" data-i="man.f2">pro Beleg statt Minuten</div></div>
-      <div class="hfig"><div class="n"><b><span data-count="100">100</span>% CH</b></div><div class="c" data-i="man.f3">Daten auf Ihrem Server, mit AVV</div></div>
-    </div>
-  </div>
-  <div class="hright">
-    <video id="herovid" src="assets/ki_hero.mp4" poster="assets/poster_ki_hero.jpg" muted loop playsinline autoplay preload="auto" data-inview aria-hidden="true"></video>
-    <div class="hveil" aria-hidden="true"></div>
+<!-- Header -->
+<header class="hd">
+  <a class="wordmark" href="#top">Esteban Marco<sup>®</sup></a>
+  <nav>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#suite">Treuhand-Suite</a>
+    <a href="#privat">On-Premise</a>
+    <a href="#ablauf">Ablauf</a>
+  </nav>
+  <div class="hd-r">
+    <span class="lang"><b>DE</b> · EN · FR</span>
+    <a class="pill line" href="#kontakt">Gespräch</a>
   </div>
 </header>
 
-<!-- Serif marquee -->
-<div class="marquee" aria-hidden="true"><div class="track" id="mq"></div></div>
-
-<!-- ================== MANIFESTO ================== -->
-<section class="block manifest" id="approach">
-  <div class="wrap">
-    <div class="eyebrow" data-rise><span class="label brass" data-i="man.eye">Der Ansatz</span><span class="rule"></span></div>
-    <p class="display d-1" data-words>
-      <span class="w" data-i="man.a">Digitalisierung aus</span>
-      <span class="inlinemedia"><video src="assets/manifest_light.mp4" muted loop playsinline preload="none" data-inview></video></span>
-      <span class="w" data-i="man.b"><em>einer Hand.</em></span>
-    </p>
+<!-- Hero: full-bleed, Titel rechts auf dem Bild (Nude) -->
+<section class="hero" id="top">
+  <div class="hbg">
+    <img src="media/hero.jpg" alt="Helles Büro mit grossen Fenstern in Zürich" fetchpriority="high">
+  </div>
+  <div class="htxt" data-r>
+    <h2 class="giant">Weniger<br>Routine.<br>Mehr<br>Kunden.</h2>
+    <p class="hlede">Für KMU und Treuhänder in Zürich. Private KI auf Ihrem eigenen Server, Sichtbarkeit bei Google, Software nach Mass. Ein Ansprechpartner, der baut.</p>
+  </div>
+  <div class="hmeta" data-r>
+    <div class="col">ZH26 · 01</div>
+    <h3>Neu: Treuhand-Suite</h3>
+    <div class="hbtns">
+      <a class="pill" href="01_beleg-scanner.html">Live-Demo öffnen</a>
+      <a class="pill" href="#leistungen">Leistungen</a>
+    </div>
   </div>
 </section>
 
-<!-- ============ LEISTUNGEN · GALLERY RAIL (5) ============ -->
+<!-- Leistungen: Carrusel horizontal (Nude) -->
 <div id="leistungen"></div>
-<main class="railwrap">
-<div class="rail">
+<div class="shead">
+  <h2>Leistungen</h2>
+  <a class="more" href="#kontakt">Gespräch vereinbaren</a>
+</div>
+<div class="strip">
 
-  <section class="rpanel">
-    <div class="rbg" aria-hidden="true"><video src="assets/seo_map.mp4" muted loop playsinline preload="none" data-inview></video></div>
-    <div class="rveil" aria-hidden="true"></div>
-    <div class="rin">
-      <div class="rtxt">
-        <div class="rnum" data-r>01 / 05</div>
-        <p class="rpain" data-r data-i="s1.pain">«Man findet uns bei Google nicht.»</p>
-        <h2 data-r data-i="s1.t">Sichtbarkeit<br>&amp; SEO</h2>
-        <p class="rbody" data-r data-i="s1.body">Lokale Sichtbarkeit in Google und Maps — optimiert auf Anfragen statt Reichweite. Inklusive KI-SEO: empfohlen von ChatGPT &amp; Gemini. Ab CHF 690 / Monat.</p>
-        <div class="rlinks" data-r><a class="go" href="service-seo.html" data-i="rail.more">Zur Lösung →</a></div>
-      </div>
+  <a class="card" href="service-seo.html">
+    <div class="cmedia">
+      <img src="media/card-seo.jpg" alt="Laptop auf hellem Schreibtisch — Sichtbarkeit und SEO" loading="lazy">
+      <span class="badge">Bestseller</span>
+      <span class="fav">+</span>
+      <div class="sizes"><span>Lokal</span><span>Technisch</span><span>KI-SEO</span></div>
     </div>
-    <div class="mockwin" data-mock="serp" aria-hidden="true">
-      <div class="mwbar"><i></i><i></i><i></i><span>google.ch · treuhänder zürich</span></div>
-      <div class="mwbody">
-        <div class="srow you"><span class="st">Ihr Treuhandbüro — Zürich</span><span class="spin">Rang 1</span></div>
-        <div class="srow"><span class="st">Treuhand Wettstein AG</span></div>
-        <div class="srow"><span class="st">Fiduciaria Limmat GmbH</span></div>
-      </div>
-    </div>
-  </section>
+    <div class="cinfo"><span class="nm">Sichtbarkeit &amp; SEO</span><span class="pr">ab CHF 690 / Monat</span></div>
+  </a>
 
-  <section class="rpanel">
-    <div class="rbg" aria-hidden="true"><video src="assets/ki_desk.mp4" muted loop playsinline preload="none" data-inview></video></div>
-    <div class="rveil" aria-hidden="true"></div>
-    <div class="rin">
-      <div class="rtxt">
-        <div class="rnum" data-r>02 / 05</div>
-        <p class="rpain" data-r data-i="s2.pain">«Mein Team versinkt in Routinearbeit.»</p>
-        <h2 data-r data-i="s2.t">KI-<br>Automatisierung</h2>
-        <p class="rbody" data-r data-i="s2.body">Die Treuhand-Suite: Belege erfassen, Konten abgleichen, Dossiers befragen — in Sekunden statt Stunden. Pilot zum Festpreis.</p>
-        <div class="rlinks" data-r>
-          <a class="go" href="service-ki.html" data-i="rail.more">Zur Lösung →</a>
-          <a class="go2" href="01_beleg-scanner.html" data-demo data-i="rail.demo">Live-Demo öffnen ↗</a>
-        </div>
-      </div>
+  <a class="card" href="service-ki.html">
+    <div class="cmedia">
+      <img src="media/card-ki.jpg" alt="Belegstapel im warmen Licht — KI-Automatisierung" loading="lazy">
+      <span class="badge">Neu</span>
+      <span class="fav">+</span>
+      <div class="sizes"><span>Belege</span><span>Abgleich</span><span>Assistent</span></div>
     </div>
-    <div class="mockwin" data-mock="scan" aria-hidden="true">
-          <div class="mwbar"><i></i><i></i><i></i><span>Beleg-Scanner</span></div>
-          <div class="mwbody"><div class="scanmock">
-            <div class="mdoc"><div class="beam"></div><b>MIGROS</b><br>Zürich Oerlikon<br>Bon 4471-2206<br>Papier 18.90<br><b>Total 45.40</b></div>
-            <div class="mfields">
-              <div class="frow"><span class="k">Lieferant</span><span class="v">Migros <span class="mchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="4"><path d="M5 13l4 4L19 7"/></svg></span></span></div>
-              <div class="frow"><span class="k">Datum</span><span class="v">03.06.2026 <span class="mchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="4"><path d="M5 13l4 4L19 7"/></svg></span></span></div>
-              <div class="frow"><span class="k">MwSt 8.1%</span><span class="v">CHF 3.40 <span class="mchk"><svg viewBox="0 0 24 24" fill="none" stroke-width="4"><path d="M5 13l4 4L19 7"/></svg></span></span></div>
-              <div class="mbk"><span class="lab">Buchungsvorschlag</span><span class="acc">6500 / 1020</span></div>
-            </div>
-          </div></div>
-        </div>
-  </section>
+    <div class="cinfo"><span class="nm">KI-Automatisierung</span><span class="pr">Pilot zum Festpreis</span></div>
+  </a>
 
-  <section class="rpanel">
-    <div class="rbg" aria-hidden="true"><video src="assets/ai_box.mp4" muted loop playsinline preload="none" data-inview></video></div>
-    <div class="rveil" aria-hidden="true"></div>
-    <div class="rin">
-      <div class="rtxt">
-        <div class="rnum" data-r>03 / 05</div>
-        <p class="rpain" data-r data-i="s3.pain">«Unsere Daten dürfen das Haus nicht verlassen.»</p>
-        <h2 data-r data-i="s3.t">Private KI<br>· lokal</h2>
-        <p class="rbody" data-r data-i="s3.body">Ihr eigenes Sprachmodell, installiert auf Ihrer Hardware. Fragen an Ihre Dokumente, ohne Cloud, ohne Abo, ohne Datenabfluss.</p>
-        <div class="rlinks" data-r><a class="go" href="service-ai.html" data-i="rail.more">Zur Lösung →</a></div>
-      </div>
+  <a class="card" href="service-ai.html">
+    <div class="cmedia">
+      <img src="media/card-ai.jpg" alt="Kleiner Computer auf beigem Studiohintergrund — private KI" loading="lazy">
+      <span class="badge">On-Premise</span>
+      <span class="fav">+</span>
+      <div class="sizes"><span>Ohne Cloud</span><span>Ohne Abo</span></div>
     </div>
-  </section>
+    <div class="cinfo"><span class="nm">Private KI · lokal</span><span class="pr">auf Anfrage</span></div>
+  </a>
 
-  <section class="rpanel">
-    <div class="rbg" aria-hidden="true"><video src="assets/crm_cards.mp4" muted loop playsinline preload="none" data-inview></video></div>
-    <div class="rveil" aria-hidden="true"></div>
-    <div class="rin">
-      <div class="rtxt">
-        <div class="rnum" data-r>04 / 05</div>
-        <p class="rpain" data-r data-i="s4.pain">«Wir verlieren den Überblick über unsere Kunden.»</p>
-        <h2 data-r data-i="s4.t">CRM<br>nach Mass</h2>
-        <p class="rbody" data-r data-i="s4.body">Kundenverwaltung, die zu Ihrem Ablauf passt: Pipeline, Fristen, E-Mail und Rechnung an einem Ort — on-premise oder in der Schweizer Cloud. Ihre Daten, Ihr Code, Festpreis statt Abo.</p>
-        <div class="rlinks" data-r><a class="go" href="service-crm.html" data-i="rail.more">Zur Lösung →</a></div>
-      </div>
+  <a class="card" href="service-crm.html">
+    <div class="cmedia">
+      <img src="media/card-crm.jpg" alt="Hände mit Karteikarte — CRM nach Mass" loading="lazy">
+      <span class="fav">+</span>
+      <div class="sizes"><span>Pipeline</span><span>Fristen</span><span>Rechnung</span></div>
     </div>
-  </section>
+    <div class="cinfo"><span class="nm">CRM nach Mass</span><span class="pr">Festpreis</span></div>
+  </a>
 
-  <section class="rpanel">
-    <div class="rbg" aria-hidden="true"><video src="assets/sw_blueprint.mp4" muted loop playsinline preload="none" data-inview></video></div>
-    <div class="rveil" aria-hidden="true"></div>
-    <div class="rin">
-      <div class="rtxt">
-        <div class="rnum" data-r>05 / 05</div>
-        <p class="rpain" data-r data-i="s5.pain">«Uns fehlt ein Werkzeug, das es nicht gibt.»</p>
-        <h2 data-r data-i="s5.t">Software<br>nach Mass</h2>
-        <p class="rbody" data-r data-i="s5.body">Individuelle Tools und Web-Apps für Ihren Prozess — verbinden Ihre Systeme, laufen auf Wunsch on-premise. Der Quellcode gehört Ihnen.</p>
-        <div class="rlinks" data-r><a class="go" href="service-software.html" data-i="rail.more">Zur Lösung →</a></div>
-      </div>
+  <a class="card" href="service-software.html">
+    <div class="cmedia">
+      <img src="media/card-sw.jpg" alt="Architekturzeichnung — Software nach Mass" loading="lazy">
+      <span class="fav">+</span>
+      <div class="sizes"><span>Web-Apps</span><span>Schnittstellen</span></div>
     </div>
-    <div class="mockwin" data-mock="term" aria-hidden="true">
-          <div class="mwbar"><i></i><i></i><i></i><span>Nachtlauf · 02:00</span></div>
-          <div class="mwbody"><div class="termmock">
-            <div class="tl"><span class="cm"># Nächtlicher Abgleich</span></div>
-            <div class="tl"><span class="pr">→</span> CAMT.053 eingelesen … <span class="ok">148</span></div>
-            <div class="tl"><span class="pr">→</span> Offene Posten geholt … <span class="ok">96</span></div>
-            <div class="tl"><span class="pr">→</span> Zugeordnet … <span class="ok">91 / 96</span></div>
-            <div class="tl"><span class="pr">→</span> 2 Erinnerungen versandt</div>
-            <div class="tl"><span class="cm"># Dauer 41 s · alles im Haus</span></div>
-          </div></div>
-        </div>
-  </section>
+    <div class="cinfo"><span class="nm">Software nach Mass</span><span class="pr">Festpreis pro Phase</span></div>
+  </a>
+
+  <a class="card" href="service-voice.html">
+    <div class="cmedia">
+      <img src="media/card-voice.jpg" alt="Cremefarbenes Telefon an heller Wand — KI-Voice-Agents" loading="lazy">
+      <span class="badge">Neu</span>
+      <span class="fav">+</span>
+      <div class="sizes"><span>&lt; 30 Sek.</span><span>Qualifiziert</span><span>Bucht Termine</span></div>
+    </div>
+    <div class="cinfo"><span class="nm">KI-Voice-Agents</span><span class="pr">auf Anfrage</span></div>
+  </a>
+
+  <a class="card" href="#kontakt">
+    <div class="cmedia">
+      <img src="media/card-cafe.jpg" alt="Kaffeetasse auf hellem Tisch — Erstgespräch" loading="lazy">
+      <span class="badge">Unverbindlich</span>
+      <span class="fav">+</span>
+      <div class="sizes"><span>15 Min</span><span>Kein Pitch</span></div>
+    </div>
+    <div class="cinfo"><span class="nm">Erstgespräch · 15 Min</span><span class="pr">CHF 0</span></div>
+  </a>
 
 </div>
-</main>
-<div class="rprog" aria-hidden="true">
-  <span class="idx"><b>01</b> / <span class="tot">05</span></span>
-  <span class="bar"><i></i></span>
-  <span class="plabel" data-i="rail.prog">Leistungen</span>
-</div>
 
-<!-- ============ ON-PREMISE · INVERSION ============ -->
-<section class="block sanctuary" id="privat">
-  <div class="sbg" aria-hidden="true"><video src="assets/vault_door.mp4" muted loop playsinline preload="none" data-inview></video></div>
-  <div class="sveil2" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="eyebrow" data-rise><span class="label brass" data-i="priv.eye">Privatsphäre</span><span class="rule"></span></div>
-    <h2 class="display d-1" data-rise style="max-width:15ch" data-i="priv.h">Ihre Daten bleiben <em>im Haus.</em></h2>
-    <p class="lede" data-rise style="margin-top:28px" data-i="priv.lede">Anders als bei Cloud-Anbietern läuft die KI komplett auf Ihrer eigenen Hardware. Ihre Mandantendaten verlassen das Büro nie — kein Datenabfluss, keine Übermittlung ins Ausland, keine Nutzung Ihrer Akten als Trainingsmaterial.</p>
-    <div class="feats">
-      <div class="feat" data-rise><h4 data-i="priv.f1t">On-Premise</h4><p data-i="priv.f1p">Die Daten bleiben physisch bei Ihnen, auf Ihrer Box — auch ohne Internet.</p></div>
-      <div class="feat" data-rise><h4 data-i="priv.f2t">AVV inklusive</h4><p data-i="priv.f2p">Auftragsverarbeitungsvertrag, nDSG-konform, volle Datenhoheit.</p></div>
-      <div class="feat" data-rise><h4 data-i="priv.f3t">Massgeschneidert</h4><p data-i="priv.f3p">Auf Ihre Abläufe gebaut — kein Standard-Tool, das Sie verbiegen müssen.</p></div>
+<!-- Banner: Treuhand-Suite -->
+<section class="banner" id="suite">
+  <img src="media/banner-suite.jpg" alt="Arbeitsplatz von oben mit Laptop und Notizbuch" loading="lazy">
+  <div class="veil"></div>
+  <div class="bn-in">
+    <div class="glass" data-r>
+      <div class="col">ZH26 — Treuhand-Suite</div>
+      <h2>Belege in<br>4 Sekunden.</h2>
+      <p>Belege erfassen, Konten abgleichen, Dossiers befragen — in Sekunden statt Stunden. Drei Module, live an Ihren echten Daten.</p>
+    </div>
+    <div class="hbtns" data-r>
+      <a class="pill" href="01_beleg-scanner.html">Demo öffnen</a>
+      <a class="pill" href="service-ki.html">Zur Lösung</a>
     </div>
   </div>
 </section>
 
-<!-- ================== ABLAUF ================== -->
-<section class="block" id="ablauf">
-  <div class="wrap">
-    <div class="eyebrow" data-rise><span class="label brass" data-i="abl.eye">So fangen wir an</span><span class="rule"></span></div>
-    <h2 class="display d-1" data-rise style="max-width:17ch" data-i="abl.h">Drei Schritte. Kein Pitch.</h2>
-    <div class="steps">
-      <div class="step" data-rise><div class="n">01</div><h4 data-i="abl.s1t">Gespräch · 15 Min.</h4><p data-i="abl.s1p">Wir schauen, wo bei Ihnen die meiste Handarbeit anfällt.</p></div>
-      <div class="step" data-rise><div class="n">02</div><h4 data-i="abl.s2t">Pilot · fixer Preis</h4><p data-i="abl.s2p">Ich baue eine konkrete Automatisierung. Sie sehen das Ergebnis an Ihren echten Daten.</p></div>
-      <div class="step" data-rise><div class="n">03</div><h4 data-i="abl.s3t">Betrieb &amp; Ausbau</h4><p data-i="abl.s3p">Produktiv auf Ihrem Server, integriert in Ihre Buchhaltung.</p></div>
+<!-- Stats -->
+<div style="height:24px"></div>
+<div class="stats">
+  <div class="stat" data-r><div class="n"><span data-count="80">0</span>%</div><p>weniger manuelle Belegerfassung</p></div>
+  <div class="stat" data-r><div class="n">~4 Sek.</div><p>pro Beleg statt Minuten</p></div>
+  <div class="stat" data-r><div class="n"><span data-count="100">0</span>% CH</div><p>Daten auf Ihrem Server, mit AVV</p></div>
+</div>
+
+<!-- Banner: On-Premise -->
+<section class="banner dk" id="privat">
+  <img src="media/banner-premise.jpg" alt="Massive Betonarchitektur — Daten bleiben im Haus" loading="lazy">
+  <div class="veil"></div>
+  <div class="bn-in">
+    <div class="glass" data-r>
+      <div class="col">Privatsphäre</div>
+      <h2>Ihre Daten<br>bleiben im Haus.</h2>
+      <p>Die KI läuft komplett auf Ihrer eigenen Hardware. Kein Datenabfluss, keine Übermittlung ins Ausland, keine Nutzung Ihrer Akten als Trainingsmaterial. AVV inklusive, nDSG-konform.</p>
+    </div>
+    <div class="hbtns" data-r>
+      <a class="pill" href="service-ai.html">On-Premise entdecken</a>
     </div>
   </div>
 </section>
 
-<!-- ================== CTA ================== -->
-<section class="cta" id="kontakt">
-  <div class="ctabg" aria-hidden="true"><video src="assets/cta_watch.mp4" muted loop playsinline preload="none" data-inview></video></div>
-  <div class="ctaveil" aria-hidden="true"></div>
-  <div class="wrap">
-    <p class="label brass" data-rise data-i="cta.eye">Beginnen</p>
-    <h2 class="display d-1" data-rise style="margin-top:22px" data-i="cta.h">Bereit, <em>Zeit</em> zurückzugewinnen?</h2>
-    <p class="lede" data-rise data-i="cta.lede">15 Minuten genügen, um zu sehen, wo bei Ihnen am meisten Handarbeit anfällt — und ob sich etwas automatisieren lässt. Unverbindlich.</p>
-    <form class="kform" name="kontakt" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-rise>
-      <input type="hidden" name="form-name" value="kontakt">
-      <p style="display:none" aria-hidden="true"><label>Bitte nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-      <input name="name" data-i-ph="cta.fn" placeholder="Ihr Name" autocomplete="name" required>
-      <input name="email" type="email" data-i-ph="cta.fe" placeholder="Ihre E-Mail" autocomplete="email" required>
-      <textarea name="nachricht" rows="4" data-i-ph="cta.fm" placeholder="Wo drückt es? Kurz reicht." required></textarea>
-      <button class="btn" type="submit"><span class="dot"></span><span data-i="cta.send">Nachricht senden</span></button>
-      <div class="kmsg" id="kmsg" role="status" aria-live="polite"></div>
+<!-- Ablauf -->
+<div class="shead" id="ablauf">
+  <h2>Drei Schritte. Kein Pitch.</h2>
+  <span class="label">So fangen wir an</span>
+</div>
+<div class="steps">
+  <div class="srow" data-r>
+    <span class="n">01</span>
+    <h3>Gespräch · 15 Min.</h3>
+    <p>Wir schauen, wo bei Ihnen die meiste Handarbeit anfällt. Unverbindlich.</p>
+  </div>
+  <div class="srow" data-r>
+    <span class="n">02</span>
+    <h3>Pilot · fixer Preis</h3>
+    <p>Ich baue eine konkrete Automatisierung. Sie sehen das Ergebnis an Ihren echten Daten.</p>
+  </div>
+  <div class="srow" data-r>
+    <span class="n">03</span>
+    <h3>Betrieb &amp; Ausbau</h3>
+    <p>Produktiv auf Ihrem Server, integriert in Ihre Buchhaltung.</p>
+  </div>
+</div>
+
+<!-- Kontakt -->
+<section class="store" id="kontakt">
+  <div class="st-l">
+    <h2 class="giant" data-r>Zürich</h2>
+    <p class="addr" data-r>Dufourstrasse 27<br>8702 Zollikon, Schweiz</p>
+    <div class="hours" data-r>
+      <div class="hrow"><span>Mo–Fr</span><span>9–18</span></div>
+      <div class="hrow"><span>Sa–So</span><span>nach Vereinbarung</span></div>
+    </div>
+    <div class="st-links" data-r>
+      <a href="mailto:info@estebanmarco.ch">info@estebanmarco.ch</a>
+      <a href="tel:+41767421548">+41 76 742 15 48</a>
+    </div>
+  </div>
+  <div class="st-r">
+    <span class="label" data-r>Beginnen</span>
+    <h3 data-r>Bereit, Zeit zurückzugewinnen?</h3>
+    <p class="sub" data-r>15 Minuten genügen, um zu sehen, wo bei Ihnen am meisten Handarbeit anfällt — und ob sich etwas automatisieren lässt.</p>
+    <form class="kform" onsubmit="return kSend(this)" data-r>
+      <input name="kn" placeholder="Ihr Name" required>
+      <input name="ke" type="email" placeholder="Ihre E-Mail" required>
+      <textarea name="km" rows="3" placeholder="Wo drückt es? Kurz reicht." required></textarea>
+      <button class="pill line" type="submit">Nachricht senden</button>
+      <div class="kmsg" id="kmsg" role="status"></div>
     </form>
-    <div class="btnrow" data-rise>
-      <a class="btn" href="mailto:info@estebanmarco.ch?subject=Esteban%20Marco%20%E2%80%93%20Gespr%C3%A4ch"><span class="dot"></span><span data-i="cta.b1">Gespräch vereinbaren</span></a>
-      <a class="btn" href="tel:+41767421548"><span class="dot"></span><span>+41 76 742 15 48</span></a>
-    </div>
   </div>
 </section>
 
 <footer>
-  <div class="row">
-    <div class="col">
-      <div class="wordmark">Esteban Marco<sup>©</sup></div>
-      <p style="margin-top:16px" data-i="foot.city">Zürich, Schweiz</p>
+  <div class="f-top">
+    <div class="f-news">
+      <h3>Ein Ansprechpartner, der baut.</h3>
+      <p>KI · SEO · Software — für KMU und Treuhänder in Zürich. Direkt, ohne Agentur-Overhead.</p>
+      <div class="row">
+        <input type="email" placeholder="Ihre E-Mail" aria-label="E-Mail">
+        <button onclick="location.href='mailto:info@estebanmarco.ch'">Senden</button>
+      </div>
     </div>
-    <div class="col">
-      <h4 data-i="foot.lei">Leistungen</h4>
-      <a href="service-seo.html" data-i="s1.t">Sichtbarkeit &amp; SEO</a>
-      <a href="service-ki.html" data-i="s2.t">KI-Automatisierung</a>
-      <a href="service-ai.html" data-i="s3.t">Private KI · lokal</a>
-      <a href="service-crm.html" data-i="s4.t">CRM nach Mass</a>
-      <a href="service-software.html" data-i="s5.t">Software nach Mass</a>
+    <div class="f-col">
+      <h4>Leistungen</h4>
+      <a href="service-seo.html">Sichtbarkeit &amp; SEO</a>
+      <a href="service-ki.html">KI-Automatisierung</a>
+      <a href="service-ai.html">Private KI · lokal</a>
+      <a href="service-crm.html">CRM nach Mass</a>
+      <a href="service-software.html">Software nach Mass</a>
+      <a href="service-voice.html">KI-Voice-Agents</a>
     </div>
-    <div class="col">
-      <h4 data-i="foot.demos">Live-Demos</h4>
-      <a href="01_beleg-scanner.html" data-demo>Beleg-Scanner</a>
-      <a href="02_konto-abgleich.html" data-demo>Konto-Abgleich</a>
-      <a href="03_treuhand-assistent.html" data-demo>Treuhand-Assistent</a>
+    <div class="f-col">
+      <h4>Live-Demos</h4>
+      <a href="01_beleg-scanner.html">Beleg-Scanner</a>
+      <a href="02_konto-abgleich.html">Konto-Abgleich</a>
+      <a href="03_treuhand-assistent.html">Treuhand-Assistent</a>
     </div>
-    <div class="col">
-      <h4 data-i="foot.kont">Kontakt</h4>
+    <div class="f-col">
+      <h4>Kontakt</h4>
       <a href="mailto:info@estebanmarco.ch">info@estebanmarco.ch</a>
       <a href="tel:+41767421548">+41 76 742 15 48</a>
-      <a href="https://estebanmarco.ch/impressum.html">Impressum</a>
-      <a href="https://estebanmarco.ch/datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
     </div>
+  </div>
+  <div class="f-mark" aria-hidden="true">ESTEBAN MARCO<sup>®</sup></div>
+  <div class="f-bot">
+    <span>© 2026 Esteban Marco — Zürich, Schweiz</span>
+    <span>KI · SEO · Software nach Mass</span>
   </div>
 </footer>
 
-<script src="assets/js/gsap.min.js"></script>
-<script src="assets/js/ScrollTrigger.min.js"></script>
-<script src="i18n.js?v=3"></script>
-<script src="app.js?v=8"></script>
-<script>
-(function () {
-  var m = document.getElementById('mq');
-  if (!m) return;
-  var w = ['Treuhand', 'Buchhaltung', 'KMU', 'Zürich', 'On-Premise', 'SEO', 'CRM', 'Private KI', 'Software nach Mass'];
-  var h = w.map(function (x) { return '<span>' + x + ' <i>·</i></span>'; }).join('');
-  m.innerHTML = h + h;
-})();
-setTimeout(function () {
-  if (!window.__kpAlive) document.body.classList.add('fallback');
-}, 6000);
-</script>
-<script src="chat.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="nude.js?v=3"></script>
 </body>
 </html>
