@@ -20,6 +20,8 @@ SH = {
 "hero.h":("Weniger<br>Routine.<br>Mehr<br>Kunden.","Less<br>routine.<br>More<br>clients.","Moins de<br>routine.<br>Plus de<br>clients."),
 "hero.lede":("Für KMU und Treuhänder in Zürich. Private KI auf Ihrem eigenen Server, Sichtbarkeit bei Google, Software nach Mass. Ein Ansprechpartner, der baut.","For SMEs and fiduciaries in Zurich. Private AI on your own server, visibility on Google, software built to measure. One partner who builds.","Pour PME et fiduciaires à Zurich. IA privée sur votre propre serveur, visibilité sur Google, logiciel sur mesure. Un seul interlocuteur qui construit."),
 "hero.new":("Neu: Treuhand-Suite","New: Treuhand Suite","Nouveau : Suite fiduciaire"),
+"hero.col":("KI · SEO · Software · Zürich","AI · SEO · Software · Zurich","IA · SEO · Logiciel · Zurich"),
+"hero.tag":("Digitalisierung aus einer Hand.","Digitalisation from one hand.","La digitalisation d'une seule main."),
 "btn.demo":("Live-Demo öffnen","Open live demo","Ouvrir la démo"),
 "bn1.col":("ZH26 — Treuhand-Suite","ZH26 — Treuhand Suite","ZH26 — Suite fiduciaire"),
 "bn1.h":("Belege in<br>4 Sekunden.","Receipts in<br>4 seconds.","Justificatifs en<br>4 secondes."),
@@ -487,7 +489,7 @@ def build_index():
 "makesOffer":[
 {offers}]}}
 </script>
-<link rel="stylesheet" href="nude.css?v=7">
+<link rel="stylesheet" href="nude.css?v=8">
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
@@ -506,10 +508,10 @@ def build_index():
     <p class="hlede" data-i="hero.lede">{de("hero.lede")}</p>
   </div>
   <div class="hmeta" data-r>
-    <div class="col">ZH26 · 01</div>
-    <h3 data-i="hero.new">{de("hero.new")}</h3>
+    <div class="col" data-i="hero.col">{de("hero.col")}</div>
+    <h3 data-i="hero.tag">{de("hero.tag")}</h3>
     <div class="hbtns">
-      <a class="pill" href="01_beleg-scanner.html" data-i="btn.demo">{de("btn.demo")}</a>
+      <a class="pill" href="#kontakt" data-i="pdp.book">{de("pdp.book")}</a>
       <a class="pill" href="#leistungen" data-i="nav.lei">{de("nav.lei")}</a>
     </div>
   </div>
@@ -706,7 +708,7 @@ def build_pdp(s):
 <script type="application/ld+json">
 {jsonld(s)}
 </script>
-<link rel="stylesheet" href="nude.css?v=7">
+<link rel="stylesheet" href="nude.css?v=8">
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>

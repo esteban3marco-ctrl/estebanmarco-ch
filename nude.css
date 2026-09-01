@@ -54,16 +54,23 @@ header.hd{position:sticky;top:0;z-index:50;background:rgba(242,238,231,.78);
 .wordmark{font-family:var(--disp);font-weight:600;font-size:18px;letter-spacing:-.06em;
   white-space:nowrap;color:var(--ink)}
 .wordmark sup{font-size:.45em;vertical-align:super}
-.hd nav{display:flex;gap:clamp(16px,2.4vw,34px);justify-content:center}
+.hd nav{display:flex;gap:clamp(6px,1.2vw,14px);justify-content:center}
 .hd nav a{font-size:14px;font-weight:400;letter-spacing:-.045em;color:var(--ink);
-  white-space:nowrap;opacity:.85}
-.hd nav a:hover{opacity:1}
+  white-space:nowrap;opacity:.85;padding:7px 14px;border-radius:999px;
+  transition:all .28s var(--ease)}
+.hd nav a:hover{opacity:1;background:linear-gradient(145deg,#faf7f2,#eae5db);
+  box-shadow:var(--raise-sm);transform:translateY(-1px)}
+.hd nav a:active{box-shadow:var(--sink);transform:none;
+  background:linear-gradient(145deg,#eae5db,#f6f2ec)}
 .hd-r{display:flex;justify-content:flex-end;align-items:center;gap:16px}
 .hd-r .lang{font-size:12px;font-weight:400;letter-spacing:0;color:var(--ink50);
   display:flex;align-items:center;gap:6px}
-.hd-r .lang button{font-size:12px;color:var(--ink50);padding:4px 2px;transition:color var(--t)}
-.hd-r .lang button:hover{color:var(--ink)}
-.hd-r .lang button.on{color:var(--ink);border-bottom:1px solid var(--ink)}
+.hd-r .lang button{font-size:12px;color:var(--ink50);padding:5px 9px;border-radius:999px;
+  transition:all .28s var(--ease)}
+.hd-r .lang button:hover{color:var(--ink);background:linear-gradient(145deg,#faf7f2,#eae5db);
+  box-shadow:var(--raise-sm);transform:translateY(-1px)}
+.hd-r .lang button.on{color:var(--ink);box-shadow:var(--sink);
+  background:linear-gradient(145deg,#eae5db,#f6f2ec)}
 
 /* ---------- Pills (Nude: radius 60, .3s) + neumorfismo ---------- */
 .pill{display:inline-flex;align-items:center;justify-content:center;border-radius:60px;
@@ -72,16 +79,16 @@ header.hd{position:sticky;top:0;z-index:50;background:rgba(242,238,231,.78);
   box-shadow:5px 5px 12px rgba(72,41,34,.14),-5px -5px 12px rgba(255,255,255,.95),
              inset 0 0 0 rgba(72,41,34,0);
   transition:all var(--t);white-space:nowrap;min-height:38px;cursor:pointer}
-.pill:hover{transform:translateY(-1px);
-  box-shadow:7px 7px 16px rgba(72,41,34,.18),-6px -6px 14px rgba(255,255,255,1)}
+.pill:hover{transform:translateY(-2px) scale(1.03);
+  box-shadow:10px 11px 22px rgba(72,41,34,.24),-8px -8px 18px rgba(255,255,255,1)}
 .pill:active{transform:translateY(0);background:linear-gradient(145deg,#efe9e2,#ffffff);
   box-shadow:inset 4px 4px 9px rgba(72,41,34,.16),inset -4px -4px 9px rgba(255,255,255,.95)}
 .pill.line{background:linear-gradient(145deg,#ffffff,#efe9e2)}
 .pill.solid{background:linear-gradient(145deg,#543226,#3d221a);color:var(--white);
   box-shadow:5px 5px 12px rgba(72,41,34,.28),-4px -4px 10px rgba(255,255,255,.9),
              inset 1px 1px 2px rgba(255,255,255,.18)}
-.pill.solid:hover{transform:translateY(-1px);
-  box-shadow:7px 7px 16px rgba(72,41,34,.34),-5px -5px 12px rgba(255,255,255,1),
+.pill.solid:hover{transform:translateY(-2px) scale(1.03);
+  box-shadow:10px 11px 22px rgba(72,41,34,.4),-7px -7px 16px rgba(255,255,255,1),
              inset 1px 1px 2px rgba(255,255,255,.18)}
 .pill.solid:active{transform:translateY(0);background:linear-gradient(145deg,#3d221a,#543226);
   box-shadow:inset 4px 4px 9px rgba(0,0,0,.35),inset -2px -2px 6px rgba(255,255,255,.08)}
@@ -97,7 +104,8 @@ header.hd{position:sticky;top:0;z-index:50;background:rgba(242,238,231,.78);
 .htxt{position:absolute;top:0;bottom:0;right:clamp(18px,4vw,64px);
   display:flex;flex-direction:column;justify-content:center;align-items:flex-end;
   z-index:3;text-align:right;max-width:min(60vw,720px)}
-.htxt h2{font-size:clamp(48px,7.4vw,118px)}
+.htxt h2{font-size:clamp(46px,6.9vw,110px);line-height:1.06;
+  padding-right:.06em;padding-bottom:.08em}
 .hlede{margin-top:18px;margin-left:auto;max-width:34ch;font-size:13.5px;line-height:1.55;
   letter-spacing:-.03em;color:var(--ink);font-weight:400}
 .hmeta{position:absolute;left:var(--gut);bottom:26px;z-index:3;color:var(--ink)}
