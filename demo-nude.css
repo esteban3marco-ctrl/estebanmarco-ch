@@ -1,0 +1,98 @@
+/* =====================================================================
+   DEMOS — re-tematización al sistema nuevo de estebanmarco.ch
+   Se carga DESPUÉS del <style> propio de cada demo: redefine tokens
+   y aplica neumorfismo sin tocar la lógica ni el layout.
+   ===================================================================== */
+:root{
+  --black:#F2EEE7;                 /* fondo cálido del sitio */
+  --white:#482922;                 /* espresso Nude */
+  --w60:rgba(72,41,34,.66); --w45:rgba(72,41,34,.52); --w35:rgba(72,41,34,.42);
+  --w20:rgba(72,41,34,.25); --w12:rgba(72,41,34,.15); --w08:rgba(72,41,34,.10);
+  --w05:rgba(72,41,34,.06); --w03:rgba(72,41,34,.04);
+  --lime:#482922; --lime-d:#2f1a15;
+  --font:'Inter Tight','Inter','Helvetica Neue',Arial,sans-serif;
+  --cond:'Inter Tight','Inter','Helvetica Neue',Arial,sans-serif;
+  --serif:'Inter Tight','Helvetica Neue',Arial,sans-serif;
+  --dhi:rgba(255,255,255,.95);
+  --dlo:rgba(72,41,34,.16);
+  --draise:7px 7px 16px var(--dlo),-7px -7px 16px var(--dhi);
+  --draise-sm:4px 4px 10px rgba(72,41,34,.13),-4px -4px 10px var(--dhi);
+  --dsink:inset 3px 3px 8px rgba(72,41,34,.13),inset -3px -3px 8px var(--dhi);
+}
+
+body{letter-spacing:-.02em}
+
+/* Tipografía: fuera serifa, grotesca apretada como la web */
+.hero h1{font-family:var(--font);font-weight:500;letter-spacing:-.06em;line-height:1.0}
+.hero h1 .o{font-style:normal;color:var(--white)}
+h2,h3{letter-spacing:-.04em}
+
+/* Nav: cristal cálido como el header del sitio */
+nav{background:rgba(242,238,231,.8)!important;
+  backdrop-filter:blur(14px) saturate(1.5);-webkit-backdrop-filter:blur(14px) saturate(1.5);
+  border-bottom:1px solid rgba(72,41,34,.06)}
+
+/* Paneles: tarjetas elevadas */
+.panel{border:0;background:linear-gradient(145deg,#f8f5ef,#ece7de);
+  border-radius:24px;box-shadow:var(--draise);backdrop-filter:none}
+
+/* Zona de subida: hundida */
+.drop{border:1px dashed var(--w20);border-radius:16px;
+  background:linear-gradient(145deg,#ece7de,#f6f2ec);box-shadow:var(--dsink)}
+.drop:hover,.drop.hot{border-color:var(--w45);background:linear-gradient(145deg,#eae4da,#f4efe8)}
+
+/* Chips de muestra: relieve */
+.chip{border:0;border-radius:14px;background:linear-gradient(145deg,#f8f5ef,#ebe6dc);
+  box-shadow:var(--draise-sm);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease}
+.chip:hover{transform:translateY(-3px);border-color:transparent;
+  background:linear-gradient(145deg,#faf7f2,#ece7de);
+  box-shadow:8px 9px 18px rgba(72,41,34,.2),-6px -6px 14px var(--dhi)}
+.chip.on{border-color:transparent;background:linear-gradient(145deg,#eae4da,#f4efe8);
+  box-shadow:var(--dsink)}
+
+/* Botones: píldoras neumórficas del sitio */
+.btn{border:0!important;border-radius:999px!important;
+  background:linear-gradient(145deg,#ffffff,#efe9e2)!important;color:var(--white)!important;
+  box-shadow:5px 5px 12px rgba(72,41,34,.14),-5px -5px 12px rgba(255,255,255,.95)!important;
+  transition:all .28s cubic-bezier(.22,.61,.36,1)!important;text-transform:none!important;
+  letter-spacing:-.02em!important;font-weight:500!important;font-size:13.5px!important;
+  padding:9px 20px!important;cursor:pointer}
+.btn:hover{transform:translateY(-2px) scale(1.03);
+  box-shadow:10px 11px 22px rgba(72,41,34,.24),-8px -8px 18px rgba(255,255,255,1)!important}
+.btn:active{transform:none;
+  box-shadow:inset 4px 4px 9px rgba(72,41,34,.16),inset -4px -4px 9px rgba(255,255,255,.95)!important}
+.btn.solid{background:linear-gradient(145deg,#543226,#3d221a)!important;color:#F2EEE7!important;
+  box-shadow:5px 5px 12px rgba(72,41,34,.28),-4px -4px 10px rgba(255,255,255,.9),
+             inset 1px 1px 2px rgba(255,255,255,.18)!important}
+.btn.solid:hover{box-shadow:10px 11px 22px rgba(72,41,34,.4),-7px -7px 16px rgba(255,255,255,1),
+             inset 1px 1px 2px rgba(255,255,255,.18)!important}
+
+/* Tags y selector de idioma */
+.tag{border:0;border-radius:999px;background:linear-gradient(145deg,#f8f5ef,#ebe6dc);
+  box-shadow:var(--draise-sm)}
+.lang button{border-radius:999px;padding:4px 9px;transition:all .28s ease}
+.lang button:hover{color:var(--white);background:linear-gradient(145deg,#faf7f2,#eae5db);
+  box-shadow:var(--draise-sm)}
+.lang button.on{background:linear-gradient(145deg,#eae4da,#f4efe8);box-shadow:var(--dsink)}
+
+/* Papel del documento: hundido claro */
+.paper-wrap{border:0;border-radius:14px;box-shadow:var(--dsink)}
+.paper{background:linear-gradient(145deg,#efeae1,#f8f4ee);color:var(--w60)}
+
+/* Haz del escáner: brillo espresso en vez de verde lima */
+.beam{background:linear-gradient(180deg,transparent,rgba(72,41,34,.14)46%,rgba(72,41,34,.5)50%,rgba(72,41,34,.14)54%,transparent)!important;
+  box-shadow:0 0 28px rgba(72,41,34,.3)!important}
+.scanline{background:repeating-linear-gradient(transparent 0 3px,rgba(72,41,34,.08)3px 4px)!important}
+
+/* Bloques secundarios */
+.booking{border:0;border-radius:16px;background:linear-gradient(145deg,#f8f5ef,#eee9e0);
+  box-shadow:var(--draise-sm)}
+
+/* Inputs genéricos de las demos (chat del asistente, etc.) */
+.shell input[type="text"],.shell input[type="search"],.shell textarea{
+  background:linear-gradient(145deg,#ece7de,#f6f2ec);border:0;border-radius:14px;
+  box-shadow:var(--dsink);color:var(--white);padding:12px 16px;outline:none}
+
+/* Overlays de ambiente: suavizar sobre fondo claro */
+#grain{opacity:.035}
+#spot{opacity:0!important}
