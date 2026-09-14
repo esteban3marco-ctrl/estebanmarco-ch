@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZTC - Zurich Tennis Competition</title>
+<meta name="description" content="Zurich Tennis Competition. Full player development and high performance by Lake Zurich.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS (extraídos del diseño original) ============ */
+:root{
+  --color-paper:#fff;
+  --color-paper-soft:#f9f7f6;
+  --color-ink:#052236;
+  --color-pink:#f974a2;
+  --color-pink-dark:#a2395d;
+  --color-navy:#0a4269;
+  --color-sky:#9ed2ff;
+  --color-link:#ef4d2b;
+  --tint-ink-10:#1c48541a;
+  --tint-ink-20:#1c485433;
+  --tint-ink-40:#1c485466;
+  --tint-ink-60:#1c485499;
+  --tint-paper-20:#fff3;
+  --tint-paper-40:#fff6;
+  --tint-paper-60:#fff9;
+  --color-text:var(--color-ink);
+  --color-text-secondary:var(--tint-ink-60);
+  --color-border:var(--tint-ink-20);
+  --nav-glass-bg:#56565642;
+  --nav-glass-border:#e4e6ea66;
+  --nav-glass-blur:5px;
+  --nav-margin:2rem;
+  --font-body:"Manrope",sans-serif;
+  --font-heading:"DM Sans",sans-serif;
+  --font-display:"Source Serif 4",Georgia,serif;
+  --text-base:1rem;--text-sm:.88rem;--text-xs:.8rem;--text-lg:1.1rem;--text-xl:1.5rem;
+  --h2-size:3.5rem;
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;--space-32:8rem;
+  --radius-md:.5rem;--radius-button:1.25rem;--radius-lg:2rem;--radius-xl:3rem;--radius-card:3rem;--radius-full:100rem;
+  --nav-radius:1.75rem;
+  --container-medium:80rem;
+  --ease:cubic-bezier(.784,.125,.44,1);
+  --duration-100:.1s;--duration-200:.2s;--duration-300:.3s;
+  /* Neumorfismo (fondos claros) */
+  --neu-out:6px 6px 14px rgba(5,34,54,.09),-6px -6px 14px rgba(255,255,255,.95);
+  --neu-out-lg:10px 10px 24px rgba(5,34,54,.10),-8px -8px 20px rgba(255,255,255,.95);
+  --neu-in:inset 4px 4px 10px rgba(5,34,54,.10),inset -4px -4px 10px rgba(255,255,255,.9);
+  /* Glassmorfismo */
+  --glass-bg:color-mix(in srgb,var(--color-paper) 62%,transparent);
+  --glass-border:.5px solid rgba(255,255,255,.6);
+}
+@media (max-width:900px){
+  :root{--h2-size:2.8rem;--nav-margin:1rem;--radius-card:2rem;}
+}
+/* ============ BASE ============ */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:var(--font-body);color:var(--color-ink);background:var(--color-paper);
+  line-height:1.6;font-size:var(--text-base);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img,svg,video,canvas{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+h1,h2,h3,h4{font-family:var(--font-heading);font-weight:400;line-height:1.04;}
+h2{font-size:var(--h2-size);letter-spacing:-.05em;}
+.font-display{font-family:var(--font-display);letter-spacing:-.01em;font-weight:400;}
+.padding-global{padding-inline:var(--nav-margin);}
+.container-large{max-width:1280px;margin-inline:auto;}
+.container-medium{max-width:var(--container-medium);margin-inline:auto;}
+.section-num{display:none;}
+.padding-section-small{padding-block:var(--space-16);}
+.padding-section-medium{padding-block:var(--space-24);}
+.padding-section-large{padding-block:var(--space-32);}
+/* ============ BUTTONS (idénticos al original) ============ */
+.button{
+  padding:1em 1.5em;border-radius:var(--radius-button);
+  background:var(--color-navy);color:var(--color-paper);
+  font-family:var(--font-body);font-size:var(--text-base);text-align:center;white-space:nowrap;cursor:pointer;
+  transition:color var(--duration-200),border-color var(--duration-200),background-color var(--duration-100) var(--ease);
+  border:.5px solid transparent;justify-content:center;align-items:center;gap:.5em;
+  font-weight:400;line-height:1.2;text-decoration:none;display:inline-flex;
+}
+.button{box-shadow:5px 5px 12px rgba(5,34,54,.16),-4px -4px 10px rgba(255,255,255,.85);}
+.button:hover{background:var(--color-ink);color:var(--color-paper);}
+.button:active{box-shadow:2px 2px 6px rgba(5,34,54,.18),-2px -2px 5px rgba(255,255,255,.7);transform:translateY(1px);}
+.button:focus-visible{outline:2px solid var(--color-pink);outline-offset:2px;}
+.button.is-secondary{color:var(--color-text);border-color:transparent;background:var(--color-paper-soft);box-shadow:var(--neu-out);}
+.button.is-secondary:hover{color:var(--color-text);border-color:transparent;background:var(--color-paper-soft);box-shadow:var(--neu-out-lg);}
+.button.is-secondary:active{box-shadow:var(--neu-in);transform:translateY(1px);}
+.button.is-white,.button.is-inverse{box-shadow:none;}
+.button.is-white:active,.button.is-inverse:active{transform:translateY(1px);}
+.button.is-inverse{color:var(--color-paper);background:rgba(255,255,255,.28);}
+.button.is-inverse:hover{background:var(--color-paper);color:var(--color-navy);}
+.button.is-white{background:var(--color-paper);color:var(--color-ink);}
+.button.is-white:hover{background:var(--color-navy);color:var(--color-paper);}
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transition:opacity .7s var(--ease),transform .7s var(--ease);transform:translateY(1.75rem);}
+.reveal.is-in{opacity:1;transform:none;}
+/* ============ NAV ============ */
+.atc-nav{
+  position:fixed;inset:0 0 auto;z-index:9999;margin:var(--nav-margin) var(--nav-margin) 0;
+  border-radius:var(--nav-radius);
+  transition:background-color var(--duration-300),color var(--duration-300),border-color var(--duration-300);
+}
+.atc-nav.is-glass{backdrop-filter:blur(var(--nav-glass-blur));-webkit-backdrop-filter:blur(var(--nav-glass-blur));background:var(--nav-glass-bg);border:.5px solid var(--nav-glass-border);color:var(--color-paper);}
+.atc-nav.is-white{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:#ffffffb8;border:.5px solid var(--color-border);color:var(--color-ink);}
+.atc-nav__inner{display:flex;align-items:center;width:100%;padding:var(--space-2) var(--space-3);}
+.atc-nav__left{flex:1;display:flex;align-items:center;padding:8px;}
+.atc-nav__right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:var(--space-2);}
+.atc-nav__logo{display:flex;align-items:center;gap:.5rem;font-family:var(--font-heading);font-weight:600;font-size:1.15rem;letter-spacing:.01em;}
+.atc-nav__logo svg{height:1.9rem;width:auto;}
+.atc-nav__center{display:flex;align-items:center;padding-inline:var(--space-8);}
+.atc-nav__links{display:flex;align-items:center;gap:var(--space-2);list-style:none;}
+.atc-nav__item{position:relative;}
+.atc-nav__link{
+  display:inline-flex;align-items:center;gap:.35rem;padding:.5rem .75rem;border-radius:var(--radius-md);
+  font-size:var(--text-base);font-weight:400;line-height:1.6;color:inherit;white-space:nowrap;transition:color var(--duration-200);
+}
+.atc-nav__link:hover{color:color-mix(in srgb,currentColor 60%,transparent);}
+.atc-nav__chevron{width:.6rem;height:auto;opacity:.6;flex-shrink:0;transition:transform var(--duration-200) var(--ease);}
+.atc-nav__item.is-open .atc-nav__chevron{transform:rotate(180deg);}
+.atc-nav__dropdown{
+  position:absolute;top:100%;left:50%;width:max-content;min-width:12rem;padding-top:.7rem;
+  opacity:0;transform:translateX(-50%) translateY(.4rem);pointer-events:none;
+  transition:opacity var(--duration-200) var(--ease),transform var(--duration-200) var(--ease);
+}
+.atc-nav__item.is-open .atc-nav__dropdown{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+.atc-nav__dropdown-list{
+  list-style:none;padding:var(--space-2);border-radius:var(--radius-lg);
+  border:.5px solid var(--color-border);background:#ffffffe0;backdrop-filter:blur(20px);
+}
+.atc-nav__dropdown-item{
+  display:block;padding:var(--space-3) var(--space-4);border-radius:calc(var(--radius-lg) - var(--space-2));
+  color:var(--color-ink);font-size:var(--text-base);white-space:nowrap;
+  transition:background-color var(--duration-200),color var(--duration-200);
+}
+.atc-nav__dropdown-item:hover{background:var(--color-navy);color:var(--color-paper);}
+.atc-nav__mega{
+  position:absolute;top:100%;left:50%;width:min(46rem,calc(100vw - 2 * var(--nav-margin)));padding-top:.7rem;
+  opacity:0;transform:translateX(-50%) translateY(.4rem);pointer-events:none;
+  transition:opacity var(--duration-200) var(--ease),transform var(--duration-200) var(--ease);
+}
+.atc-nav__item.is-open .atc-nav__mega{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+.atc-nav__mega-card{
+  display:grid;grid-template-columns:.85fr 1.15fr;gap:var(--space-3);padding:var(--space-3);
+  border-radius:calc(var(--radius-lg) + var(--space-3));border:.5px solid var(--color-border);
+  background:#ffffffe0;backdrop-filter:blur(20px);color:var(--color-ink);
+}
+.atc-nav__mega-intro{display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-6);padding:var(--space-5);border-radius:var(--radius-lg);background:var(--color-paper-soft);}
+.atc-nav__mega-text{margin:0;font-size:var(--text-sm);line-height:1.45;color:var(--color-text-secondary);}
+.atc-nav__mega-all{display:inline-flex;align-items:center;gap:.4rem;font-size:var(--text-sm);font-weight:500;color:var(--color-ink);}
+.atc-nav__mega-all svg{width:1rem;height:1rem;transition:transform var(--duration-200) var(--ease);}
+.atc-nav__mega-all:hover svg{transform:translateX(.25rem);}
+.atc-nav__mega-list{display:flex;flex-direction:column;gap:var(--space-1);margin:0;padding:0;list-style:none;}
+.atc-nav__mega-item{
+  display:flex;align-items:flex-start;gap:var(--space-4);padding:var(--space-4);border-radius:var(--radius-lg);color:var(--color-ink);
+  transition:background-color var(--duration-200),color var(--duration-200),transform var(--duration-200) var(--ease);
+}
+.atc-nav__mega-item:hover{background:var(--color-navy);color:var(--color-paper);transform:translateX(4px);}
+.atc-nav__mega-icon{width:2.4rem;height:2.4rem;flex-shrink:0;transform-origin:center;transition:transform .5s var(--ease);}
+.atc-nav__mega-item:hover .prog-icon--orbit{transform:rotate(72deg);}
+.atc-nav__mega-item:hover .prog-icon--pulse{transform:scale(1.12);}
+.atc-nav__mega-item:hover .prog-icon--rotate{transform:rotate(180deg);}
+.atc-nav__mega-body{display:flex;flex-direction:column;gap:.15rem;}
+.atc-nav__mega-label{font-weight:500;font-size:var(--text-base);}
+.atc-nav__mega-desc{font-size:var(--text-sm);color:var(--color-text-secondary);transition:color var(--duration-200);}
+.atc-nav__mega-item:hover .atc-nav__mega-desc{color:var(--tint-paper-60);}
+@media (max-width:1020px){.atc-nav__mega{display:none;}}
+.atc-nav__cta{background:var(--color-ink);color:#fff;border-radius:var(--radius-button);padding:.8em 1.5em;font-size:var(--text-sm);transition:background-color var(--duration-200);}
+.atc-nav__cta:hover{background:var(--color-navy);}
+.atc-nav__burger{display:none;flex-direction:column;gap:5px;padding:.8rem;}
+.atc-nav__burger span{width:22px;height:1.5px;background:currentColor;border-radius:2px;}
+@media (max-width:1020px){
+  .atc-nav__center{display:none;}
+  .atc-nav__burger{display:flex;}
+}
+.atc-nav__mobile{display:none;flex-direction:column;gap:var(--space-2);padding:var(--space-4);}
+.atc-nav.is-open{background:var(--color-paper);color:var(--color-ink);backdrop-filter:none;border:.5px solid var(--color-border);}
+.atc-nav.is-open .atc-nav__mobile{display:flex;animation:atc-nav-mobile-in .35s var(--ease);}
+.atc-nav__mobile a{padding:var(--space-3) var(--space-2);font-size:var(--text-lg);border-radius:var(--radius-md);}
+.atc-nav__mobile a:hover{background:var(--color-paper-soft);}
+@keyframes atc-nav-mobile-in{0%{opacity:0;transform:scaleY(.9) translateY(-.5rem);}100%{opacity:1;transform:none;}}
+/* ============ HERO ============ */
+.herox{position:relative;z-index:1;height:480vh;pointer-events:none;}
+.herox__pin{position:sticky;top:0;height:100vh;min-height:100dvh;padding:var(--hero-pad,0px);display:block;pointer-events:none;}
+.herox__frame{position:relative;width:100%;height:100%;border-radius:var(--hero-radius,0px);overflow:hidden;background:var(--color-ink);pointer-events:auto;}
+.herox__canvas{
+  position:absolute;inset:-5%;z-index:0;
+  background:url("images/hero.jpg") center/cover no-repeat #04182a;
+  animation:herox-drift 26s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes herox-drift{
+  0%{transform:scale(1) translate(0,0);}
+  50%{transform:scale(1.06) translate(-1.5%,1%);}
+  100%{transform:scale(1.1) translate(1.5%,-1%);}
+}
+.herox__film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.herox__scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(5,34,54,.55) 0%,rgba(5,34,54,0) 55%);pointer-events:none;}
+.herox__finale{
+  position:absolute;inset:0;z-index:3;display:grid;place-items:center;
+  opacity:0;pointer-events:none;will-change:opacity,transform;
+}
+.herox__finale-text{
+  font-family:var(--font-display);font-weight:400;line-height:1;
+  font-size:clamp(7rem,26vw,22rem);letter-spacing:.02em;color:var(--color-paper);
+  text-shadow:0 10px 60px rgba(5,34,54,.5);
+}
+.herox__layer{position:absolute;top:0;left:0;right:0;height:calc(100vh - 1rem);z-index:2;padding:var(--space-16);will-change:opacity,transform;}
+.herox__phase1{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;}
+.herox__content{max-width:40rem;}
+.herox__tagline{color:var(--color-paper);font-size:clamp(2.6rem,4vw,3.4rem);font-family:var(--font-heading);line-height:1.6;margin:0 0 .2em;}
+.herox__title{color:var(--color-paper);font-size:var(--text-lg);font-weight:500;letter-spacing:-.01em;font-family:var(--font-heading);margin:0 0 var(--space-8);}
+.herox__ctas{display:flex;flex-wrap:wrap;gap:var(--space-4);}
+.herox__badge{
+  position:absolute;right:var(--space-16);bottom:var(--space-20);
+  display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2);
+  border-radius:var(--radius-full);border:.5px solid var(--nav-glass-border);
+  background:var(--nav-glass-bg);backdrop-filter:blur(6px);color:var(--color-paper);white-space:nowrap;
+}
+.herox__badge-chip{padding:.45em 1em;border-radius:var(--radius-full);background:var(--color-paper);color:var(--color-ink);font-size:var(--text-xs);letter-spacing:.08em;text-transform:uppercase;}
+.herox__badge-text{padding-right:var(--space-4);font-size:var(--text-base);}
+.herox__hint{
+  position:absolute;left:50%;bottom:var(--space-6);transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--color-paper);
+}
+.herox__hint svg{animation:herox-bounce 1.6s var(--ease) infinite;}
+@keyframes herox-bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(.25rem);}}
+.herox__phase2{display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);opacity:0;}
+.herox__p2-left{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-6);max-width:32rem;}
+.herox__p2-title{color:var(--color-paper);margin:0;}
+.herox__p2-card{
+  display:flex;flex-direction:column;gap:var(--space-3);width:min(24rem,40%);
+  padding:var(--space-8);border-radius:var(--radius-lg);border:.5px solid var(--nav-glass-border);
+  background:color-mix(in srgb,var(--color-paper) 14%,transparent);backdrop-filter:blur(18px);
+  color:var(--color-paper);transition:transform var(--duration-300) var(--ease),background-color var(--duration-300);
+}
+.herox__p2-card:hover{transform:translateY(-4px);background:color-mix(in srgb,var(--color-paper) 20%,transparent);}
+.herox__p2-num{font-family:var(--font-heading);font-size:clamp(2.6rem,4vw,3.6rem);font-weight:400;line-height:1;letter-spacing:-.02em;}
+.herox__p2-text{font-size:var(--text-lg);line-height:1.3;color:var(--color-paper);}
+.herox__p2-arrow{
+  display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;margin-top:var(--space-2);
+  border-radius:var(--radius-full);border:.5px solid color-mix(in srgb,var(--color-paper) 40%,transparent);
+  transition:background-color var(--duration-200),color var(--duration-200),transform var(--duration-200) var(--ease);
+}
+.herox__p2-card:hover .herox__p2-arrow{background:var(--color-paper);color:var(--color-ink);transform:rotate(45deg);}
+@media (max-width:900px){
+  .herox{height:340vh;}
+  .herox__layer{padding:var(--space-6);}
+  .herox__badge{display:none;}
+  .herox__phase2{flex-direction:column;align-items:flex-start;justify-content:flex-end;}
+  .herox__p2-card{width:100%;}
+}
+/* ============ PROGRAMAS ============ */
+.home-progpills{padding-block:var(--space-12);text-align:center;}
+.home-progpills__title{font-size:clamp(2.6rem,4.5vw,3.4rem);line-height:1.05;max-width:24ch;margin:var(--space-3) auto var(--space-8);}
+.prog-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);text-align:left;}
+@media (max-width:900px){.prog-cards{grid-template-columns:1fr;}}
+.prog-card{
+  display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8);
+  min-height:24rem;padding:var(--space-8);border-radius:var(--radius-card);
+  background:color-mix(in srgb,var(--color-sky) 30%,var(--color-paper));color:var(--color-ink);
+  transition:background-color var(--duration-300),color var(--duration-300);
+}
+.prog-card:hover{background:var(--color-navy);color:var(--color-paper);}
+.prog-card__icon{width:3.75rem;height:3.75rem;flex-shrink:0;}
+.prog-card__title{font-size:clamp(1.7rem,2.6vw,2.3rem);font-weight:500;line-height:1.12;margin:0 0 var(--space-3);color:var(--color-ink);transition:color var(--duration-300);letter-spacing:-.01em;}
+.prog-card:hover .prog-card__title{color:var(--color-paper);}
+.prog-card__text{font-size:var(--text-base);line-height:1.5;color:color-mix(in srgb,var(--color-ink) 72%,transparent);margin:0;transition:color var(--duration-300);}
+.prog-card:hover .prog-card__text{color:color-mix(in srgb,var(--color-paper) 80%,transparent);}
+.prog-icon{transition:transform .55s var(--ease);transform-origin:center;}
+.prog-card:hover .prog-icon--orbit{transform:rotate(72deg);}
+.prog-card:hover .prog-icon--pulse{transform:scale(1.12);}
+.prog-card:hover .prog-icon--rotate{transform:rotate(180deg);}
+.prog-custom{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--space-8);
+  margin-top:var(--space-4);padding:var(--space-10);border-radius:var(--radius-card);
+  background:var(--color-paper-soft);border:.5px solid var(--color-border);color:var(--color-ink);text-align:left;
+}
+@media (max-width:900px){.prog-custom{flex-direction:column;align-items:flex-start;}}
+.prog-custom__text{max-width:46rem;}
+.prog-custom__title{font-size:var(--text-xl);font-weight:500;margin:0 0 var(--space-2);letter-spacing:normal;}
+.prog-custom__text p{color:var(--color-text-secondary);}
+/* ============ TIERRA + MARQUEE ============ */
+.home-tierra__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);}
+@media (max-width:700px){.home-tierra__grid{grid-template-columns:1fr;}}
+.home-tierra__img{width:100%;aspect-ratio:1/1;border-radius:var(--radius-card);overflow:hidden;position:relative;}
+.home-tierra__img video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.home-tierra__marquee{overflow:hidden;margin-top:var(--space-6);}
+.home-tierra__track{display:flex;width:max-content;animation:marquee-scroll 22s linear infinite;}
+.home-tierra__group{display:flex;flex-shrink:0;gap:var(--space-4);padding-right:var(--space-4);}
+.home-tierra__item{
+  display:inline-flex;align-items:center;gap:var(--space-3);padding:.3em .9em;
+  border-radius:var(--radius-full);background:color-mix(in srgb,var(--color-paper) 92%,transparent);
+  backdrop-filter:blur(10px);font-family:var(--font-heading);font-size:clamp(1.6rem,3.2vw,2.6rem);
+  font-weight:500;text-transform:uppercase;letter-spacing:.01em;color:var(--color-ink);white-space:nowrap;
+  border:.5px solid var(--color-border);
+}
+.home-tierra__dot{color:var(--color-pink);}
+@keyframes marquee-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+/* ============ VIDEO ============ */
+.vp{position:relative;border-radius:var(--radius-card);overflow:hidden;background:var(--color-ink);}
+.vp__video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;cursor:pointer;background:var(--color-ink);}
+.vp__preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;transition:opacity .4s var(--ease);}
+.vp.is-playing .vp__preview{opacity:0;}
+.vp.is-playing .vp__big{opacity:0;pointer-events:none;}
+.vp__big{transition:transform var(--duration-200) var(--ease),background-color var(--duration-200),opacity .3s;}
+.vp__big{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  display:flex;align-items:center;justify-content:center;width:5rem;height:5rem;padding-left:.25rem;
+  border-radius:var(--radius-full);background:color-mix(in srgb,var(--color-paper) 90%,transparent);
+  backdrop-filter:blur(6px);color:var(--color-ink);cursor:pointer;
+  transition:transform var(--duration-200) var(--ease),background-color var(--duration-200);
+}
+.vp__big:hover{transform:translate(-50%,-50%) scale(1.06);background:var(--color-paper);}
+.vp__controls{
+  position:absolute;left:var(--space-4);right:var(--space-4);bottom:var(--space-4);
+  display:flex;align-items:center;gap:var(--space-3);padding:.5rem .75rem;
+  border-radius:var(--radius-lg);background:var(--color-paper);color:var(--color-ink);
+}
+.vp__btn{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;flex-shrink:0;background:transparent;color:var(--color-ink);border-radius:var(--radius-full);transition:background-color var(--duration-200);}
+.vp__btn:hover{background:var(--color-paper-soft);}
+.vp__time{font-size:var(--text-xs);color:var(--color-text-secondary);font-variant-numeric:tabular-nums;flex-shrink:0;}
+.vp__bar{flex:1;height:.4rem;border-radius:100rem;background:var(--color-border);cursor:pointer;position:relative;}
+.vp__bar-fill{height:100%;width:0%;border-radius:100rem;background:var(--color-navy);}
+/* ============ AMBITOS (acordeón de imágenes) ============ */
+.ambc{margin-top:var(--space-10);}
+.ambc__row{display:flex;gap:var(--space-4);align-items:stretch;height:40rem;}
+@media (max-width:900px){.ambc__row{height:26rem;}}
+.ambc__slot{
+  flex:0 1 20%;min-width:0;padding:0;border-radius:var(--radius-card);
+  background-size:cover;background-position:center;cursor:pointer;
+  opacity:.55;filter:saturate(.5);
+  transition:flex-basis .6s var(--ease),opacity .5s var(--ease),filter .5s var(--ease);
+}
+.ambc__slot:hover{opacity:.8;}
+.ambc__slot.is-active{flex-basis:60%;opacity:1;filter:none;}
+.ambc__slot--1{background-image:url("images/ambito-1.jpg");}
+.ambc__slot--2{background-image:url("images/ambito-2.jpg");}
+.ambc__slot--3{background-image:url("images/ambito-3.jpg");}
+.ambc__bar{display:flex;gap:var(--space-2);margin-top:var(--space-6);}
+.ambc__seg{flex:1;height:2px;padding:0;border-radius:100rem;background:var(--color-border);cursor:pointer;transition:background-color var(--duration-300);}
+.ambc__seg.is-active{background:var(--color-ink);}
+.ambc__caption{display:flex;align-items:flex-start;gap:var(--space-4);margin-top:var(--space-8);}
+.ambc__icon{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border-radius:var(--radius-full);background:var(--color-ink);color:var(--color-paper);}
+.ambc__icon svg{width:1.1rem;height:1.1rem;}
+.ambc__caption-text{animation:ambc-fade .4s var(--ease) both;}
+.ambc__title{margin:0 0 var(--space-2);font-size:var(--text-xl);font-weight:500;letter-spacing:normal;}
+.ambc__text{margin:0;color:var(--color-text-secondary);max-width:34rem;}
+@keyframes ambc-fade{0%{opacity:0;transform:translateY(4px);}100%{opacity:1;transform:translateY(0);}}
+/* ============ FACILITY ============ */
+.home-facility{padding-block:var(--space-8);}
+.home-facility__frame{position:relative;overflow:hidden;border-radius:var(--radius-card);aspect-ratio:16/9;}
+@media (max-width:900px){.home-facility__frame{aspect-ratio:auto;min-height:34rem;}}
+.home-facility__media{
+  position:absolute;inset:0;transform:scale(1.01);transition:transform 1.2s var(--ease);
+  background:url("images/instalaciones.jpg") center/cover no-repeat;
+}
+.home-facility__media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.home-facility__media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,34,54,.5) 0%,rgba(5,34,54,0) 55%);}
+.home-facility__frame:hover .home-facility__media{transform:scale(1.05);}
+.home-facility__overlay{
+  position:absolute;left:var(--space-8);bottom:var(--space-8);max-width:34rem;
+  padding:var(--space-8);border-radius:var(--radius-lg);
+  border:.5px solid var(--nav-glass-border);
+  background:color-mix(in srgb,var(--color-paper) 14%,transparent);backdrop-filter:blur(18px);
+  color:var(--color-paper);
+}
+@media (max-width:900px){.home-facility__overlay{left:var(--space-4);right:var(--space-4);bottom:var(--space-4);padding:var(--space-6);}}
+.home-facility__title{color:var(--color-paper);font-size:var(--h2-size);letter-spacing:-.05em;margin:0 0 var(--space-3);}
+.home-facility__text{color:color-mix(in srgb,var(--color-paper) 85%,transparent);margin:0 0 var(--space-6);}
+/* ============ TESTIMONIOS ============ */
+.home-testi__title{font-size:clamp(2.8rem,4.5vw,3.6rem);margin:var(--space-3) 0 var(--space-10);}
+.home-testi__grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);align-items:stretch;}
+@media (max-width:900px){.home-testi__grid{grid-template-columns:1fr;}}
+.testi-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#05223680,transparent 50%);}
+.testi-rotator{
+  display:flex;flex-direction:column;justify-content:space-between;height:100%;
+  padding:var(--space-10) var(--space-8);border:.5px solid var(--color-border);
+  border-radius:var(--radius-card);background:var(--color-paper-soft);
+}
+.testi-rotator__content{flex:1;display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(.6rem);transition:opacity .35s var(--ease),transform .35s var(--ease);}
+.testi-rotator__content.is-visible{opacity:1;transform:none;}
+.testi-rotator__mark{font-family:var(--font-display);font-size:2.6rem;line-height:.6;color:var(--color-pink);flex-shrink:0;}
+.testi-rotator__text{font-size:var(--text-lg);line-height:1.45;margin:var(--space-4) 0 var(--space-5);flex:1;}
+.testi-rotator__by{margin:0;font-size:var(--text-sm);color:var(--color-text-secondary);}
+.testi-card{
+  aspect-ratio:3/4;border-radius:var(--radius-card);overflow:hidden;position:relative;margin:0;
+  background-size:cover;background-position:center top;background-repeat:no-repeat;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.testi-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -35px #05223680;}
+.testi-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,34,54,.85) 0%,rgba(5,34,54,.3) 42%,transparent 62%);}
+.testi-card__body{position:absolute;left:0;right:0;bottom:0;padding:var(--space-8);z-index:2;color:var(--color-paper);}
+.testi-card__mark{font-family:var(--font-display);font-size:2.6rem;line-height:.6;color:var(--color-pink);display:block;margin-bottom:var(--space-3);}
+.testi-card__text{font-size:var(--text-lg);line-height:1.45;margin:0 0 var(--space-4);}
+.testi-card__by{margin:0;font-size:var(--text-sm);color:var(--tint-paper-60);}
+.testi-rotator__nav{display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-6);}
+.testi-rotator__dots{display:flex;gap:var(--space-2);}
+.testi-rotator__dot{width:.5rem;height:.5rem;padding:0;border-radius:var(--radius-full);background:var(--color-border);cursor:pointer;transition:background-color var(--duration-200),transform var(--duration-200);}
+.testi-rotator__dot.is-active{background:var(--color-navy);transform:scale(1.3);}
+.testi-rotator__arrows{display:flex;gap:var(--space-2);}
+.testi-rotator__arrow{
+  display:flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;padding:0;
+  border:.5px solid var(--color-border);border-radius:var(--radius-full);
+  background:var(--color-paper);color:var(--color-ink);cursor:pointer;
+  transition:background-color var(--duration-200),border-color var(--duration-200),color var(--duration-200);
+}
+.testi-rotator__arrow:hover{background:var(--color-ink);border-color:var(--color-ink);color:var(--color-paper);}
+/* ============ BANNER ============ */
+.home-banner{display:block;line-height:0;}
+.home-banner__img{
+  width:100%;height:clamp(20rem,45vw,38rem);object-fit:cover;
+  background:url("images/banner.jpg") center/cover no-repeat var(--color-ink);
+}
+/* ============ LOCATION ============ */
+.home-location{padding-block:0;}
+.home-location__grid{position:relative;min-height:32rem;overflow:hidden;}
+.home-location__map{
+  position:absolute;inset:0;width:100%;height:100%;
+  background:linear-gradient(140deg,#eef2f5,#f9f7f6);
+}
+.home-location__map svg{width:100%;height:100%;}
+.home-location__card{
+  position:absolute;left:60%;top:50%;transform:translateY(-50%);width:min(26rem,38vw);
+  display:flex;flex-direction:column;gap:var(--space-1);padding:var(--space-8);
+  background:var(--color-paper);border:.5px solid var(--color-border);border-radius:var(--radius-card);
+}
+@media (max-width:900px){.home-location__card{position:relative;left:0;top:0;transform:none;width:auto;margin:var(--space-4);}}
+.home-location__name{margin:0 0 var(--space-4);font-size:var(--text-xl);}
+.home-location__addr{font-size:var(--text-base);color:var(--color-text-secondary);margin:0 0 var(--space-4);}
+.home-location__h{margin:var(--space-2) 0 0;font-weight:500;}
+.home-location__hours{color:var(--color-text-secondary);font-size:var(--text-sm);}
+.home-location__ctas{display:flex;gap:var(--space-6);margin-top:var(--space-5);}
+.home-location__link{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;font-weight:500;color:var(--color-pink-dark);}
+.home-location__link:hover{text-decoration:underline;}
+/* ============ COMMUNITY ============ */
+.home-community__head{max-width:40rem;margin-bottom:var(--space-12);}
+.home-community__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);}
+@media (max-width:900px){.home-community__grid{grid-template-columns:repeat(2,1fr);}}
+.community-reel{display:block;position:relative;aspect-ratio:9/14;border-radius:var(--radius-lg);overflow:hidden;color:var(--color-paper);}
+.community-reel__img{position:absolute;inset:0;transition:transform .8s var(--ease);}
+.community-reel:hover .community-reel__img{transform:scale(1.05);}
+.community-reel__img--1{background:url("images/reel-1.jpg") center/cover;}
+.community-reel__img--2{background:url("images/reel-2.jpg") center/cover;}
+.community-reel__img--3{background:url("images/reel-3.jpg") center/cover;}
+.community-reel__img--4{background:url("images/reel-4.jpg") center/cover;}
+.community-reel__icon{position:absolute;top:var(--space-4);right:var(--space-4);opacity:.9;}
+.home-community__cta{margin-top:var(--space-10);display:flex;justify-content:center;}
+/* ============ FAQ ============ */
+.home-faq{background:var(--color-paper-soft);}
+.faqcard{text-align:center;}
+.faqcard__title{margin:0 0 var(--space-10);font-size:clamp(2.5rem,4.5vw,3rem);line-height:1.05;}
+.faqcard__list{display:flex;flex-direction:column;gap:var(--space-3);max-width:42rem;margin-inline:auto;text-align:left;}
+.faqrow{border-radius:var(--radius-lg);background:var(--color-paper);border:1px solid transparent;overflow:hidden;transition:border-color var(--duration-300);}
+.faqrow.is-open{border-color:color-mix(in srgb,var(--color-navy) 30%,transparent);}
+.faqrow__head{
+  display:flex;align-items:center;gap:var(--space-4);width:100%;
+  padding:var(--space-5) var(--space-6);background:none;cursor:pointer;text-align:left;
+  font-family:inherit;color:inherit;transition:padding var(--duration-300) var(--ease);
+}
+.faqrow.is-open .faqrow__head{padding-block:var(--space-6);}
+.faqrow__n{flex-shrink:0;font-size:var(--text-xs);color:var(--color-text-secondary);font-variant-numeric:tabular-nums;}
+.faqrow__q{flex:1;font-family:var(--font-heading);font-size:var(--text-lg);font-weight:500;color:var(--color-ink);}
+.faqrow__icon{
+  flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;
+  border-radius:var(--radius-full);background:var(--color-ink);color:var(--color-paper);
+  transition:transform var(--duration-300) var(--ease),background-color var(--duration-300);
+}
+.faqrow.is-open .faqrow__icon{transform:rotate(45deg);background:var(--color-pink-dark);}
+.faqrow__body{max-height:0;overflow:hidden;transition:max-height .45s var(--ease);}
+.faqrow.is-open .faqrow__body{max-height:20rem;}
+.faqrow__inner{padding:0 var(--space-6) var(--space-5) calc(var(--space-6) + 2.4rem);transform:scaleY(.92);transform-origin:center top;opacity:0;transition:transform .35s var(--ease),opacity .3s var(--ease);}
+.faqrow.is-open .faqrow__inner{transform:scaleY(1);opacity:1;}
+.faqrow__inner p{margin:0;color:var(--color-text-secondary);line-height:1.6;}
+/* ============ JOIN ============ */
+.home-join{position:relative;overflow:clip;background:var(--color-ink);color:var(--color-paper);}
+.home-join__inner{position:relative;max-width:44rem;}
+.home-join__title{color:var(--color-paper);margin-bottom:var(--space-5);}
+.home-join__text{color:var(--tint-paper-60);font-size:var(--text-lg);margin-bottom:var(--space-8);}
+.home-join__ctas{display:flex;align-items:center;gap:var(--space-6);flex-wrap:wrap;}
+.home-join__link{display:inline-flex;align-items:center;gap:.5rem;color:var(--color-paper);font-size:var(--text-base);}
+.home-join__link svg{transition:transform var(--duration-200) var(--ease);}
+.home-join__link:hover svg{transform:translateX(.35rem);}
+.home-join__ring{
+  position:absolute;right:-12rem;top:-12rem;width:38rem;height:38rem;border-radius:var(--radius-full);
+  border:.5px solid var(--tint-paper-20);
+  background:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--color-sky) 22%,transparent),transparent 60%);
+  animation:home-spin 32s linear infinite;pointer-events:none;
+}
+@keyframes home-spin{100%{transform:rotate(360deg);}}
+/* ============ FOOTER ============ */
+.home-footer{background:var(--color-ink);color:var(--tint-paper-60);padding-block:var(--space-20) var(--space-8);}
+.home-footer__top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:var(--space-10);padding-bottom:var(--space-16);border-bottom:.5px solid var(--tint-paper-20);}
+@media (max-width:900px){.home-footer__top{grid-template-columns:1fr 1fr;}}
+.home-footer__brand{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-4);}
+.home-footer__logo{display:flex;align-items:center;gap:.5rem;color:var(--color-paper);font-family:var(--font-heading);font-weight:600;font-size:1.25rem;}
+.home-footer__logo svg{height:1.7rem;width:auto;}
+.home-footer__brand p{color:var(--tint-paper-60);max-width:22rem;margin:0;line-height:1.5;}
+.home-footer__social{display:flex;gap:var(--space-3);}
+.home-footer__social a{
+  display:flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;
+  border-radius:var(--radius-full);border:.5px solid var(--tint-paper-20);color:var(--color-paper);
+  transition:background-color var(--duration-200),border-color var(--duration-200);
+}
+.home-footer__social a:hover{background:var(--tint-paper-20);border-color:transparent;}
+.home-footer__col{display:flex;flex-direction:column;gap:var(--space-3);}
+.home-footer__col h4{color:var(--color-paper);font-size:var(--text-xs);letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:var(--space-2);}
+.home-footer__col a{font-size:var(--text-base);transition:color var(--duration-200);}
+.home-footer__col a:hover{color:var(--color-paper);}
+.home-footer__bottom{display:flex;justify-content:space-between;gap:var(--space-4);padding-top:var(--space-8);font-size:var(--text-xs);flex-wrap:wrap;}
+.home-footer__legal{display:flex;gap:var(--space-6);}
+.home-footer__legal a:hover{color:var(--color-paper);}
+/* ============ COOKIEBAR ============ */
+.cookiebar{
+  position:fixed;left:var(--nav-margin);right:var(--nav-margin);bottom:var(--nav-margin);z-index:9998;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;
+  max-width:44rem;margin-inline:auto;padding:var(--space-5) var(--space-6);
+  border-radius:var(--radius-lg);border:.5px solid var(--color-border);
+  background:color-mix(in srgb,var(--color-paper) 96%,transparent);backdrop-filter:blur(10px);
+  box-shadow:0 24px 70px -30px #05223666;
+}
+.cookiebar.hidden{display:none;}
+.cookiebar__text{font-size:var(--text-sm);color:var(--color-text-secondary);flex:1 1 20rem;margin:0;}
+.cookiebar__text a{text-decoration:underline;}
+.cookiebar__actions{display:flex;gap:var(--space-2);}
+/* ============ MISC ============ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+  .reveal{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="atc-nav is-glass" id="nav">
+  <div class="atc-nav__inner">
+    <div class="atc-nav__left">
+      <a href="#" class="atc-nav__logo" aria-label="Zurich Tennis Competition">
+        <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13.5" stroke="currentColor" stroke-width="2.2"/><path d="M9.5 6C13.2 10.3 13.2 21.7 9.5 26M22.5 6C18.8 10.3 18.8 21.7 22.5 26" stroke="currentColor" stroke-width="2.2"/></svg>
+        ZTC
+      </a>
+    </div>
+    <nav class="atc-nav__center" aria-label="Main">
+      <ul class="atc-nav__links">
+        <li class="atc-nav__item" id="navProg">
+          <button class="atc-nav__link" aria-expanded="false">
+            Programs
+            <svg class="atc-nav__chevron" viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </button>
+          <div class="atc-nav__mega">
+            <div class="atc-nav__mega-card">
+              <div class="atc-nav__mega-intro">
+                <p class="atc-nav__mega-text">Training for every level and every goal, from grassroots development to high performance.</p>
+                <a class="atc-nav__mega-all" href="#programas">
+                  View all programs
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+              <ul class="atc-nav__mega-list">
+                <li>
+                  <a class="atc-nav__mega-item" href="#programas">
+                    <svg viewBox="0 0 55 55" fill="none" class="prog-icon prog-icon--orbit atc-nav__mega-icon" aria-hidden="true">
+                      <circle cx="27.5" cy="27.5" r="27.5" fill="#0A4269"/>
+                      <circle cx="27.5" cy="16" r="5.4" fill="#fff"/><circle cx="16.6" cy="24" r="5.4" fill="#fff"/><circle cx="38.4" cy="24" r="5.4" fill="#fff"/><circle cx="21" cy="37" r="5.4" fill="#fff"/><circle cx="34" cy="37" r="5.4" fill="#fff"/>
+                    </svg>
+                    <span class="atc-nav__mega-body">
+                      <span class="atc-nav__mega-label">High Performance</span>
+                      <span class="atc-nav__mega-desc">Year-round program with personalized planning.</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="atc-nav__mega-item" href="#programas">
+                    <svg viewBox="0 0 55 55" fill="none" class="prog-icon prog-icon--pulse atc-nav__mega-icon" aria-hidden="true">
+                      <circle cx="27.5" cy="27.5" r="27.5" fill="#0A4269"/>
+                      <circle cx="21.5" cy="27.5" r="8.5" fill="#fff"/><circle cx="33.5" cy="27.5" r="8.5" fill="#fff"/><circle cx="27.5" cy="27.5" r="5" fill="#0A4269"/>
+                    </svg>
+                    <span class="atc-nav__mega-body">
+                      <span class="atc-nav__mega-label">Short Camps</span>
+                      <span class="atc-nav__mega-desc">4-to-8-week intensives.</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="atc-nav__mega-item" href="#programas">
+                    <svg viewBox="0 0 55 55" fill="none" class="prog-icon prog-icon--rotate atc-nav__mega-icon" aria-hidden="true">
+                      <circle cx="27.5" cy="27.5" r="27.5" fill="#0A4269"/>
+                      <path d="M27.5 14a13.5 13.5 0 1 1-9.5 3.9" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+                      <path d="M17 11v8h8" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                    <span class="atc-nav__mega-body">
+                      <span class="atc-nav__mega-label">Preseason</span>
+                      <span class="atc-nav__mega-desc">Preparation ahead of competition.</span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="atc-nav__item"><a class="atc-nav__link" href="#instalaciones">Facilities</a></li>
+        <li class="atc-nav__item"><a class="atc-nav__link" href="#equipo">Coaching Team</a></li>
+        <li class="atc-nav__item"><a class="atc-nav__link" href="#comunidad">News</a></li>
+        <li class="atc-nav__item"><a class="atc-nav__link" href="#faq">Enrollment</a></li>
+      </ul>
+    </nav>
+    <div class="atc-nav__right">
+      <a href="#unirme" class="atc-nav__cta">Join the club</a>
+      <button class="atc-nav__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="atc-nav__mobile" aria-label="Mobile menu">
+    <a href="#programas">Programs</a>
+    <a href="#instalaciones">Facilities</a>
+    <a href="#equipo">Coaching Team</a>
+    <a href="#comunidad">News</a>
+    <a href="#faq">Enrollment</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="herox" id="hero">
+  <div class="herox__pin">
+    <div class="herox__frame">
+      <div class="herox__canvas"></div>
+      <canvas class="herox__film" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="herox__scrim"></div>
+      <div class="herox__finale" id="heroFinale" aria-hidden="true">
+        <span class="herox__finale-text">ZTC</span>
+      </div>
+
+      <!-- FASE 1 -->
+      <div class="herox__layer herox__phase1" id="phase1">
+        <div class="herox__content">
+          <p class="herox__tagline">Tennis, a way of life</p>
+          <h1 class="herox__title">Zurich Tennis Competition</h1>
+          <div class="herox__ctas">
+            <a class="button is-white" href="#faq">Join the club</a>
+            <a class="button is-inverse" href="tel:+41442000000">Contact</a>
+          </div>
+        </div>
+        <div class="herox__badge">
+          <span class="herox__badge-chip">Enrollment</span>
+          <span class="herox__badge-text">Season 2025–2026</span>
+        </div>
+        <span class="herox__hint" aria-hidden="true">
+          Scroll
+          <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+
+      <!-- FASE 2 -->
+      <div class="herox__layer herox__phase2" id="phase2">
+        <div class="herox__p2-left">
+          <h2 class="herox__p2-title">Your home of tennis in Zurich</h2>
+          <a class="button is-inverse" href="#instalaciones">View facilities</a>
+        </div>
+        <a href="#equipo" class="herox__p2-card">
+          <span class="herox__p2-num">+10</span>
+          <span class="herox__p2-text">professionals in our coaching team</span>
+          <span class="herox__p2-arrow">
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section class="section home-progpills" id="programas">
+  <div class="padding-global">
+    <div class="container-large">
+      <p class="reveal section-num">Our programs</p>
+      <h2 class="reveal font-display home-progpills__title">Year-round high performance programs</h2>
+      <div class="prog-cards">
+        <a class="prog-card reveal" href="#faq">
+          <svg class="prog-card__icon prog-icon prog-icon--orbit" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="10" stroke="currentColor" stroke-width="2"/>
+            <ellipse cx="30" cy="30" rx="26" ry="12" stroke="currentColor" stroke-width="2" transform="rotate(-20 30 30)"/>
+            <circle cx="52" cy="21" r="3" fill="currentColor"/>
+          </svg>
+          <div>
+            <h3 class="prog-card__title">Year-round high performance program</h3>
+            <p class="prog-card__text">Comprehensive work throughout the season, with technical, tactical, physical and mental planning tailored to each player.</p>
+          </div>
+        </a>
+        <a class="prog-card reveal" href="#faq" style="transition-delay:80ms">
+          <svg class="prog-card__icon prog-icon prog-icon--pulse" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="24" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 30h9l4-10 8 20 5-10h10" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h3 class="prog-card__title">Short Camps</h3>
+            <p class="prog-card__text">Intensive 4-to-8-week blocks focused on one specific part of your game, with measurable improvement in a short time.</p>
+          </div>
+        </a>
+        <a class="prog-card reveal" href="#faq" style="transition-delay:160ms">
+          <svg class="prog-card__icon prog-icon prog-icon--rotate" viewBox="0 0 60 60" fill="none">
+            <path d="M30 8a22 22 0 1 1-15.6 6.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M14 6v9h9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="30" cy="30" r="5" fill="currentColor"/>
+          </svg>
+          <div>
+            <h3 class="prog-card__title">Preseason</h3>
+            <p class="prog-card__text">Fine-tuning before the competitive season: body, technique and mindset ready to perform from the very first tournament.</p>
+          </div>
+        </a>
+      </div>
+      <div class="reveal prog-custom">
+        <div class="prog-custom__text">
+          <h3 class="prog-custom__title">Custom program</h3>
+          <p>Our coaches will design a tailor-made plan around your level, your goals and your case.</p>
+        </div>
+        <a class="button" href="#faq">Get my plan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERRA + MARQUEE -->
+<section class="section padding-section-medium home-tierra">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="home-tierra__grid">
+        <div class="home-tierra__img reveal"><video src="video/clips/clip-2.mp4" poster="images/tierra-1.jpg" autoplay muted loop playsinline></video></div>
+        <div class="home-tierra__img reveal" style="transition-delay:80ms"><video src="video/clips/clip-3-cut.mp4" poster="images/tierra-2.jpg" autoplay muted loop playsinline></video></div>
+        <div class="home-tierra__img reveal" style="transition-delay:160ms"><video src="video/clips/clip-4.mp4" poster="images/tierra-3.jpg" autoplay muted loop playsinline></video></div>
+      </div>
+      <div class="home-tierra__marquee" aria-hidden="true">
+        <div class="home-tierra__track">
+          <span class="home-tierra__group">
+            <span class="home-tierra__item">Performance<span class="home-tierra__dot">*</span></span>
+            <span class="home-tierra__item">Method<span class="home-tierra__dot">*</span></span>
+            <span class="home-tierra__item">Competition<span class="home-tierra__dot">*</span></span>
+            <span class="home-tierra__item">Excellence<span class="home-tierra__dot">*</span></span>
+            <span class="home-tierra__item">Discipline<span class="home-tierra__dot">*</span></span>
+          </span>
+          <span class="home-tierra__group">
+            <span class="home-tierra__item">Performance<span class="home-tierra__dot">*</span></span>
+            <span class="home-tierra__item">Method<span class="home-tierra__dot">*</span></span>
+            <span class="home-tierra__item">Competition<span class="home-tierra__dot">*</span></span>
+            <span class="home-tierra__item">Excellence<span class="home-tierra__dot">*</span></span>
+            <span class="home-tierra__item">Discipline<span class="home-tierra__dot">*</span></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="section padding-section-medium home-video" style="padding-top:0;">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="reveal">
+        <div class="vp">
+          <video class="vp__video" id="vpVideo" src="video/ztc-anuncio-edit.mp4" poster="images/film-poster.jpg" playsinline preload="metadata"></video>
+          <video class="vp__preview" id="vpPreview" src="video/ztc-film-loop.mp4" autoplay muted loop playsinline aria-hidden="true" tabindex="-1"></video>
+          <button class="vp__big" id="vpBig" aria-label="Play">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="vp__controls">
+            <button class="vp__btn" id="vpPlay" aria-label="Play">
+              <svg class="vp__ic-play" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="vp__ic-pause" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" style="display:none;"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+            </button>
+            <span class="vp__time" id="vpCur">0:00</span>
+            <div class="vp__bar" id="vpBar" role="slider" aria-label="Video progress"><div class="vp__bar-fill" id="vpFill"></div></div>
+            <span class="vp__time" id="vpDur">0:00</span>
+            <button class="vp__btn" id="vpMute" aria-label="Mute">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M11 5 6 9H3v6h3l5 4V5Z" stroke-linejoin="round"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO / AMBITOS -->
+<section class="section padding-section-small home-ambitos" id="equipo">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="reveal">
+        <div class="ambc">
+          <div class="ambc__row" id="ambcRow">
+            <button class="ambc__slot ambc__slot--1 is-active" aria-label="View Full development" aria-pressed="true"></button>
+            <button class="ambc__slot ambc__slot--2" aria-label="View By Lake Zurich" aria-pressed="false"></button>
+            <button class="ambc__slot ambc__slot--3" aria-label="View A team that makes the difference" aria-pressed="false"></button>
+          </div>
+          <div class="ambc__bar" role="tablist" aria-label="ZTC areas" id="ambcBar">
+            <button class="ambc__seg is-active" role="tab" aria-selected="true" aria-label="Area 1"></button>
+            <button class="ambc__seg" role="tab" aria-selected="false" aria-label="Area 2"></button>
+            <button class="ambc__seg" role="tab" aria-selected="false" aria-label="Area 3"></button>
+          </div>
+          <div class="ambc__caption">
+            <span class="ambc__icon" id="ambcIcon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M7 4.5c3 3.5 3 11.5 0 15M17 4.5c-3 3.5-3 11.5 0 15"/></svg>
+            </span>
+            <div class="ambc__caption-text" id="ambcCaption">
+              <h3 class="ambc__title">Full development</h3>
+              <p class="ambc__text">From our grassroots school to high performance, a method of our own that supports every player at every stage.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALACIONES -->
+<section class="section home-facility" id="instalaciones">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="reveal home-facility__frame">
+        <div class="home-facility__media">
+          <video src="video/clips/clip-0.mp4" poster="images/instalaciones.jpg" autoplay muted loop playsinline></video>
+        </div>
+        <div class="home-facility__overlay">
+          <p class="section-num">03 - The club</p>
+          <h2 class="home-facility__title">Where tennis meets the Alpine lifestyle</h2>
+          <p class="home-facility__text">Certified courts, gym, locker rooms and a social area on the shores of Lake Zurich.</p>
+          <a class="button is-inverse" href="#contacto">View facilities</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="section padding-section-large home-testi">
+  <div class="padding-global">
+    <div class="container-large">
+      <p class="reveal section-num">Testimonials</p>
+      <h2 class="reveal font-display home-testi__title">Club testimonials</h2>
+      <div class="home-testi__grid">
+        <figure class="reveal testi-card" style="background-image:url('images/testimonio.jpg');">
+          <figcaption class="testi-card__body">
+            <span class="testi-card__mark">“</span>
+            <p class="testi-card__text">At the academy I've learned to compete while still having fun. The coaches look after you in every single session.</p>
+            <p class="testi-card__by">Luca · ZTC Academy</p>
+          </figcaption>
+        </figure>
+        <figure class="reveal testi-card" style="transition-delay:80ms;background-image:url('images/testimonio-2.jpg');">
+          <figcaption class="testi-card__body">
+            <span class="testi-card__mark">“</span>
+            <p class="testi-card__text">At ZTC I've found much more than training: a team that believes in me and pushes me to improve every day.</p>
+            <p class="testi-card__by">Aminata · ZTC Player</p>
+          </figcaption>
+        </figure>
+        <figure class="reveal testi-card" style="transition-delay:160ms;background-image:url('images/reel-1.jpg');background-position:center 20%;">
+          <figcaption class="testi-card__body">
+            <span class="testi-card__mark">“</span>
+            <p class="testi-card__text">The physical and mental planning shows at every tournament. You arrive truly prepared, and the results follow.</p>
+            <p class="testi-card__by">Marc · ZTC Player</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER -->
+<section class="reveal home-banner">
+  <video class="home-banner__img" src="video/clips/clip-1.mp4" poster="images/banner.jpg" autoplay muted loop playsinline aria-label="Zurich Tennis Competition"></video>
+</section>
+
+<!-- LOCATION -->
+<section class="section home-location" id="contacto">
+  <div class="home-location__grid">
+    <div class="home-location__map" aria-hidden="true">
+      <svg viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice">
+        <rect width="1200" height="520" fill="#eef2f5"/>
+        <path d="M430 520 C470 380 540 290 660 210 C760 145 900 95 1200 70 L1200 520 Z" fill="#9ed2ff" opacity=".5"/>
+        <g stroke="#05223618" stroke-width="3" fill="none">
+          <path d="M0 140 H420 M180 0 V330 M0 320 H360 M300 430 H0 M90 60 H260"/>
+          <path d="M520 90 H820 M660 0 V150 M900 40 H1100"/>
+        </g>
+        <g stroke="#05223626" stroke-width="1.5" fill="none">
+          <path d="M60 220 H330 M240 100 V290 M420 240 H540"/>
+        </g>
+        <text x="820" y="330" font-family="Manrope,sans-serif" font-size="26" fill="#0a426980" font-weight="500">Zürichsee</text>
+        <circle cx="420" cy="250" r="10" fill="#ef4d2b"/>
+        <circle cx="420" cy="250" r="20" fill="none" stroke="#ef4d2b" stroke-width="2" opacity=".4"/>
+      </svg>
+    </div>
+    <div class="home-location__card reveal">
+      <h3 class="font-display home-location__name">Zurich Tennis Competition</h3>
+      <p class="home-location__addr">Seestrasse 120 · Wollishofen · 8002 Zürich</p>
+      <p class="home-location__h">Opening hours:</p>
+      <p class="home-location__hours">Monday to Friday: 6:45 – 23:00</p>
+      <p class="home-location__hours">Weekends &amp; holidays: 9:00 – 21:00</p>
+      <div class="home-location__ctas">
+        <a class="home-location__link" href="tel:+41442000000">Call us</a>
+        <a class="home-location__link" href="mailto:info@zurichtenniscompetition.ch">Send an email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="section padding-section-large home-community" id="comunidad">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="home-community__head">
+        <p class="reveal section-num">Community</p>
+        <h2 class="reveal font-display" style="margin:var(--space-3) 0 0;">We are a family on and off the court</h2>
+      </div>
+      <div class="home-community__grid">
+        <div class="reveal">
+          <a href="#" onclick="return false;" class="community-reel" aria-label="Training reel">
+            <span class="community-reel__img community-reel__img--1"></span>
+            <span class="community-reel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+          </a>
+        </div>
+        <div class="reveal" style="transition-delay:80ms">
+          <a href="#" onclick="return false;" class="community-reel" aria-label="Tournament reel">
+            <span class="community-reel__img community-reel__img--2"></span>
+            <span class="community-reel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+          </a>
+        </div>
+        <div class="reveal" style="transition-delay:160ms">
+          <a href="#" onclick="return false;" class="community-reel" aria-label="Community reel">
+            <span class="community-reel__img community-reel__img--3"></span>
+            <span class="community-reel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+          </a>
+        </div>
+        <div class="reveal" style="transition-delay:240ms">
+          <a href="#" onclick="return false;" class="community-reel" aria-label="Facilities reel">
+            <span class="community-reel__img community-reel__img--4"></span>
+            <span class="community-reel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+          </a>
+        </div>
+      </div>
+      <div class="home-community__cta reveal">
+        <a class="button is-secondary" href="#" onclick="return false;">Follow us on Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section padding-section-large home-faq" id="faq">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="faqcard">
+        <h2 class="reveal font-display faqcard__title">We answer your questions</h2>
+        <div class="faqcard__list reveal">
+          <div class="faqrow is-open">
+            <button class="faqrow__head" aria-expanded="true">
+              <span class="faqrow__n">01</span>
+              <span class="faqrow__q">From what age can you train at ZTC?</span>
+              <span class="faqrow__icon"><svg viewBox="0 0 24 24" fill="none" width="14" height="14"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faqrow__body"><div class="faqrow__inner">
+              <p>We work with players of all ages and levels, from grassroots development to high performance. Write to us and we will guide you case by case.</p>
+            </div></div>
+          </div>
+          <div class="faqrow">
+            <button class="faqrow__head" aria-expanded="false">
+              <span class="faqrow__n">02</span>
+              <span class="faqrow__q">Do I need previous experience to start?</span>
+              <span class="faqrow__icon"><svg viewBox="0 0 24 24" fill="none" width="14" height="14"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faqrow__body"><div class="faqrow__inner">
+              <p>Not at all. We run an individual level test to place each player in the group and program that best fits their starting point.</p>
+            </div></div>
+          </div>
+          <div class="faqrow">
+            <button class="faqrow__head" aria-expanded="false">
+              <span class="faqrow__n">03</span>
+              <span class="faqrow__q">How do I enroll in a program?</span>
+              <span class="faqrow__icon"><svg viewBox="0 0 24 24" fill="none" width="14" height="14"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faqrow__body"><div class="faqrow__inner">
+              <p>Leave us your details and the program you are interested in; the club will contact you to confirm your spot.</p>
+            </div></div>
+          </div>
+          <div class="faqrow">
+            <button class="faqrow__head" aria-expanded="false">
+              <span class="faqrow__n">04</span>
+              <span class="faqrow__q">Do you offer single lessons or only programs?</span>
+              <span class="faqrow__icon"><svg viewBox="0 0 24 24" fill="none" width="14" height="14"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faqrow__body"><div class="faqrow__inner">
+              <p>We offer year-round programs, short camps and preseason. If you are looking for another format, tell us your case and we will find the best option.</p>
+            </div></div>
+          </div>
+          <div class="faqrow">
+            <button class="faqrow__head" aria-expanded="false">
+              <span class="faqrow__n">05</span>
+              <span class="faqrow__q">Where is the club located?</span>
+              <span class="faqrow__icon"><svg viewBox="0 0 24 24" fill="none" width="14" height="14"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            </button>
+            <div class="faqrow__body"><div class="faqrow__inner">
+              <p>In Wollishofen, Seestrasse 120, 8002 Zürich — right by the lake and well connected to the city center.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="section padding-section-large home-join" id="unirme">
+  <span class="home-join__ring" aria-hidden="true"></span>
+  <div class="padding-global">
+    <div class="reveal container-medium home-join__inner">
+      <p class="section-num">04 - Club</p>
+      <h2 class="home-join__title">Join the ZTC family</h2>
+      <p class="home-join__text">Become a member and enjoy every benefit of the club: training, competition and a community pulling in the same direction.</p>
+      <div class="home-join__ctas">
+        <a class="button is-inverse" href="#faq">Join the club</a>
+        <a class="home-join__link" href="#comunidad">
+          Club news
+          <svg viewBox="0 0 24 24" fill="none" width="20" height="20" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="home-footer">
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="home-footer__top">
+        <div class="home-footer__brand">
+          <a href="#" class="home-footer__logo">
+            <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13.5" stroke="currentColor" stroke-width="2.2"/><path d="M9.5 6C13.2 10.3 13.2 21.7 9.5 26M22.5 6C18.8 10.3 18.8 21.7 22.5 26" stroke="currentColor" stroke-width="2.2"/></svg>
+            ZTC
+          </a>
+          <p>Zurich Tennis Competition. Full player development and high performance by Lake Zurich.</p>
+          <div class="home-footer__social">
+            <a href="#" onclick="return false;" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="mailto:info@zurichtenniscompetition.ch" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></a>
+          </div>
+        </div>
+        <div class="home-footer__col">
+          <h4>Club</h4>
+          <a href="#programas">Programs</a>
+          <a href="#instalaciones">Facilities</a>
+          <a href="#equipo">Coaching team</a>
+        </div>
+        <div class="home-footer__col">
+          <h4>Take part</h4>
+          <a href="#faq">Enrollment</a>
+          <a href="#unirme">Join the club</a>
+          <a href="#comunidad">News</a>
+        </div>
+        <div class="home-footer__col">
+          <h4>Contact</h4>
+          <a href="mailto:info@zurichtenniscompetition.ch">info@zurichtenniscompetition.ch</a>
+          <a href="tel:+41442000000">+41 44 200 00 00</a>
+          <span>Wollishofen, Zürich</span>
+        </div>
+      </div>
+      <div class="home-footer__bottom">
+        <span>© 2026 Zurich Tennis Competition. All rights reserved.</span>
+        <div class="home-footer__legal">
+          <a href="#" onclick="return false;">Legal notice</a>
+          <a href="#" onclick="return false;">Privacy</a>
+          <a href="#" onclick="return false;">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIEBAR -->
+<div class="cookiebar" id="cookiebar" role="dialog" aria-label="Cookie preferences">
+  <p class="cookiebar__text">We use technical cookies required for the website to work. You can accept or decline them; find more information in our <a href="#" onclick="return false;">cookie policy</a>.</p>
+  <div class="cookiebar__actions">
+    <button type="button" class="button is-secondary" id="ckReject">Decline</button>
+    <button type="button" class="button" id="ckAccept">Accept</button>
+  </div>
+</div>
+
+<script>
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+
+/* ---------- Nav: glass sobre el hero, blanco después + dropdown + móvil ---------- */
+const nav = document.getElementById('nav');
+const hero = document.getElementById('hero');
+const burger = document.getElementById('burger');
+const navProg = document.getElementById('navProg');
+
+burger.addEventListener('click', () => nav.classList.toggle('is-open'));
+nav.querySelectorAll('.atc-nav__mobile a').forEach(a => a.addEventListener('click', () => nav.classList.remove('is-open')));
+
+navProg.addEventListener('mouseenter', () => navProg.classList.add('is-open'));
+navProg.addEventListener('mouseleave', () => navProg.classList.remove('is-open'));
+navProg.querySelector('button').addEventListener('click', () => navProg.classList.toggle('is-open'));
+
+/* ---------- Hero: fases con el scroll ---------- */
+const phase1 = document.getElementById('phase1');
+const phase2 = document.getElementById('phase2');
+
+/* Hero: el saque-ace se "frota" con el scroll; el marco se cierra; ZTC aparece al final */
+const heroVideo = document.getElementById('heroVideo');
+const heroPin = hero.querySelector('.herox__pin');
+const heroFinale = document.getElementById('heroFinale');
+
+/* Secuencia de fotogramas en canvas (misma técnica que el hero original):
+   dibujar una imagen es síncrono y funciona en cualquier navegador,
+   sin depender del seeking de vídeo. */
+const heroCanvas = document.getElementById('heroCanvas');
+const heroCtx = heroCanvas ? heroCanvas.getContext('2d') : null;
+const HERO_FRAMES = 121;
+const heroImgs = [];
+let heroP = 0, heroLastDrawn = -1;
+
+for (let i = 0; i < HERO_FRAMES; i++) {
+  const im = new Image();
+  im.src = 'frames/hero/f_' + String(i + 1).padStart(3, '0') + '.jpg';
+  if (i === 0) im.addEventListener('load', () => heroDraw(true));
+  heroImgs.push(im);
+}
+
+function heroDraw(force) {
+  if (!heroCtx) return;
+  let idx = Math.round(heroP * (HERO_FRAMES - 1));
+  // si ese fotograma aún no cargó, usa el cargado más cercano hacia atrás
+  while (idx > 0 && !(heroImgs[idx].complete && heroImgs[idx].naturalWidth)) idx--;
+  const img = heroImgs[idx];
+  if (!(img.complete && img.naturalWidth)) return;
+  if (idx === heroLastDrawn && !force) return;
+  const frameEl = heroCanvas.parentElement;
+  const w = frameEl.clientWidth || 1280, h = frameEl.clientHeight || 720;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const cw = Math.round(w * dpr), ch = Math.round(h * dpr);
+  if (heroCanvas.width !== cw || heroCanvas.height !== ch) { heroCanvas.width = cw; heroCanvas.height = ch; }
+  const s = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+  const dw = img.naturalWidth * s, dh = img.naturalHeight * s;
+  heroCtx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+  heroLastDrawn = idx;
+}
+window.addEventListener('resize', () => heroDraw(true));
+
+function onScroll() {
+  const rect = hero.getBoundingClientRect();
+  const total = hero.offsetHeight - window.innerHeight;
+  const p = total > 0 ? clamp(-rect.top / total, 0, 1) : 0;
+
+  // scrub: el scroll elige el fotograma y se dibuja al instante
+  heroP = p;
+  heroDraw();
+
+  // cierre de marco: de full-bleed (sin bordes) a tarjeta redondeada
+  const k = clamp(p / 0.15, 0, 1);
+  heroPin.style.setProperty('--hero-pad', (k * 0.5).toFixed(3) + 'rem');
+  heroPin.style.setProperty('--hero-radius', (k * 48).toFixed(1) + 'px');
+
+  // final: siglas ZTC sobre la bola en primer plano
+  const fin = clamp((p - 0.8) / 0.12, 0, 1);
+  heroFinale.style.opacity = fin;
+  heroFinale.style.transform = `scale(${1.15 - fin * 0.15})`;
+
+  const p1 = 1 - clamp((p - 0.25) / 0.15, 0, 1);
+  const p2 = clamp((p - 0.45) / 0.15, 0, 1) * (1 - clamp((p - 0.7) / 0.08, 0, 1));
+  phase1.style.opacity = p1;
+  phase1.style.transform = `translateY(${(1 - p1) * -40}px)`;
+  phase1.style.pointerEvents = p1 > 0.5 ? 'auto' : 'none';
+  phase2.style.opacity = p2;
+  phase2.style.transform = `translateY(${(1 - p2) * 40}px)`;
+  phase2.style.pointerEvents = p2 > 0.5 ? 'auto' : 'none';
+
+  const pastHero = rect.bottom - window.innerHeight < 0;
+  nav.classList.toggle('is-glass', !pastHero);
+  nav.classList.toggle('is-white', pastHero);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll);
+onScroll();
+
+/* ---------- Reveal (igual que el original: .7s, translateY 1.75rem) ---------- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- Ambitos: acordeón de imágenes con auto-avance ---------- */
+const ambcSlots = [...document.querySelectorAll('.ambc__slot')];
+const ambcSegs = [...document.querySelectorAll('.ambc__seg')];
+const ambcCaption = document.getElementById('ambcCaption');
+const AMBC_DATA = [
+  { t: 'Full development', x: 'From our grassroots school to high performance, a method of our own that supports every player at every stage.' },
+  { t: 'By Lake Zurich', x: 'Training with the lake and the Alps in the background: a unique setting to grow on and off the court.' },
+  { t: 'A team that makes the difference', x: 'Technique, fitness and psychology working together for every player.' },
+];
+let ambcIdx = 0, ambcTimer;
+
+function ambcGo(i) {
+  ambcIdx = i;
+  ambcSlots.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.setAttribute('aria-pressed', k === i); });
+  ambcSegs.forEach((s, k) => { s.classList.toggle('is-active', k === i); s.setAttribute('aria-selected', k === i); });
+  ambcCaption.style.animation = 'none';
+  void ambcCaption.offsetWidth;
+  ambcCaption.style.animation = '';
+  ambcCaption.querySelector('.ambc__title').textContent = AMBC_DATA[i].t;
+  ambcCaption.querySelector('.ambc__text').textContent = AMBC_DATA[i].x;
+}
+function ambcAuto() { clearInterval(ambcTimer); ambcTimer = setInterval(() => ambcGo((ambcIdx + 1) % 3), 4500); }
+ambcSlots.forEach((s, k) => s.addEventListener('click', () => { ambcGo(k); ambcAuto(); }));
+ambcSegs.forEach((s, k) => s.addEventListener('click', () => { ambcGo(k); ambcAuto(); }));
+ambcAuto();
+
+/* ---------- Testimonios: tarjetas fijas con foto de cada persona ---------- */
+
+/* ---------- FAQ: acordeón (uno abierto a la vez) ---------- */
+document.querySelectorAll('.faqrow').forEach(row => {
+  row.querySelector('.faqrow__head').addEventListener('click', () => {
+    const wasOpen = row.classList.contains('is-open');
+    document.querySelectorAll('.faqrow.is-open').forEach(r => { r.classList.remove('is-open'); r.querySelector('.faqrow__head').setAttribute('aria-expanded', 'false'); });
+    if (!wasOpen) { row.classList.add('is-open'); row.querySelector('.faqrow__head').setAttribute('aria-expanded', 'true'); }
+  });
+});
+
+/* ---------- Reproductor de vídeo (film ZTC) ---------- */
+const vpWrap = document.querySelector('.vp');
+const vpVideo = document.getElementById('vpVideo');
+if (vpVideo) {
+  const vpBig = document.getElementById('vpBig');
+  const vpPlay = document.getElementById('vpPlay');
+  const vpMute = document.getElementById('vpMute');
+  const vpBar = document.getElementById('vpBar');
+  const vpFill = document.getElementById('vpFill');
+  const vpCur = document.getElementById('vpCur');
+  const vpDur = document.getElementById('vpDur');
+  const fmt = s => { s = Math.floor(s || 0); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+
+  const setIcons = () => {
+    const playing = !vpVideo.paused;
+    vpWrap.classList.toggle('is-playing', playing);
+    vpPlay.querySelector('.vp__ic-play').style.display = playing ? 'none' : '';
+    vpPlay.querySelector('.vp__ic-pause').style.display = playing ? '' : 'none';
+  };
+  const toggle = () => { vpVideo.paused ? vpVideo.play() : vpVideo.pause(); };
+
+  vpBig.addEventListener('click', toggle);
+  vpVideo.addEventListener('click', toggle);
+  vpPlay.addEventListener('click', toggle);
+  vpVideo.addEventListener('play', setIcons);
+  vpVideo.addEventListener('pause', setIcons);
+  vpVideo.addEventListener('ended', () => { vpVideo.currentTime = 0; setIcons(); });
+  vpVideo.addEventListener('loadedmetadata', () => { vpDur.textContent = fmt(vpVideo.duration); });
+  vpVideo.addEventListener('timeupdate', () => {
+    vpCur.textContent = fmt(vpVideo.currentTime);
+    if (vpVideo.duration) vpFill.style.width = (vpVideo.currentTime / vpVideo.duration * 100) + '%';
+  });
+  vpBar.addEventListener('click', e => {
+    const r = vpBar.getBoundingClientRect();
+    if (vpVideo.duration) vpVideo.currentTime = clamp((e.clientX - r.left) / r.width, 0, 1) * vpVideo.duration;
+  });
+  vpMute.addEventListener('click', () => { vpVideo.muted = !vpVideo.muted; vpMute.style.opacity = vpVideo.muted ? .4 : 1; });
+}
+
+/* ---------- Cookiebar ---------- */
+const cookiebar = document.getElementById('cookiebar');
+document.getElementById('ckAccept').addEventListener('click', () => cookiebar.classList.add('hidden'));
+document.getElementById('ckReject').addEventListener('click', () => cookiebar.classList.add('hidden'));
+</script>
+</body>
+</html>

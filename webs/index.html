@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esteban Marco — Webs</title>
+<meta name="description" content="Todas las webs de Esteban Marco, accesibles con un escaneo.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<style>
+  :root{
+    --crema:#ECE4D5; --espresso:#211C14; --terracota:#B0593A;
+    --linea:rgba(33,28,20,.14); --mut:rgba(33,28,20,.62);
+    --serif:'Instrument Serif',serif; --sans:'Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--crema);color:var(--espresso);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  header{padding:72px 0 48px;border-bottom:1px solid var(--linea)}
+  .kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);font-weight:600}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,7vw,84px);line-height:1.02;letter-spacing:-1px;margin-top:14px}
+  h1 em{font-style:italic;color:var(--terracota)}
+  .sub{margin-top:18px;max-width:520px;color:var(--mut);font-size:16px}
+
+  section{padding:56px 0}
+  .stitle{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:400;margin-bottom:8px}
+  .snote{color:var(--mut);font-size:14px;margin-bottom:34px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+  .card{background:#F5EFE4;border:1px solid var(--linea);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:16px;transition:transform .3s ease, box-shadow .3s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(33,28,20,.10)}
+  .chip{align-self:flex-start;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;font-weight:600;padding:5px 12px;border-radius:99px;background:var(--espresso);color:var(--crema)}
+  .chip.live{background:var(--terracota)}
+  .card h3{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.1}
+  .card p{font-size:13.5px;color:var(--mut);flex:1}
+  .qrbox{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:12px;width:150px;height:150px;display:flex;align-items:center;justify-content:center;flex:none}
+  .qrbox svg{width:100%;height:100%;display:block}
+  .foot{display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+  .url a{font-size:13px;font-weight:600;color:var(--espresso);text-decoration:none;border-bottom:1.5px solid var(--terracota);padding-bottom:2px;word-break:break-all}
+  .url a:hover{color:var(--terracota)}
+  .url span{display:block;font-size:11px;color:var(--mut);margin-top:6px}
+
+  .locales{border-top:1px solid var(--linea)}
+  .llist{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+  .litem{background:var(--crema);padding:20px 22px}
+  .litem b{font-family:var(--serif);font-weight:400;font-size:19px;display:block}
+  .litem span{font-size:12px;color:var(--mut)}
+
+  footer{padding:44px 0 60px;border-top:1px solid var(--linea);color:var(--mut);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a{color:var(--espresso);text-decoration:none;border-bottom:1px solid var(--terracota)}
+  @media print{.locales,footer{display:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">Esteban Marco · Ingeniería IA · Zúrich</div>
+    <h1>Todas mis webs,<br>a un <em>escaneo</em>.</h1>
+    <p class="sub">Escanea cualquier código con la cámara del móvil y la web se abre al instante. Sin instalar nada.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2 class="stitle">En vivo</h2>
+    <p class="snote">Estas webs están publicadas y accesibles desde cualquier dispositivo.</p>
+    <div class="grid" id="live"></div>
+  </div>
+</section>
+
+<section class="locales">
+  <div class="wrap">
+    <h2 class="stitle">En preparación</h2>
+    <p class="snote">Proyectos terminados o en curso que aún viven solo en local.</p>
+    <div class="llist" id="locals"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:0">
+    <span>© 2026 Esteban Marco — <a href="mailto:info@estebanmarco.ch">info@estebanmarco.ch</a></span>
+    <span>estebanmarco.ch</span>
+  </div>
+</footer>
+
+<script>
+const LIVE = [
+  {
+    name: "Esteban Marco",
+    url: "https://estebanmarco.ch/",
+    show: "estebanmarco.ch",
+    desc: "Web principal. Ingeniería de IA y automatización para PYMEs suizas.",
+    tag: "Web principal"
+  },
+  {
+    name: "Menu Suite",
+    url: "https://menu.estebanmarco.ch/",
+    show: "menu.estebanmarco.ch",
+    desc: "Carta digital con Smart Waiter y pedidos a cocina para restaurantes suizos.",
+    tag: "Producto"
+  },
+  {
+    name: "ALMA Image Consulting",
+    url: "https://almaimage.ch/",
+    show: "almaimage.ch",
+    desc: "Web de clienta: consultoría de imagen personal en Suiza.",
+    tag: "Cliente"
+  },
+  {
+    name: "Zurich Tennis Competition",
+    url: "https://estebanmarco.ch/demos/zurich-tennis/",
+    show: "estebanmarco.ch/demos/zurich-tennis",
+    desc: "Landing de torneo de tenis: vídeo, cuadros y inscripción.",
+    tag: "Demo"
+  },
+  {
+    name: "Watchdreamer",
+    url: "https://estebanmarco.ch/demos/watchdreamer/",
+    show: "estebanmarco.ch/demos/watchdreamer",
+    desc: "E-commerce de relojería: 284 relojes con ficha completa.",
+    tag: "Demo"
+  }
+];
+
+const LOCALS = [
+  { name: "Sistema Comercial IA", note: "Agente de voz DE/EN + WhatsApp · sistema, no web" },
+  { name: "Rediseño Nude Project", note: "Borrador de rediseño · sin publicar" },
+  { name: "CRM Lead Radar", note: "En Netlify · caído por créditos agotados" },
+  { name: "Meridian", note: "Concepto web" },
+  { name: "Apogee", note: "Concepto web" },
+  { name: "Küsnacht", note: "Concepto inmobiliario" },
+  { name: "Velora Motionsites", note: "Concepto con animación" },
+  { name: "GEFRA Arbeitsrapport", note: "App interna de partes de trabajo" }
+];
+
+function qrSVG(url){
+  const qr = qrcode(0, 'M');
+  qr.addData(url);
+  qr.make();
+  return qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+}
+
+document.getElementById('live').innerHTML = LIVE.map(w => `
+  <article class="card">
+    <span class="chip live">● En vivo · ${w.tag}</span>
+    <h3>${w.name}</h3>
+    <p>${w.desc}</p>
+    <div class="foot">
+      <div class="url">
+        <a href="${w.url}" target="_blank" rel="noopener">${w.show}</a>
+        <span>Escanea o toca para abrir</span>
+      </div>
+      <div class="qrbox">${qrSVG(w.url)}</div>
+    </div>
+  </article>
+`).join('');
+
+document.getElementById('locals').innerHTML = LOCALS.map(w => `
+  <div class="litem"><b>${w.name}</b><span>${w.note}</span></div>
+`).join('');
+</script>
+
+</body>
+</html>

@@ -3,4 +3,6 @@ Allow: /
 Disallow: /01_beleg-scanner.html
 Disallow: /02_konto-abgleich.html
 Disallow: /03_treuhand-assistent.html
+Disallow: /demos/
+Disallow: /webs/
 Sitemap: https://estebanmarco.ch/sitemap.xml

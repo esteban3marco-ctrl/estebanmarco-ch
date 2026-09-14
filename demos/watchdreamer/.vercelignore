@@ -1,0 +1,9 @@
+*.py
+data_catalog_full.json
+data_specs.json
+data_articles.json
+data_catalog.json
+img_fails.json
+assets/intro-watch.mp4
+assets/intro-watch-v2.mp4
+assets/urls.txt
