@@ -105,8 +105,14 @@ header.hd{position:sticky;top:0;z-index:50;background:rgba(242,238,231,.78);
 .htxt{position:absolute;top:0;bottom:0;right:clamp(18px,4vw,64px);
   display:flex;flex-direction:column;justify-content:center;align-items:flex-end;
   z-index:3;text-align:right;max-width:min(60vw,720px)}
-.htxt h2{font-size:clamp(46px,6.9vw,110px);line-height:1.06;
+.htxt h2{font-size:clamp(44px,min(6.9vw,9.5vh),110px);line-height:1.06;
   padding-right:.06em;padding-bottom:.08em}
+/* Ventanas bajas (portátiles): el titular escala con la altura y el lede cede espacio */
+@media (max-height:640px){
+  .htxt h2{font-size:clamp(34px,min(6.9vw,9vh),110px)}
+  .hlede{font-size:12.5px;max-width:30ch;margin-top:10px}
+}
+@media (max-height:520px){ .hlede{display:none} }
 .hlede{margin-top:18px;margin-left:auto;max-width:34ch;font-size:13.5px;line-height:1.55;
   letter-spacing:-.03em;color:var(--ink);font-weight:400}
 .hmeta{position:absolute;left:var(--gut);bottom:26px;z-index:3;color:var(--ink)}
