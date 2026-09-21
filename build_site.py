@@ -489,7 +489,7 @@ def build_index():
 "makesOffer":[
 {offers}]}}
 </script>
-<link rel="stylesheet" href="nude.css?v=10">
+<link rel="stylesheet" href="nude.css?v=11">
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
@@ -708,7 +708,7 @@ def build_pdp(s):
 <script type="application/ld+json">
 {jsonld(s)}
 </script>
-<link rel="stylesheet" href="nude.css?v=10">
+<link rel="stylesheet" href="nude.css?v=11">
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
