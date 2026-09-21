@@ -424,7 +424,7 @@ def footer():
     <div class="f-col">
       <h4 data-i="f.kont">{de("f.kont")}</h4>
       <a href="mailto:info@estebanmarco.ch">info@estebanmarco.ch</a>
-      <a href="tel:+41767421548">+41 76 742 15 48</a>
+      <a href="tel:+41445052700">+41 44 505 27 00</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
     </div>
@@ -481,7 +481,7 @@ def build_index():
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://estebanmarco.ch/#business",
 "name":"Esteban Marco — KI, SEO & Software für KMU",
-"url":"https://estebanmarco.ch/","email":"info@estebanmarco.ch","telephone":"+41 76 742 15 48",
+"url":"https://estebanmarco.ch/","email":"info@estebanmarco.ch","telephone":"+41 44 505 27 00",
 "image":"https://estebanmarco.ch/media/hero.jpg",
 "address":{{"@type":"PostalAddress","addressLocality":"Zollikon","addressRegion":"ZH","postalCode":"8702","addressCountry":"CH"}},
 "areaServed":[{{"@type":"City","name":"Zürich"}},{{"@type":"AdministrativeArea","name":"Kanton Zürich"}},{{"@type":"Country","name":"Schweiz"}}],
@@ -614,7 +614,7 @@ def build_index():
     </div>
     <div class="st-links">
       <a href="mailto:info@estebanmarco.ch">info@estebanmarco.ch</a>
-      <a href="tel:+41767421548">+41 76 742 15 48</a>
+      <a href="tel:+41445052700">+41 44 505 27 00</a>
       <a href="https://wa.me/34652323585" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
@@ -738,7 +738,7 @@ def build_pdp(s):
       </div>
       <div class="pdp-cta" data-r>
         <a class="pill solid" href="index.html#kontakt" data-i="pdp.book">{de("pdp.book")}</a>
-        <a class="pill line" href="tel:+41767421548">+41 76 742 15 48</a>
+        <a class="pill line" href="tel:+41445052700">+41 44 505 27 00</a>
       </div>{demos}
       <div class="acc" data-r>
     <div class="acc-it">
