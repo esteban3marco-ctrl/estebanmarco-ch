@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>A few questions — Closet Concierge</title>
+<link rel="icon" href="logo-ga.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--crema:#F7F3EC;--papel:#FCFAF6;--oro:#A98A52;--oro-claro:#C9B489;
+      --tinta:#1C1A18;--gris:#6B6560;--linea:#E2DACC;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{background:var(--crema);color:var(--tinta);font-family:'Jost',sans-serif;
+     font-weight:300;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:660px;margin:0 auto;padding:44px 22px 80px;}
+
+header{text-align:center;margin-bottom:44px;}
+header img{width:86px;height:86px;border-radius:50%;object-fit:cover;display:block;margin:0 auto;}
+.marca{font-family:'Cormorant Garamond',serif;font-size:23px;letter-spacing:.3em;
+       text-transform:uppercase;margin:16px 0 6px;}
+.sub{font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--gris);}
+h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:40px;margin:30px 0 10px;}
+.intro{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;
+       color:var(--gris);line-height:1.55;max-width:470px;margin:0 auto;}
+
+.divisor{display:flex;align-items:center;gap:14px;margin:30px auto;max-width:280px;}
+.divisor::before,.divisor::after{content:'';flex:1;height:1px;background:var(--linea);}
+.divisor span{color:var(--oro);font-size:10px;}
+
+.seccion{margin:46px 0 22px;}
+.seccion .num{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--oro);}
+.seccion h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;margin:4px 0 0;}
+
+.q{background:var(--papel);border:1px solid var(--linea);padding:22px;margin-bottom:16px;}
+.q label.titulo{display:block;font-size:16px;margin-bottom:4px;font-weight:400;}
+.q .ayuda{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15.5px;
+          color:var(--gris);line-height:1.5;margin-bottom:14px;}
+textarea,input[type=text],input[type=email]{
+  width:100%;border:none;border-bottom:1px solid var(--linea);background:transparent;
+  font-family:'Jost',sans-serif;font-size:16px;font-weight:300;color:var(--tinta);
+  padding:9px 2px;resize:vertical;line-height:1.7;}
+textarea{min-height:82px;}
+textarea:focus,input:focus{outline:none;border-bottom-color:var(--oro);}
+
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px;}
+.chip{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--linea);
+      padding:9px 15px;cursor:pointer;font-size:15px;user-select:none;background:#fff;
+      transition:border-color .15s,background .15s;}
+.chip:hover{border-color:var(--oro-claro);}
+.chip input{position:absolute;opacity:0;pointer-events:none;}
+.chip i{width:12px;height:12px;border:1px solid var(--oro-claro);display:inline-block;
+        font-style:normal;flex:none;transition:background .15s;}
+.chip.on{border-color:var(--oro);background:rgba(169,138,82,.07);}
+.chip.on i{background:var(--oro);border-color:var(--oro);}
+
+.enviar{display:block;width:100%;margin-top:34px;padding:17px;
+        background:var(--tinta);color:#fff;border:none;cursor:pointer;
+        font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.3em;
+        text-transform:uppercase;font-weight:300;transition:background .2s;}
+.enviar:hover{background:var(--oro);}
+.enviar:disabled{opacity:.5;cursor:default;}
+.aviso{text-align:center;font-size:13.5px;color:var(--gris);margin-top:16px;}
+
+#gracias{display:none;text-align:center;padding:70px 0;}
+#gracias h1{margin-bottom:14px;}
+.error{color:#9B3B2E;text-align:center;margin-top:14px;font-size:14.5px;display:none;}
+
+footer{text-align:center;margin-top:60px;padding-top:24px;border-top:1px solid var(--linea);
+       font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A8A099;line-height:2;}
+
+@media(max-width:520px){
+  .wrap{padding:30px 16px 60px;}
+  h1{font-size:32px;} .intro{font-size:17px;} .q{padding:18px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div id="formulario">
+    <header>
+      <img src="logo-ga.jpg" alt="Closet Concierge">
+      <div class="marca">Closet Concierge</div>
+      <div class="sub">Private Wardrobe Curator</div>
+      <div class="divisor"><span>◆</span></div>
+      <h1>A few questions</h1>
+      <p class="intro">There is no rush and there are no wrong answers. What you write here is what
+      makes the difference between a website that looks like yours and one that looks like
+      everybody’s. Answer in whatever language you prefer.</p>
+    </header>
+
+    <!-- ONE -->
+    <div class="seccion"><div class="num">One</div><h2>Your work</h2></div>
+
+    <div class="q"><label class="titulo" for="q1">1 · In your own words, what do you do for a client?</label>
+      <div class="ayuda">As you would explain it to someone at dinner who has never heard of a closet
+      concierge. Your words here will become the words on the site.</div>
+      <textarea id="q1"></textarea></div>
+
+    <div class="q"><label class="titulo" for="q2">2 · What does a client actually receive, step by step?</label>
+      <div class="ayuda">The visit, the wardrobe edit, the shopping, the seasonal rotation — whatever
+      your process is. The more concrete it is, the less daunting it feels to book.</div>
+      <textarea id="q2"></textarea></div>
+
+    <div class="q"><label class="titulo" for="q3">3 · Which services should appear on the site?</label>
+      <div class="ayuda">And is there one you would like to be known for above the others?</div>
+      <textarea id="q3"></textarea></div>
+
+    <div class="q"><label class="titulo">4 · When would you like to be online?</label>
+      <div class="chips" data-campo="q4" data-modo="uno">
+        <label class="chip"><input type="radio" name="q4" value="Within a month"><i></i>Within a month</label>
+        <label class="chip"><input type="radio" name="q4" value="Two to three months"><i></i>Two to three months</label>
+        <label class="chip"><input type="radio" name="q4" value="No fixed date"><i></i>No fixed date</label>
+      </div>
+      <textarea id="q4b" placeholder="A specific date, if you have one" style="min-height:40px;margin-top:12px;"></textarea></div>
+
+    <!-- TWO -->
+    <div class="seccion"><div class="num">Two</div><h2>Your client</h2></div>
+
+    <div class="q"><label class="titulo" for="q5">5 · Who is she — and where is she?</label>
+      <div class="ayuda">Age, where she lives, what her life looks like. If you already have one or two
+      real clients in mind, describe them — far more useful than a general description. And since you
+      want to work internationally: which cities beyond Zürich do you have in mind?</div>
+      <textarea id="q5"></textarea></div>
+
+    <div class="q"><label class="titulo">6 · Do you also want to work with men?</label>
+      <div class="chips" data-campo="q6" data-modo="varios">
+        <label class="chip"><input type="checkbox" value="Women only"><i></i>Women only</label>
+        <label class="chip"><input type="checkbox" value="Also men"><i></i>Also men</label>
+        <label class="chip"><input type="checkbox" value="Corporate / image consulting"><i></i>Corporate / image consulting</label>
+      </div></div>
+
+    <div class="q"><label class="titulo">7 · Do you want every enquiry that comes in, or only those that are a real fit?</label>
+      <div class="ayuda">This decides whether the contact form simply collects messages or quietly
+      filters them before they reach you. There is no wrong answer — but it changes the design.</div>
+      <div class="chips" data-campo="q7" data-modo="uno">
+        <label class="chip"><input type="radio" name="q7" value="Every enquiry"><i></i>Every enquiry, I will decide myself</label>
+        <label class="chip"><input type="radio" name="q7" value="Filter first"><i></i>Filter before it reaches me</label>
+      </div></div>
+
+    <div class="q"><label class="titulo" for="q8">8 · What do you want someone to feel in the first five seconds on your site?</label>
+      <div class="ayuda">One word is enough. Calm, discretion, precision, warmth, authority — whatever
+      is true for you.</div>
+      <textarea id="q8" style="min-height:48px;"></textarea></div>
+
+    <!-- THREE -->
+    <div class="seccion"><div class="num">Three</div><h2>Discretion &amp; images</h2></div>
+
+    <div class="q"><label class="titulo">9 · How much can we show?</label>
+      <div class="ayuda">In your profession this matters more than in most. Tell me where the line is
+      and I will design within it.</div>
+      <div class="chips" data-campo="q9" data-modo="varios">
+        <label class="chip"><input type="checkbox" value="Wardrobes and outfits, nothing recognisable"><i></i>Wardrobes &amp; outfits, nothing recognisable</label>
+        <label class="chip"><input type="checkbox" value="Before and after, anonymised"><i></i>Before &amp; after, anonymised</label>
+        <label class="chip"><input type="checkbox" value="Atmosphere and detail only"><i></i>Atmosphere &amp; detail only</label>
+        <label class="chip"><input type="checkbox" value="Some clients have agreed to appear"><i></i>Some clients have agreed to appear</label>
+      </div></div>
+
+    <div class="q"><label class="titulo">10 · Do you have a professional portrait of yourself?</label>
+      <div class="ayuda">The single most important image on the site. People are engaging you, not a
+      company — and it has to be a genuine photograph.</div>
+      <div class="chips" data-campo="q10" data-modo="uno">
+        <label class="chip"><input type="radio" name="q10" value="Yes, recent and professional"><i></i>Yes, recent and professional</label>
+        <label class="chip"><input type="radio" name="q10" value="Some, unsure if good enough"><i></i>I have some, unsure they’re good enough</label>
+        <label class="chip"><input type="radio" name="q10" value="No — arrange a photographer"><i></i>No — please arrange a photographer</label>
+      </div></div>
+
+    <div class="q"><label class="titulo" for="q11">11 · What other photographs already exist?</label>
+      <div class="ayuda">Images of you working, wardrobes you have organised, details, clients’ pieces.
+      Anything at all — even phone photographs help me judge what is missing.</div>
+      <textarea id="q11"></textarea></div>
+
+    <div class="q"><label class="titulo">12 · Do you have your logo and colours as files?</label>
+      <div class="ayuda">The monogram and the typography from your card. If you have the original
+      files, please send them; if not, a clear photograph of the card is enough to begin.</div>
+      <div class="chips" data-campo="q12" data-modo="uno">
+        <label class="chip"><input type="radio" name="q12" value="Yes, I have the files"><i></i>Yes, I have the files</label>
+        <label class="chip"><input type="radio" name="q12" value="Only the printed card"><i></i>Only the printed card</label>
+        <label class="chip"><input type="radio" name="q12" value="A designer made it — I can ask"><i></i>A designer made it — I can ask</label>
+      </div></div>
+
+    <!-- FOUR -->
+    <div class="seccion"><div class="num">Four</div><h2>Taste &amp; details</h2></div>
+
+    <div class="q"><label class="titulo" for="q13">13 · Show me two or three websites you genuinely like.</label>
+      <div class="ayuda">They need not be in your field — a hotel, a gallery, a jeweller. This tells me
+      more about what you want than any other question here. And if there is one you dislike, that is
+      just as useful.</div>
+      <textarea id="q13"></textarea></div>
+
+    <div class="q"><label class="titulo">14 · Which languages, and which one leads?</label>
+      <div class="ayuda">You mentioned you want to reach an international clientele. If English leads,
+      the whole site is conceived in English and the others are written beside it — which reads very
+      differently from a German site with a translate button.</div>
+      <div class="chips" data-campo="q14" data-modo="varios">
+        <label class="chip"><input type="checkbox" value="English (leading)"><i></i>English (leading)</label>
+        <label class="chip"><input type="checkbox" value="German"><i></i>German</label>
+        <label class="chip"><input type="checkbox" value="Italian"><i></i>Italian</label>
+        <label class="chip"><input type="checkbox" value="French"><i></i>French</label>
+      </div></div>
+
+    <div class="q"><label class="titulo">15 · How should a client reach you for a first conversation?</label>
+      <div class="chips" data-campo="q15" data-modo="varios">
+        <label class="chip"><input type="checkbox" value="Books a slot in my calendar"><i></i>She books a slot in my calendar</label>
+        <label class="chip"><input type="checkbox" value="Writes, I answer when I choose"><i></i>She writes, I answer when I choose</label>
+        <label class="chip"><input type="checkbox" value="WhatsApp"><i></i>WhatsApp</label>
+        <label class="chip"><input type="checkbox" value="Telephone"><i></i>Telephone</label>
+      </div></div>
+
+    <div class="q"><label class="titulo" for="q16">16 · Anything else I should know?</label>
+      <div class="ayuda">Something you have seen elsewhere and want to avoid, a word you never want on
+      your site, an idea you have been carrying for a while. Anything.</div>
+      <textarea id="q16"></textarea></div>
+
+    <div class="q" style="background:transparent;border-style:dashed;">
+      <label class="titulo" for="email">Your email, so I can reply</label>
+      <input type="email" id="email" placeholder="name@example.com">
+    </div>
+
+    <button class="enviar" id="btn">Send my answers</button>
+    <div class="error" id="err"></div>
+    <p class="aviso">Your answers come directly to me and are used only for this project.</p>
+  </div>
+
+  <div id="gracias">
+    <img src="logo-ga.jpg" alt="" style="width:86px;height:86px;border-radius:50%;object-fit:cover;">
+    <div class="divisor"><span>◆</span></div>
+    <h1>Thank you</h1>
+    <p class="intro">I have everything I need. You will have the final figure and the schedule
+    within a day.</p>
+  </div>
+
+  <footer>
+    Esteban Marco · Dufourstrasse 27, 8702 Zollikon<br>
+    info@estebanmarco.ch · +41 76 742 15 48
+  </footer>
+</div>
+
+<script>
+const SB  = 'https://jwlpwuxunawzcfdfjxyn.supabase.co';
+const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3bHB3dXh1bmF3emNmZGZqeHluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzNDEwODMsImV4cCI6MjEwMDkxNzA4M30.GTx7v7IAjQOpaea_iu43ncjrxF3yLGUTS2qEZHvboAE';
+
+/* marcar opciones */
+document.querySelectorAll('.chip').forEach(chip=>{
+  const input = chip.querySelector('input');
+  input.addEventListener('change',()=>{
+    if(input.type==='radio'){
+      chip.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+    }
+    chip.classList.toggle('on', input.checked);
+  });
+});
+
+/* no perder lo escrito si cierra sin querer */
+const GUARDA='cc_briefing_borrador';
+const campos=()=>[...document.querySelectorAll('textarea,input[type=email]')];
+try{
+  const prev=JSON.parse(localStorage.getItem(GUARDA)||'{}');
+  campos().forEach(c=>{ if(prev[c.id]) c.value=prev[c.id]; });
+}catch(e){}
+document.addEventListener('input',()=>{
+  try{
+    const d={}; campos().forEach(c=>{ if(c.value) d[c.id]=c.value; });
+    localStorage.setItem(GUARDA,JSON.stringify(d));
+  }catch(e){}
+});
+
+function recoge(){
+  const r={};
+  campos().forEach(c=>{ if(c.value.trim()) r[c.id]=c.value.trim(); });
+  document.querySelectorAll('.chips').forEach(g=>{
+    const v=[...g.querySelectorAll('input')].filter(i=>i.checked).map(i=>i.value);
+    if(v.length) r[g.dataset.campo] = g.dataset.modo==='uno' ? v[0] : v;
+  });
+  return r;
+}
+
+document.getElementById('btn').addEventListener('click', async ()=>{
+  const btn=document.getElementById('btn'), err=document.getElementById('err');
+  const respuestas=recoge();
+  if(Object.keys(respuestas).length < 3){
+    err.textContent='Please answer at least a few questions before sending.';
+    err.style.display='block'; return;
+  }
+  err.style.display='none'; btn.disabled=true; btn.textContent='Sending…';
+  try{
+    const res = await fetch(SB+'/rest/v1/cc_briefing',{
+      method:'POST',
+      headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,
+               'Content-Type':'application/json','Prefer':'return=minimal'},
+      body: JSON.stringify({ nombre:'Gianfranca Addis',
+                             email: respuestas.email || null,
+                             respuestas, user_agent: navigator.userAgent.slice(0,240) })
+    });
+    if(!res.ok) throw new Error(res.status);
+    try{ localStorage.removeItem(GUARDA); }catch(e){}
+    document.getElementById('formulario').style.display='none';
+    document.getElementById('gracias').style.display='block';
+    window.scrollTo(0,0);
+  }catch(e){
+    btn.disabled=false; btn.textContent='Send my answers';
+    err.innerHTML='Something went wrong. Please write to <a href="mailto:info@estebanmarco.ch" style="color:var(--oro);">info@estebanmarco.ch</a> and I will sort it out.';
+    err.style.display='block';
+  }
+});
+</script>
+</body>
+</html>
