@@ -5,4 +5,5 @@ Disallow: /02_konto-abgleich.html
 Disallow: /03_treuhand-assistent.html
 Disallow: /demos/
 Disallow: /webs/
+Disallow: /m/
 Sitemap: https://estebanmarco.ch/sitemap.xml
