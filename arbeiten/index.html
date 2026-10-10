@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arbeiten &middot; Esteban Marco</title>
+<meta name="description" content="Websites und Software, die ich gebaut habe. Bei jedem Projekt steht dabei, was es ist: eine Kundin, ein eigenes Produkt oder ein Entwurf.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://estebanmarco.ch/arbeiten/">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#F6F3EE">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_CH">
+<meta property="og:site_name" content="Esteban Marco">
+<meta property="og:title" content="Arbeiten — Esteban Marco">
+<meta property="og:description" content="Websites und Software, die ich gebaut habe. Bei jedem Projekt steht dabei, was es ist: eine Kundin, ein eigenes Produkt oder ein Entwurf.">
+<meta property="og:url" content="https://estebanmarco.ch/arbeiten/">
+<meta property="og:image" content="https://estebanmarco.ch/arbeiten/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Medidas tomadas del referente a 1440x900 y pasadas a relativo:
+
+     hoja abierta ........ 545 x 746 px   -> aparato 1090 x 746
+     perspectiva ......... 2800 px        -> 2.57 veces el ancho
+     bisagra ............. borde derecho de la tapa
+     giro ................ 180deg -> 0deg en 850 px de scroll
+     curva ............... easeInOutCubic
+     el aparato se corre .. 25% de su ancho mientras esta cerrado
+     el nombre del fondo .. se va 40.3vw hacia fuera, sin apagarse,
+                            y termina antes que el pliegue
+   ============================================================ */
+:root{
+  --crema:#F2EEE7; --tinta:#482922; --papel:#F6F3EE;
+  --t75:rgba(72,41,34,.75); --t50:rgba(72,41,34,.5); --t15:rgba(72,41,34,.15);
+  --disp:'Inter Tight','Helvetica Neue',Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --gut:clamp(16px,2.4vw,34px);
+  --alma:#46657F; --tenis:#B4542F; --menu:#6F7B46;
+  --giro:180deg; --p:0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--t75);font-family:var(--disp);font-size:15px;
+  letter-spacing:-.04em;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--tinta);color:var(--crema)}
+.mono{font-family:var(--mono);letter-spacing:.09em;text-transform:uppercase}
+
+/* ---------- barra de arriba: su nombre, siempre ---------- */
+.barra{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;align-items:center;
+  justify-content:space-between;padding:14px var(--gut);pointer-events:none}
+.barra > *{pointer-events:auto}
+.marca{font-family:var(--disp);font-weight:600;letter-spacing:-.045em;color:var(--tinta);
+  font-size:clamp(17px,1.7vw,25px);line-height:1;text-transform:uppercase;position:relative}
+.marca sup{font-size:.3em;top:-1.6em;position:relative;font-weight:500;letter-spacing:0}
+.barra nav{display:flex;gap:16px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--t50)}
+.barra nav a:hover{color:var(--tinta)}
+
+/* ---------- la escena ---------- */
+.escena{height:760vh;position:relative}
+.pista{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center;
+  background:var(--papel)}
+
+/* el nombre gigante, detras del aparato, partido en dos */
+.rotulo{position:absolute;z-index:1;pointer-events:none;color:var(--tinta);
+  font-family:var(--disp);font-weight:700;letter-spacing:-.065em;line-height:.8;
+  font-size:8vw;text-transform:uppercase;white-space:nowrap;will-change:transform}
+.rotulo.izq{left:var(--gut);right:auto;top:47vh;transform:translate(calc(var(--n,0) * 40.3vw),-50%)}
+.rotulo.der{right:var(--gut);left:auto;top:58vh;transform:translate(calc(var(--n,0) * -40.3vw),-50%)}
+.rotulo sup{font-size:.26em;top:-2.1em;position:relative;letter-spacing:0}
+
+/* ---------- el aparato ---------- */
+.aparato{position:relative;z-index:3;
+  width:min(1090px,75.7vw,121.1vh);aspect-ratio:1090/746;
+  perspective:var(--per,2800px);
+  transform:translateX(calc((1 - var(--p)) * -25%));will-change:transform}
+.carcasa{position:absolute;inset:0;transform-style:preserve-3d}
+
+/* la mitad derecha no se mueve: es la pagina de la derecha */
+.mitad{position:absolute;top:0;height:100%;width:50%;
+  background:linear-gradient(160deg,#3A2721 0%,#1C120F 42%,#120B09 100%)}
+.mitad.der{right:0;border-radius:0 30px 30px 0;transform:translateZ(-1px)}
+
+/* la tapa: bisagra en su borde derecho, con dos caras */
+.tapa{position:absolute;left:0;top:0;width:50%;height:100%;
+  transform-origin:right center;transform-style:preserve-3d;
+  transform:rotateY(var(--giro));will-change:transform}
+.cara{position:absolute;inset:0;
+  background:linear-gradient(200deg,#3A2721 0%,#1C120F 42%,#120B09 100%);
+  -webkit-backface-visibility:hidden;backface-visibility:hidden}
+.cara.dentro{border-radius:30px 0 0 30px;transform:translateZ(1px)}
+.cara.fuera{transform:rotateY(180deg) translateZ(1px);border-radius:30px}
+.tapa[data-cara="dentro"] .cara.fuera{visibility:hidden}
+.tapa[data-cara="fuera"]  .cara.dentro{visibility:hidden}
+
+/* el filo de luz donde el bisel se encuentra con el canto */
+.mitad::after,.cara::after{content:'';position:absolute;inset:0;pointer-events:none;
+  border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.17),
+    inset 0 0 0 1px rgba(255,255,255,.055)}
+
+.sombra{position:absolute;pointer-events:none;left:10%;right:10%;bottom:-30px;height:52px;z-index:0;
+  transform:translateX(calc((1 - var(--p)) * 25%)) scaleX(calc(1 - (1 - var(--p)) * .5));
+  background:radial-gradient(58% 100% at 50% 0,rgba(72,41,34,.30),transparent 74%);
+  filter:blur(7px)}
+
+/* el canto de aluminio: lo que se ve por detras y le da grosor.
+   Tres franjas -luz arriba, cuerpo, sombra abajo- como un riel pulido. */
+.concha{position:absolute;pointer-events:none;transform:translateZ(-5px);
+  background:linear-gradient(177deg,#EFE9DF 0%,#D2C9BA 9%,#B3A897 44%,
+    #9A8F7F 72%,#837868 92%,#C6BDAE 100%);
+  box-shadow:0 1px 0 rgba(255,255,255,.72) inset, 0 -1px 0 rgba(0,0,0,.22) inset,
+             0 0 0 1px rgba(72,41,34,.16)}
+.concha.der{left:50%;right:-8px;top:-8px;bottom:-8px;border-radius:5px 37px 37px 5px}
+.concha.izq{left:-8px;right:0;top:-8px;bottom:-8px;border-radius:37px 5px 5px 37px}
+/* al cerrarse la tapa gira 180 grados y su "detras" pasa a ser "delante":
+   hay que darle la vuelta al grosor o la carcasa tapa la pantalla (Chrome) */
+.tapa[data-cara="fuera"] .concha.izq{left:-8px;right:-8px;border-radius:37px;
+  transform:translateZ(5px)}
+
+/* los botones del canto, como los de un telefono */
+.boton{position:absolute;pointer-events:none;right:-11px;width:4px;border-radius:2px;z-index:1;
+  background:linear-gradient(180deg,#DCD4C7,#8F8474);
+  box-shadow:0 1px 2px rgba(0,0,0,.22), 0 0 0 .5px rgba(0,0,0,.10);
+  transform:translateZ(-5px)}
+.boton.b1{top:26%;height:7%}
+.boton.b2{top:36%;height:11%}
+
+/* la marca del pliegue, en el centro, solo con el aparato abierto */
+.pliegue{position:absolute;left:calc(50% - 7px);top:12px;bottom:12px;width:14px;z-index:7;
+  pointer-events:none;opacity:var(--p);
+  background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.10) 42%,rgba(0,0,0,.14) 50%,
+    rgba(255,255,255,.12) 56%,rgba(0,0,0,0))}
+
+/* la pantalla: cada mitad ensena su trozo de la misma tira */
+.visor{position:absolute;inset:11px;overflow:hidden;background:var(--crema);
+  box-shadow:0 0 0 1px rgba(0,0,0,.55), 0 2px 7px rgba(0,0,0,.35)}
+/* el brillo del cristal: una banda muy tenue, fija, como en un movil real */
+.visor::after{content:'';position:absolute;inset:0;z-index:7;pointer-events:none;
+  border-radius:inherit;
+  background:linear-gradient(118deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,.05) 26%,
+    rgba(255,255,255,0) 46%,rgba(255,255,255,0) 100%)}
+.mitad.der .visor{border-radius:0 20px 20px 0;left:0}
+.cara.dentro .visor{border-radius:20px 0 0 20px;right:0}
+.tira{position:absolute;top:0;left:0;width:200%;will-change:transform}
+.mitad.der .tira{left:-100%}
+
+/* el reloj y la cobertura, fijos sobre el contenido */
+.estado{position:absolute;top:12px;left:12px;right:12px;z-index:6;display:flex;
+  justify-content:space-between;align-items:center;
+  padding:clamp(10px,1.4vw,20px) clamp(14px,1.9vw,26px);
+  font-family:var(--mono);font-size:clamp(9px,.85vw,12px);letter-spacing:.04em;
+  color:var(--tinta);pointer-events:none;
+  -webkit-backface-visibility:hidden;backface-visibility:hidden}
+.mitad.der .estado .hora,.cara.dentro .estado .red{visibility:hidden}
+[data-tono="oscuro"] .estado{color:rgba(242,238,231,.92);
+  text-shadow:0 1px 3px rgba(0,0,0,.28)}
+.pila{display:inline-block;width:1.6em;height:.84em;border:1px solid currentColor;border-radius:2px;
+  position:relative;vertical-align:-1px;margin-left:5px}
+.pila::before{content:'';position:absolute;inset:1.5px;background:currentColor;border-radius:1px}
+.pila::after{content:'';position:absolute;right:-3px;top:28%;width:2px;height:44%;
+  background:currentColor;border-radius:0 1px 1px 0}
+
+/* ---------- lo que pasa dentro de la pantalla ---------- */
+.hoja{min-height:100%;background:var(--crema)}
+.hoja .mitades{display:grid;grid-template-columns:1fr 1fr;min-height:var(--alto,746px)}
+
+/* 1 - la portada */
+.portada .texto{padding:clamp(22px,3.4vw,54px);display:flex;flex-direction:column;
+  justify-content:center;gap:clamp(14px,1.8vw,26px)}
+.portada .ante{font-family:var(--mono);font-size:clamp(9px,.8vw,11.5px);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--t50)}
+.portada h1{font-family:var(--disp);font-weight:600;letter-spacing:-.06em;line-height:.95;
+  color:var(--tinta);font-size:clamp(28px,4.3vw,62px)}
+.portada p{max-width:34ch;font-size:clamp(13px,1.07vw,16px);line-height:1.55;color:var(--t75)}
+.botones{display:flex;gap:9px;flex-wrap:wrap;margin-top:4px}
+.btn{font-family:var(--disp);font-weight:500;font-size:clamp(12px,.98vw,14.5px);
+  border-radius:40px;padding:.72em 1.35em;background:var(--tinta);color:var(--crema);
+  letter-spacing:-.02em;white-space:nowrap}
+.btn.claro{background:rgba(72,41,34,.08);color:var(--tinta)}
+.portada .foto{position:relative;overflow:hidden;background:#E3DCD1}
+.portada .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+
+/* 2 - las cifras */
+.cifras{background:#241612;color:var(--crema);padding:clamp(26px,3.6vw,58px);
+  min-height:calc(var(--alto,746px) * .42);display:flex;flex-direction:column;
+  justify-content:center}
+.cifras .ante{font-family:var(--mono);font-size:clamp(9px,.8vw,11.5px);letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(242,238,231,.5);margin-bottom:clamp(20px,2.6vw,40px)}
+.cifras .fila{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.6vw,26px)}
+.cifras b{display:block;font-family:var(--disp);font-weight:600;letter-spacing:-.065em;
+  line-height:.9;font-size:clamp(26px,3.6vw,54px);color:var(--crema)}
+.cifras span{display:block;margin-top:9px;font-family:var(--mono);
+  font-size:clamp(8px,.72vw,10.5px);letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(242,238,231,.55);line-height:1.4}
+
+/* 3 - cabecera de trabajos */
+.titular{background:#1A0F0C;color:var(--crema);padding:clamp(26px,3.6vw,58px);
+  display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
+  min-height:calc(var(--alto,746px) * .34)}
+.titular h2{font-family:var(--disp);font-weight:600;letter-spacing:-.06em;line-height:.88;
+  font-size:clamp(30px,5.4vw,78px);color:var(--crema)}
+.titular .btn{background:rgba(242,238,231,.14);color:var(--crema)}
+
+/* 4 - cada trabajo */
+.obra{display:grid;grid-template-columns:1fr 1fr;min-height:var(--alto,746px)}
+.obra .foto{overflow:hidden;background:#DED6CA}
+.obra .foto img{width:100%;height:100%;object-fit:cover;object-position:0% 0%}
+.obra .lado{padding:clamp(22px,3.2vw,52px);display:flex;flex-direction:column;
+  justify-content:space-between;color:#fff}
+.obra[data-c="alma"] .lado{background:var(--alma)}
+.obra[data-c="tenis"] .lado{background:var(--tenis)}
+.obra[data-c="menu"] .lado{background:var(--menu)}
+.obra .num{font-family:var(--disp);font-weight:600;letter-spacing:-.07em;line-height:.8;
+  font-size:clamp(54px,9vw,132px);color:rgba(255,255,255,.96)}
+.obra h3{font-family:var(--disp);font-weight:600;letter-spacing:-.05em;line-height:1.02;
+  font-size:clamp(19px,2.3vw,34px);margin-bottom:10px}
+.obra p{font-size:clamp(12px,1vw,15px);line-height:1.55;color:rgba(255,255,255,.84);
+  max-width:38ch;margin-bottom:14px}
+.sello{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);
+  font-size:clamp(8px,.72vw,10.5px);letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(0,0,0,.26);border-radius:40px;padding:6px 11px;margin-bottom:14px}
+.sello i{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.85}
+.obra .ir{font-family:var(--mono);font-size:clamp(8.5px,.76vw,11px);letter-spacing:.1em;
+  text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:3px;
+  align-self:flex-start}
+
+/* ---------- la pantalla de bloqueo (cara de fuera) ---------- */
+.bloqueo{position:absolute;inset:11px;border-radius:22px;overflow:hidden;pointer-events:none;
+  display:flex;flex-direction:column;padding:clamp(16px,2vw,28px);background:#15100E}
+.bloqueo .retrato{position:absolute;inset:0}
+.bloqueo .retrato img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;
+  filter:contrast(1.03)}
+.bloqueo .velo{position:absolute;inset:0;background:linear-gradient(180deg,
+  rgba(246,243,238,.90) 0%,rgba(246,243,238,.62) 24%,rgba(246,243,238,0) 44%,
+  rgba(21,16,14,.14) 64%,rgba(21,16,14,.62) 100%)}
+.bloqueo > *{position:relative;z-index:2}
+.bloqueo .hora{font-family:var(--disp);font-weight:600;letter-spacing:-.07em;line-height:1;
+  color:var(--tinta);font-size:clamp(46px,7.4vw,104px);text-align:center;margin-top:.12em}
+.bloqueo .quien{font-family:var(--disp);font-size:clamp(11px,1.05vw,16px);text-align:center;
+  color:var(--t75);margin-top:.5em;letter-spacing:-.02em}
+.avisos{margin-top:auto;display:flex;flex-direction:column;gap:9px}
+.aviso{display:flex;gap:10px;align-items:center;background:rgba(246,243,238,.9);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border-radius:14px;padding:10px 12px}
+.aviso i{width:30px;height:30px;border-radius:9px;flex:0 0 auto;display:block}
+.aviso b{display:block;font-family:var(--disp);font-weight:600;letter-spacing:-.03em;
+  font-size:clamp(11px,1vw,14px);color:var(--tinta)}
+.aviso span{display:block;margin-top:2px;font-family:var(--mono);
+  font-size:clamp(7.5px,.68vw,9.5px);letter-spacing:.07em;text-transform:uppercase;color:var(--t50)}
+.pie-bloqueo{display:flex;align-items:center;justify-content:space-between;
+  gap:10px;margin-top:14px}
+.chip{font-family:var(--mono);font-size:clamp(7.5px,.68vw,9.5px);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--crema);background:rgba(21,16,14,.46);
+  border-radius:40px;padding:8px 11px;white-space:nowrap}
+.chip.abrir{background:var(--crema);color:var(--tinta)}
+
+/* ---------- la pastilla de secciones, sobre el aparato ---------- */
+.pastilla{position:absolute;z-index:9;left:50%;bottom:clamp(12px,3vh,32px);
+  transform:translateX(-50%);display:flex;gap:2px;align-items:center;
+  background:rgba(21,16,14,.52);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-radius:40px;padding:4px;pointer-events:none;cursor:pointer;
+  opacity:clamp(0,calc((var(--p) - .62) * 2.9),1)}
+.pastilla b{font-family:var(--disp);font-weight:500;cursor:pointer;font-size:clamp(10px,.92vw,13.5px);
+  letter-spacing:-.02em;color:rgba(242,238,231,.68);border-radius:40px;padding:.5em 1em;
+  white-space:nowrap;transition:background .22s,color .22s}
+.pastilla b[data-on="1"]{background:var(--crema);color:var(--tinta)}
+
+/* ---------- cierre ---------- */
+.cierre{position:relative;z-index:4;background:var(--papel);
+  padding:clamp(22px,3vw,52px) var(--gut) clamp(26px,3.4vw,52px)}
+.cierre .caja{max-width:980px;margin:0 auto;border-radius:28px;background:#543226;
+  color:#E7DED3;padding:clamp(32px,5vw,74px) clamp(24px,4vw,58px)}
+.cierre h2{font-family:var(--disp);font-weight:600;letter-spacing:-.055em;color:var(--crema);
+  font-size:clamp(24px,3.6vw,48px);line-height:1.04;margin-bottom:20px;max-width:20ch}
+.cierre p{max-width:58ch;font-size:15px;line-height:1.62;margin-bottom:12px;
+  color:rgba(242,238,231,.74)}
+.vias{display:flex;gap:9px;flex-wrap:wrap;margin-top:28px}
+.vias a{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid rgba(242,238,231,.38);border-radius:40px;padding:10px 15px;color:var(--crema)}
+.vias a:hover{background:rgba(242,238,231,.1)}
+.pieweb{max-width:980px;margin:0 auto;padding:26px 0 0;display:flex;gap:18px;flex-wrap:wrap;
+  justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--t50)}
+
+/* ---------- movil: el referente gira la bisagra 90 grados ----------
+   Medido a 390x844: dos mitades de 373x345, bisagra horizontal en el
+   centro, y el nombre apilado arriba y abajo en vez de a los lados.   */
+@media(max-width:860px){
+  .escena{height:640vh}
+  .barra nav{display:none}
+
+  .rotulo,.rotulo.izq,.rotulo.der{left:0;right:0;text-align:center}
+  .rotulo{font-size:23vw;top:auto}
+  .rotulo.izq{top:9vh;transform:translateY(calc(var(--n,0) * 34vh))}
+  .rotulo.der{top:70vh;transform:translateY(calc(var(--n,0) * -34vh))}
+
+  .aparato{width:min(95vw,420px,44.5vh);aspect-ratio:373/690;
+    transform:translateY(calc((1 - var(--p)) * -25%))}
+  .mitad{top:auto;bottom:0;left:0;width:100%;height:50%}
+  .concha.der{left:-8px;right:-8px;top:50%;bottom:-8px;border-radius:5px 5px 37px 37px}
+  .concha.izq{left:-8px;right:-8px;top:-8px;bottom:0;border-radius:37px 37px 5px 5px}
+  .boton{right:auto;left:26%;top:-10px;width:7%;height:3px;border-radius:3px 3px 0 0;
+    background:linear-gradient(90deg,#DCD4C7,#8F8474)}
+  .boton.b1{left:26%;width:7%;height:3px;top:-10px}
+  .boton.b2{left:36%;width:11%;height:3px;top:-10px}
+  .mitad.der{border-radius:0 0 30px 30px}
+  .tapa{left:0;top:0;width:100%;height:50%;
+    transform-origin:center bottom;transform:rotateX(calc(-1 * var(--giro)))}
+  .cara.dentro{border-radius:30px 30px 0 0}
+  .cara.fuera{transform:rotateX(180deg) translateZ(1px);border-radius:30px}
+  .mitad.der .visor{border-radius:12px 12px 20px 20px;left:11px;top:0}
+  .cara.dentro .visor{border-radius:20px 20px 0 0;right:11px;bottom:0}
+  .tira{width:100%}
+  .mitad.der .tira{left:0;top:-100%}
+  .pliegue{left:12px;right:12px;top:calc(50% - 7px);bottom:auto;width:auto;height:14px;
+    background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.10) 42%,rgba(0,0,0,.14) 50%,
+      rgba(255,255,255,.12) 56%,rgba(0,0,0,0))}
+  .sombra{left:6%;right:6%;bottom:-24px;
+    transform:translateY(calc((1 - var(--p)) * -25%)) scaleX(calc(1 - (1 - var(--p)) * .12))}
+  .mitad.der .estado{display:none}
+
+  /* el contenido pasa a una sola columna: la pagina ya es vertical */
+  .hoja .mitades,.obra{grid-template-columns:1fr!important;grid-template-rows:auto 1fr}
+  .portada .foto,.obra .foto{min-height:34%}
+  .cifras .fila{grid-template-columns:repeat(2,1fr);gap:16px}
+  .cifras{min-height:calc(var(--alto,345px) * .62)}
+  .titular{min-height:calc(var(--alto,345px) * .5)}
+  .obra .num{font-size:clamp(40px,14vw,64px)}
+
+  /* la pantalla de bloqueo cabe justa: un aviso basta */
+  .bloqueo .velo{background:linear-gradient(180deg,
+    rgba(246,243,238,.93) 0%,rgba(246,243,238,.78) 30%,rgba(246,243,238,.30) 48%,
+    rgba(246,243,238,0) 60%,rgba(21,16,14,.42) 100%)}
+  .bloqueo .hora{font-size:15vw}
+  .bloqueo .quien{font-size:3.4vw}
+  .avisos .aviso:nth-child(2){display:none}
+  .chip{font-size:2.3vw;padding:7px 9px}
+
+  .pastilla{bottom:3vh}
+  .pastilla b{font-size:11px;padding:.45em .8em}
+}
+
+/* ---------- si pide menos movimiento, se ensena quieto ----------
+   Va al final a proposito: asi gana a las reglas de arriba.      */
+@media (prefers-reduced-motion: reduce){
+  .barra{position:static;background:var(--papel)}
+  .escena{height:auto!important}
+  .pista{position:static!important;height:auto!important;display:block!important;
+    overflow:visible!important;padding:clamp(80px,12vh,140px) var(--gut) clamp(30px,5vh,60px)}
+  .rotulo{position:static!important;display:block;transform:none!important;
+    font-size:clamp(34px,9vw,90px);text-align:left;margin:0 auto;max-width:1090px}
+  .rotulo.der{margin-bottom:26px}
+  .aparato{width:min(1090px,94vw)!important;aspect-ratio:auto!important;margin:0 auto;
+    perspective:none!important;transform:none!important}
+  .carcasa{position:static!important;transform-style:flat!important}
+  .mitad.der{display:none!important}
+  .tapa{position:static!important;width:100%!important;height:auto!important;
+    transform:none!important;transform-style:flat!important}
+  .cara{position:static!important;backface-visibility:visible!important;
+    border-radius:20px;overflow:hidden}
+  .cara.fuera{display:none!important}
+  .tapa[data-cara] .cara.dentro{visibility:visible!important}
+  .visor{position:static!important;overflow:visible!important}
+  .tira{position:static!important;width:100%!important;transform:none!important}
+  .estado{display:none!important}
+  .sombra,.pastilla,.pliegue,.concha,.boton{display:none!important}
+  .hoja .mitades,.obra{grid-template-columns:1fr!important;min-height:0!important}
+  .cifras,.titular{min-height:0!important}
+  .portada .foto,.obra .foto{min-height:0!important}
+  .portada .foto,.obra .foto{aspect-ratio:3/2}
+  .titular{min-height:0!important}
+}
+
+/* ---------- conmutador de idioma ---------- */
+.lang{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.1em;color:var(--t50)}
+.lang button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:0;
+  padding:2px 1px;cursor:pointer;text-transform:uppercase}
+.lang button[aria-pressed="true"]{color:var(--tinta);font-weight:500}
+.barra .der{display:flex;align-items:center;gap:16px}
+
+/* el color de cada trabajo: uno por ficha, apagados, de su paleta */
+.obra[data-c="alma"]     .lado{background:#46657F}
+.obra[data-c="menu"]     .lado{background:#6F7B46}
+.obra[data-c="omnimind"] .lado{background:#514863}
+.obra[data-c="atlas"]    .lado{background:#38565F}
+.obra[data-c="tennis"]   .lado{background:#B4542F}
+
+/* ---------- los botones ----------
+   Dos materiales, cada uno donde funciona:
+     · relieve (neumorfismo) sobre el papel, que es el lenguaje de su web
+     · vidrio (glassmorfismo) sobre color o sobre foto, donde el relieve
+       no se ve porque no hay dos tonos de fondo que lo dibujen
+   Y el pulsado hundido, que es lo que le da el tacto.                      */
+
+/* el principal: espresso macizo, levantado del papel */
+.btn{box-shadow:0 10px 22px rgba(72,41,34,.17), 0 2px 5px rgba(72,41,34,.12),
+  inset 0 1px 0 rgba(255,255,255,.17);transition:box-shadow .18s, transform .18s}
+.btn:hover{box-shadow:0 14px 28px rgba(72,41,34,.21), 0 3px 7px rgba(72,41,34,.14),
+  inset 0 1px 0 rgba(255,255,255,.22);transform:translateY(-1px)}
+.btn:active{transform:translateY(1px);
+  box-shadow:inset 3px 3px 8px rgba(0,0,0,.30), inset -2px -2px 6px rgba(255,255,255,.09)}
+
+/* los secundarios: relieve puro sobre el mismo tono de la pagina */
+.btn.claro,.btn.linea{background:var(--crema);color:var(--tinta)}
+.btn.claro{box-shadow:6px 6px 14px rgba(72,41,34,.13), -6px -6px 14px rgba(255,255,255,.95),
+  inset 0 0 0 1px rgba(255,255,255,.5)}
+.btn.claro:hover{box-shadow:8px 8px 18px rgba(72,41,34,.16), -8px -8px 18px rgba(255,255,255,1),
+  inset 0 0 0 1px rgba(255,255,255,.7)}
+.btn.linea{box-shadow:5px 5px 12px rgba(72,41,34,.11), -5px -5px 12px rgba(255,255,255,.92),
+  inset 0 0 0 1px rgba(72,41,34,.09)}
+.btn.linea:hover{box-shadow:7px 7px 16px rgba(72,41,34,.14), -7px -7px 16px rgba(255,255,255,.98),
+  inset 0 0 0 1px rgba(72,41,34,.14)}
+.btn.claro:active,.btn.linea:active{transform:translateY(1px);
+  box-shadow:inset 5px 5px 11px rgba(72,41,34,.16), inset -5px -5px 11px rgba(255,255,255,.92)}
+
+/* vidrio sobre la foto de la pantalla de bloqueo */
+.chip{background:rgba(21,16,14,.34);-webkit-backdrop-filter:blur(14px) saturate(140%);
+  backdrop-filter:blur(14px) saturate(140%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.20), 0 2px 10px rgba(0,0,0,.16)}
+.chip.abrir{background:rgba(242,238,231,.80);color:var(--tinta);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.85), 0 3px 14px rgba(0,0,0,.14)}
+
+/* vidrio sobre la mitad de color de cada trabajo */
+.sello{background:rgba(0,0,0,.20);-webkit-backdrop-filter:blur(12px) saturate(135%);
+  backdrop-filter:blur(12px) saturate(135%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.obra .ir{border-bottom:0;border-radius:40px;padding:.62em 1.05em;
+  background:rgba(255,255,255,.13);-webkit-backdrop-filter:blur(12px) saturate(135%);
+  backdrop-filter:blur(12px) saturate(135%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.30), 0 3px 12px rgba(0,0,0,.14);
+  transition:background .18s, box-shadow .18s}
+.obra .ir:hover{background:rgba(255,255,255,.22);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.45), 0 5px 16px rgba(0,0,0,.18)}
+
+/* vidrio sobre la caja marron del cierre */
+.vias a{background:rgba(255,255,255,.09);border-color:rgba(242,238,231,.26);
+  -webkit-backdrop-filter:blur(12px) saturate(135%);backdrop-filter:blur(12px) saturate(135%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14);transition:background .18s, box-shadow .18s, transform .18s}
+.vias a:hover{background:rgba(255,255,255,.17);transform:translateY(-1px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 6px 16px rgba(0,0,0,.18)}
+.vias a:active{transform:translateY(1px);box-shadow:inset 3px 3px 8px rgba(0,0,0,.26)}
+
+/* la pastilla va sobre papel liso: ahi el vidrio no refracta nada y se
+   desvanece. Relieve, que es lo que funciona sobre un fondo plano. */
+.pastilla{background:rgba(29,19,16,.93);
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+  box-shadow:0 12px 30px rgba(72,41,34,.24), 0 2px 6px rgba(72,41,34,.14),
+             inset 0 1px 0 rgba(255,255,255,.13)}
+.pastilla b{color:rgba(242,238,231,.76)}
+.pastilla b[data-on="1"]{box-shadow:0 2px 7px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.7)}
+
+/* el enlace a su web: tiene que verse, la pagina se manda por correo y LinkedIn */
+.btn.linea{background:none;color:var(--tinta);box-shadow:inset 0 0 0 1px var(--t15)}
+.btn.linea:hover{box-shadow:inset 0 0 0 1px var(--t50)}
+.vias a.llena{background:var(--crema);color:var(--tinta);border-color:var(--crema);font-weight:500}
+.vias a.llena:hover{background:#fff}
+
+/* toda la mitad de color es pulsable: un enlace de texto de 16 px se falla */
+/* casi cerrado, la mitad de atras va redondeada entera y su canto se esconde:
+   si no, sus esquinas rectas asoman por las dos esquinas izquierdas */
+.aparato[data-cerrado="1"] .mitad.der{border-radius:30px}
+.aparato[data-cerrado="1"] .concha.der{opacity:0}
+
+.obra .lado,.obra .foto{position:relative}
+.obra .todo{position:absolute;top:0;right:0;bottom:0;left:0;z-index:5;display:block}
+.obra .todo:focus-visible{outline:2px solid rgba(255,255,255,.8);outline-offset:-6px}
+
+/* la nota de los proyectos sin enlace publico */
+.obra .nota{font-family:var(--mono);font-size:clamp(8.5px,.76vw,11px);letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.52);align-self:flex-start}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <a class="marca" href="/">Esteban Marco<sup>&reg;</sup></a>
+  <div class="der">
+    <div class="lang" id="lang" role="group" aria-label="Sprache">
+      <button type="button" data-l="de" aria-pressed="true">DE</button><span>&middot;</span><button type="button" data-l="en" aria-pressed="false">EN</button>
+    </div>
+    <nav>
+      <a href="/" data-en="Website">Website</a>
+      <a href="mailto:info@estebanmarco.ch" data-en="Contact">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<section class="escena" id="escena">
+  <div class="pista">
+
+    <div class="rotulo izq" id="rotIzq">Esteban</div>
+    <div class="rotulo der" id="rotDer">Marco</div>
+
+    <div class="aparato" id="aparato">
+      <div class="sombra"></div>
+      <div class="carcasa">
+
+        <div class="concha der"></div>
+        <i class="boton b1"></i>
+        <i class="boton b2"></i>
+        <div class="mitad der">
+          <div class="visor">
+            <div class="tira" data-tira></div>
+          </div>
+          <div class="estado">
+            <span class="hora">09:41</span>
+            <span class="red">5G <i class="pila"></i></span>
+          </div>
+        </div>
+
+        <div class="tapa" id="tapa" data-cara="fuera">
+          <div class="concha izq"></div>
+          <div class="cara dentro">
+            <div class="visor">
+              <div class="tira" data-tira></div>
+            </div>
+            <div class="estado">
+              <span class="hora">09:41</span>
+              <span class="red">5G <i class="pila"></i></span>
+            </div>
+          </div>
+          <div class="cara fuera">
+            <div class="bloqueo">
+              <div class="retrato"><img src="img/retrato-alto.jpg" alt="Esteban Marco"></div>
+              <div class="velo"></div>
+              <div class="hora">09:41</div>
+              <div class="quien" data-en="Websites &amp; Software &middot; Zurich">Websites &amp; Software &middot; Z&uuml;rich</div>
+              <div class="avisos">
+                <div class="aviso"><i style="background:#46657F"></i>
+                  <div><b>ALMA Image Consulting</b><span data-en="Website live &middot; Zurich">Website in Betrieb &middot; Z&uuml;rich</span></div></div>
+                <div class="aviso"><i style="background:#6F7B46"></i>
+                  <div><b>Smart Menu</b><span data-en="Own product &middot; live">Eigenes Produkt &middot; live</span></div></div>
+              </div>
+              <div class="pie-bloqueo">
+                <span class="chip">ZRH</span>
+                <span class="chip abrir" data-en="Scroll to unfold">Scrollen zum &Ouml;ffnen</span>
+                <span class="chip">DE &middot; EN &middot; FR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pliegue"></div>
+      </div>
+    </div>
+
+    <div class="pastilla" id="pastilla">
+      <b data-on="1" data-en="Start">Start</b><b data-en="Numbers">Zahlen</b><b data-en="Work">Arbeiten</b><b data-en="Contact">Kontakt</b>
+    </div>
+
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="caja">
+    <h2 data-en="What a project costs depends on what it has to do.">Was ein Projekt kostet, h&auml;ngt davon ab, wof&uuml;r es da sein soll.</h2>
+    <p data-en="A page that should be a clean business card is not the same as one that has to bring in new clients or take sign-ups off your desk. Three things set the price: how many pages, how many languages, and whether you want to change the content yourself.">Eine Seite, die eine saubere Visitenkarte sein soll, ist nicht dasselbe wie eine, die neue Kunden bringen oder Anmeldungen abnehmen soll. Den Preis bestimmen drei Dinge: wie viele Seiten, wie viele Sprachen, und ob Sie die Inhalte selbst &auml;ndern wollen.</p>
+    <p data-en="Tell me what the website has to do &mdash; then I will give you a price cut to exactly that.">Sagen Sie mir, wof&uuml;r die Website da sein soll &mdash; dann rechne ich Ihnen einen Preis, der genau darauf zugeschnitten ist.</p>
+    <div class="vias">
+      <a href="mailto:info@estebanmarco.ch">info@estebanmarco.ch</a>
+      <a href="tel:+41767421548">+41 76 742 15 48</a>
+      <a class="llena" href="https://estebanmarco.ch" target="_blank" rel="noopener">estebanmarco.ch &#8599;</a>
+    </div>
+  </div>
+  <div class="pieweb">
+    <span>Esteban Marco &middot; Dufourstrasse 27 &middot; 8702 Zollikon</span>
+    <span>
+      <a href="/impressum.html">Impressum</a> &nbsp;&middot;&nbsp;
+      <a href="/datenschutz.html">Datenschutz</a>
+    </span>
+  </div>
+</section>
+
+<template id="contenido">
+  <div class="hoja portada" data-tono="claro" data-tono2="oscuro" data-chip="0">
+    <div class="mitades">
+      <div class="texto">
+        <span class="ante" data-en="Websites &amp; Software &mdash; Zurich">Websites &amp; Software &mdash; Z&uuml;rich</span>
+        <h1 data-en="Built, not<br>described.">Gebaut, nicht<br>beschrieben.</h1>
+        <p data-en="I build websites and software for companies in Zurich and beyond. Instead of explaining what would be possible, I build it &mdash; and you take a look.">Ich baue Websites und Software f&uuml;r Unternehmen in Z&uuml;rich und dar&uuml;ber hinaus. Statt zu erkl&auml;ren, was m&ouml;glich w&auml;re, baue ich es &mdash; und Sie schauen es sich an.</p>
+        <div class="botones">
+          <a class="btn" href="#arbeiten" data-en="See the work">Arbeiten ansehen</a>
+          <a class="btn claro" href="mailto:info@estebanmarco.ch" data-en="Say hello">Hallo sagen</a>
+          <a class="btn linea" href="https://estebanmarco.ch" target="_blank" rel="noopener">estebanmarco.ch &#8599;</a>
+        </div>
+      </div>
+      <div class="foto"><img src="img/retrato-alto.jpg" alt="Esteban Marco"></div>
+    </div>
+  </div>
+
+  <div class="hoja cifras" data-tono="oscuro" data-chip="1">
+    <div class="ante" data-en="Five projects, six services, one person">F&uuml;nf Arbeiten, sechs Leistungen, ein Ansprechpartner</div>
+    <div class="fila">
+      <div><b>05</b><span data-en="Projects<br>shown here">Arbeiten<br>hier gezeigt</span></div>
+      <div><b>06</b><span data-en="Services<br>on offer">Leistungen<br>im Angebot</span></div>
+      <div><b>03</b><span data-en="Languages<br>DE &middot; EN &middot; FR">Sprachen<br>DE &middot; EN &middot; FR</span></div>
+      <div><b>01</b><span data-en="Person,<br>who builds">Ansprech&shy;partner,<br>der baut</span></div>
+    </div>
+  </div>
+
+  <div class="hoja titular" id="arbeiten" data-tono="oscuro" data-chip="2">
+    <h2 data-en="Selected<br>work">Ausgew&auml;hlte<br>Arbeiten</h2>
+    <a class="btn" href="/#leistungen" data-en="All services &#8599;">Alle Leistungen &#8599;</a>
+  </div>
+
+  <div class="hoja obra" data-tono="oscuro" data-chip="2" data-c="alma">
+    <div class="foto">      <a class="todo" href="https://almaimage.ch" target="_blank" rel="noopener" aria-label="ALMA Image Consulting"></a>
+<img src="img/obra-alma.jpg" alt="ALMA Image Consulting"></div>
+    <div class="lado">
+      <a class="todo" href="https://almaimage.ch" target="_blank" rel="noopener" aria-label="ALMA Image Consulting"></a>
+      <span class="num">01</span>
+      <div>
+        <span class="sello"><i></i><span data-en="Client &middot; live">Kundin &middot; in Betrieb</span></span>
+        <h3 data-en="ALMA Image Consulting">ALMA Image Consulting</h3>
+        <p data-en="Image consulting in Zurich. A multilingual website with its own editing panel: Andrea maintains texts, images and offers herself, without me. Plus one-click translation and a second area for second-hand fashion.">Image-Beratung in Z&uuml;rich. Mehrsprachige Website mit eigenem Bearbeitungspanel: Andrea pflegt Texte, Bilder und Angebote selbst, ohne mich. Dazu die &Uuml;bersetzung auf Knopfdruck und ein zweiter Bereich f&uuml;r Second-Hand-Mode.</p>
+        <a class="ir" href="https://almaimage.ch" target="_blank" rel="noopener">almaimage.ch &#8599;</a>
+      </div>
+    </div>
+  </div>
+  <div class="hoja obra" data-tono="oscuro" data-chip="2" data-c="menu">
+    <div class="foto">      <a class="todo" href="https://menu.estebanmarco.ch" target="_blank" rel="noopener" aria-label="Smart Menu"></a>
+<img src="img/obra-menu.jpg" alt="Smart Menu"></div>
+    <div class="lado">
+      <a class="todo" href="https://menu.estebanmarco.ch" target="_blank" rel="noopener" aria-label="Smart Menu"></a>
+      <span class="num">02</span>
+      <div>
+        <span class="sello"><i></i><span data-en="Own product &middot; live">Eigenes Produkt &middot; live</span></span>
+        <h3 data-en="Smart Menu">Smart Menu</h3>
+        <p data-en="The menu as a website instead of a PDF. The guest scans, reads on their phone without zooming, in their own language. Built because in Zurich almost every menu sits online as a PDF &mdash; and that is exactly where guests look before they decide.">Die Speisekarte als Website statt als PDF. Der Gast scannt, liest auf dem Handy ohne zu zoomen, in seiner Sprache. Gebaut, weil in Z&uuml;rich fast jede Karte als PDF online liegt &mdash; und genau dort schaut der Gast nach, bevor er sich entscheidet.</p>
+        <a class="ir" href="https://menu.estebanmarco.ch" target="_blank" rel="noopener">Smart Menu &#8599;</a>
+      </div>
+    </div>
+  </div>
+  <div class="hoja obra" data-tono="oscuro" data-chip="2" data-c="omnimind">
+    <div class="foto">      <a class="todo" href="https://github.com/esteban3marco-ctrl/omnimind-local" target="_blank" rel="noopener" aria-label="OMNIMIND"></a>
+<img src="img/obra-omnimind.jpg" alt="OMNIMIND"></div>
+    <div class="lado">
+      <a class="todo" href="https://github.com/esteban3marco-ctrl/omnimind-local" target="_blank" rel="noopener" aria-label="OMNIMIND"></a>
+      <span class="num">03</span>
+      <div>
+        <span class="sello"><i></i><span data-en="Own project &middot; in development">Eigenes Projekt &middot; in Entwicklung</span></span>
+        <h3 data-en="OMNIMIND">OMNIMIND</h3>
+        <p data-en="An AI assistant that runs entirely on your own hardware: voice, memory and actions, without a single byte going to the cloud. Built for cases where the data must not leave the building &mdash; fiduciaries, medical practices, law firms.">Ein KI-Assistent, der vollst&auml;ndig auf eigener Hardware l&auml;uft: Sprache, Ged&auml;chtnis und Aktionen, ohne dass ein einziges Byte in die Cloud geht. Gebaut f&uuml;r F&auml;lle, in denen die Daten das Haus nicht verlassen d&uuml;rfen &mdash; Treuhand, Arztpraxis, Anwaltskanzlei.</p>
+        <a class="ir" href="https://github.com/esteban3marco-ctrl/omnimind-local" target="_blank" rel="noopener"><span data-en="See it on GitHub">Auf GitHub ansehen</span> &#8599;</a>
+      </div>
+    </div>
+  </div>
+  <div class="hoja obra" data-tono="oscuro" data-chip="2" data-c="atlas">
+    <div class="foto">      <a class="todo" href="https://github.com/esteban3marco-ctrl/atlas-traffic-ai-pro" target="_blank" rel="noopener" aria-label="ATLAS"></a>
+<img src="img/obra-atlas.jpg" alt="ATLAS"></div>
+    <div class="lado">
+      <a class="todo" href="https://github.com/esteban3marco-ctrl/atlas-traffic-ai-pro" target="_blank" rel="noopener" aria-label="ATLAS"></a>
+      <span class="num">04</span>
+      <div>
+        <span class="sello"><i></i><span data-en="Own project &middot; prototype">Eigenes Projekt &middot; Prototyp</span></span>
+        <h3 data-en="ATLAS">ATLAS</h3>
+        <p data-en="Traffic lights that decide for themselves. A camera counts vehicles with YOLOv8, a reinforcement-learning network picks the phase. 1,570 training runs, 18 models, 50 of 50 safety tests passed. The figures come from simulation &mdash; it is not yet running in a real city.">Ampelsteuerung, die selbst entscheidet. Eine Kamera z&auml;hlt die Fahrzeuge mit YOLOv8, ein best&auml;rkend lernendes Netz w&auml;hlt die Phase. 1570 Trainingsl&auml;ufe, 18 Modelle, 50 von 50 Sicherheitstests bestanden. Die Zahlen stammen aus der Simulation &mdash; im Verkehr einer echten Stadt l&auml;uft es noch nicht.</p>
+        <a class="ir" href="https://github.com/esteban3marco-ctrl/atlas-traffic-ai-pro" target="_blank" rel="noopener"><span data-en="See it on GitHub">Auf GitHub ansehen</span> &#8599;</a>
+      </div>
+    </div>
+  </div>
+  <div class="hoja obra" data-tono="oscuro" data-chip="2" data-c="tennis">
+    <div class="foto">      <a class="todo" href="/demos/zurich-tennis/" aria-label="Zurich Tennis Competition"></a>
+<img src="img/obra-tennis.jpg" alt="Zurich Tennis Competition"></div>
+    <div class="lado">
+      <a class="todo" href="/demos/zurich-tennis/" aria-label="Zurich Tennis Competition"></a>
+      <span class="num">05</span>
+      <div>
+        <span class="sello"><i></i><span data-en="Concept &middot; not a client">Entwurf &middot; kein Kunde</span></span>
+        <h3 data-en="Zurich Tennis Competition">Zurich Tennis Competition</h3>
+        <p data-en="A tennis club that does not exist. Built in full &mdash; film, programmes, coaching team, sign-up &mdash; to show what is possible for a sports club today without paying for a film crew. Everything there is invented; the work behind it is not.">Ein Tennisclub, den es nicht gibt. Vollst&auml;ndig gebaut &mdash; Film, Programme, Trainerteam, Anmeldung &mdash; um zu zeigen, was f&uuml;r einen Sportverein heute m&ouml;glich ist, ohne ein Filmteam zu bezahlen. Alles dort ist erfunden; die Arbeit dahinter nicht.</p>
+        <a class="ir" href="/demos/zurich-tennis/" target="_blank" rel="noopener"><span data-en="See the concept">Entwurf ansehen</span> &#8599;</a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+(function(){
+  var escena  = document.getElementById('escena');
+  if(!escena) return;
+  var pista   = escena.querySelector('.pista');
+  var aparato = document.getElementById('aparato');
+  var tapa    = document.getElementById('tapa');
+  var rotIzq  = document.getElementById('rotIzq');
+  var rotDer  = document.getElementById('rotDer');
+  var pastilla= document.getElementById('pastilla');
+  var chips   = Array.prototype.slice.call(pastilla.children);
+  var tiras   = Array.prototype.slice.call(escena.querySelectorAll('[data-tira]'));
+  var caraDentro = escena.querySelector('.cara.dentro');
+  var mitadDer   = escena.querySelector('.mitad.der');
+  var molde   = document.getElementById('contenido');
+  var reduce  = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // la misma tira, dos veces: cada mitad ensena su trozo
+  tiras.forEach(function(t){ t.appendChild(molde.content.cloneNode(true)); });
+
+  // ---- las medidas tomadas del referente ----
+  var ARRANQUE= 0.0444;   // no empieza a girar hasta el 4.4% del alto (40px de 900)
+  var VENTANA = 0.978;    // y tarda en abrirse el 97.8% del alto (880px de 900)
+  var PERSP   = 2.57;     // la perspectiva, en veces el ancho del aparato
+  var NOM_A   = 0.07;     // el nombre arranca al 7% de la ventana
+  var NOM_B   = 0.75;     // y termina al 75%, antes que el pliegue
+
+  function suave(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; }
+  function tope(t){ return t < 0 ? 0 : (t > 1 ? 1 : t); }
+
+  var alto = 0, recorrido = 0, ventana = 0, arranque = 0, arriba = 0, tramos = [];
+
+  function medir(){
+    if(reduce.matches){
+      aparato.style.cssText = ''; tapa.style.cssText = '';
+      tiras.forEach(function(t){ t.style.transform = ''; });
+      return;
+    }
+    arriba    = escena.getBoundingClientRect().top + scrollY;
+    arranque  = innerHeight * ARRANQUE;
+    ventana   = innerHeight * VENTANA;
+    recorrido = escena.offsetHeight - innerHeight;
+    aparato.style.setProperty('--per', (aparato.offsetWidth * PERSP).toFixed(0) + 'px');
+    // cuanto tiene que viajar el contenido dentro de la pantalla
+    alto = 0; tramos = [];
+    tiras.forEach(function(t){
+      var v = t.parentNode.getBoundingClientRect().height;
+      alto = Math.max(alto, t.scrollHeight - v);
+      // que cada hoja ocupe la pantalla entera de alto
+      t.style.setProperty('--alto', Math.round(v) + 'px');
+    });
+    // Cada mitad lleva una copia entera de la tira, asi que todo enlace
+    // existe dos veces: una se ve y la otra queda recortada fuera. Hay que
+    // apagar la que no se ve, o el navegador encuentra la equivocada y el
+    // clic se lo come la carcasa.
+    tiras.forEach(function(t){
+      var v = t.parentNode.getBoundingClientRect();
+      Array.prototype.forEach.call(t.querySelectorAll('a,button,[role="button"]'), function(el){
+        var r = el.getBoundingClientRect();
+        var cx = r.left + r.width / 2;
+        var dentro = cx > v.left - 1 && cx < v.right + 1;
+        el.style.pointerEvents = dentro ? '' : 'none';
+        if (dentro) el.removeAttribute('tabindex'); else el.setAttribute('tabindex', '-1');
+      });
+    });
+
+    // donde empieza cada hoja, para saber de que color va el reloj
+    var ref = tiras[0], y0 = ref.getBoundingClientRect().top;
+    Array.prototype.forEach.call(ref.children, function(h){
+      var r = h.getBoundingClientRect();
+      tramos.push({el: h, a: r.top - y0, b: r.bottom - y0,
+                   t: h.getAttribute('data-tono'),
+                   t2: h.getAttribute('data-tono2') || h.getAttribute('data-tono'),
+                   c: +(h.getAttribute('data-chip') || 0)});
+    });
+    objetivo = suave2 = donde();
+    pintar(suave2);
+  }
+
+  function pintar(y){
+    if(reduce.matches) return;
+
+    // se abre al entrar y se vuelve a cerrar al salir
+    var cruda = Math.min(tope((y - arranque) / ventana),
+                         tope((recorrido - arranque - y) / ventana));
+    var p = suave(cruda);
+
+    pista.style.setProperty('--p', p.toFixed(4));
+    var giro = 180 * (1 - p);
+    tapa.style.setProperty('--giro', giro.toFixed(2) + 'deg');
+    var cara = giro > 90 ? 'fuera' : 'dentro';
+    tapa.setAttribute('data-cara', cara);
+    aparato.setAttribute('data-cara', cara);
+    // casi cerrado: la mitad de atras queda debajo de la tapa. Sus esquinas
+    // del lado de la bisagra son rectas y asoman por detras del bisel
+    // redondeado, haciendo un pico. Mientras este ahi debajo, se redondea.
+    aparato.setAttribute('data-cerrado', giro > 150 ? '1' : '0');
+    // cerrado, la mitad de atras queda tapada: ni clics ni tabulador
+    mitadDer.toggleAttribute('inert', giro > 90);
+
+    // el nombre del fondo: misma curva, ventana mas corta
+    var n = suave(tope((cruda - NOM_A) / (NOM_B - NOM_A)));
+    pista.style.setProperty('--n', (-n).toFixed(4));
+
+    // el contenido corre por dentro entre las dos ventanas
+    var vent = arranque + ventana;
+    var q = tope((y - vent) / Math.max(1, recorrido - 2 * vent));
+    var dy = (-q * alto).toFixed(1) + 'px';
+    tiras.forEach(function(t){ t.style.transform = 'translateY(' + dy + ')'; });
+
+    // el reloj se aclara u oscurece segun la hoja que tenga encima
+    var cima = q * alto + 18, tono = 'claro', tono2 = 'claro', cual = 0;
+    for (var k = 0; k < tramos.length; k++)
+      if (cima >= tramos[k].a && cima < tramos[k].b) {
+        tono = tramos[k].t; tono2 = tramos[k].t2; cual = tramos[k].c; break;
+      }
+    if (q > .985) cual = chips.length - 1;
+    caraDentro.setAttribute('data-tono', tono);
+    mitadDer.setAttribute('data-tono', tono2);
+
+    chips.forEach(function(c, i){ c.setAttribute('data-on', i === cual ? '1' : '0'); });
+    pastilla.style.pointerEvents = p > .62 ? 'auto' : 'none';
+  }
+
+  // ---- el amortiguador ----
+  // El scroll del raton llega a saltos. Si el giro va pegado a el, se nota.
+  // Aqui el scroll marca un objetivo y el aparato lo persigue: cada marco
+  // recorre una fraccion de lo que falta. El referente hace lo mismo — por eso
+  // al medirlo iba siempre un pelo por detras de la curva teorica.
+  var TAU = 0.085;                       // segundos en los que casi alcanza
+  var objetivo = 0, suave2 = 0, ultimo = 0, corriendo = false, sello = 0;
+
+  function donde(){
+    // de scrollY, no del rect: dentro del propio evento de scroll el rect
+    // puede ir una pizca desfasado y el objetivo se queda corto
+    return Math.min(recorrido, Math.max(0, scrollY - arriba));
+  }
+
+  function marco(t){
+    // el tope alto a proposito: si el equipo va a 10 fps el amortiguador
+    // tiene que recuperar lo que toca, no quedarse atras
+    var dt = ultimo ? Math.min(.25, (t - ultimo) / 1000) : .016;
+    ultimo = t;
+    var k = 1 - Math.exp(-dt / TAU);
+    suave2 += (objetivo - suave2) * k;
+    if (Math.abs(objetivo - suave2) < .4) suave2 = objetivo;
+    pintar(suave2);
+    if (suave2 !== objetivo) requestAnimationFrame(marco);
+    else { corriendo = false; ultimo = 0; }
+  }
+
+  // ---- ir a una seccion ----
+  // Las hojas viven dentro de la tira, que esta recortada y transformada: un
+  // enlace de ancla normal no puede llegar. Hay que traducir "esta hoja" a
+  // "esta altura de pagina" y desplazarse ahi.
+  function alturaDe(tramo){
+    var vent = arranque + ventana;
+    var q = alto > 0 ? tramo.a / alto : 0;
+    return Math.round(arriba + vent + q * Math.max(0, recorrido - 2 * vent));
+  }
+
+  function irA(chip){
+    if (reduce.matches) return false;
+    if (chip >= chips.length - 1) {                 // el ultimo lleva al cierre
+      var cierre = document.querySelector('.cierre');
+      if (cierre) {
+        var top = cierre.getBoundingClientRect().top + scrollY;
+        scrollTo({top: Math.round(top - 12), behavior: 'smooth'});
+        return true;
+      }
+      return false;
+    }
+    for (var k = 0; k < tramos.length; k++)
+      if (tramos[k].c === chip) {
+        scrollTo({top: alturaDe(tramos[k]), behavior: 'smooth'});
+        return true;
+      }
+    return false;
+  }
+
+  chips.forEach(function(b, i){
+    b.addEventListener('click', function(){ irA(i); });
+    b.setAttribute('role', 'button');
+    b.setAttribute('tabindex', '0');
+    b.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); irA(i); }
+    });
+  });
+
+  // los enlaces internos que apuntan a una hoja (p.ej. "Arbeiten ansehen")
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var destino = document.getElementById(a.getAttribute('href').slice(1));
+    if(!destino) return;
+    for (var k = 0; k < tramos.length; k++)
+      if (tramos[k].el === destino || tramos[k].el.contains(destino)) {
+        if (!reduce.matches) {
+          e.preventDefault();
+          scrollTo({top: alturaDe(tramos[k]), behavior: 'smooth'});
+        }
+        return;
+      }
+  });
+
+  function alScroll(){
+    if (reduce.matches) return;
+    objetivo = donde();
+    // Si rAF se atasca (pestana en segundo plano, equipo saturado) el bucle se
+    // queda colgado con la bandera puesta y el aparato se congela para siempre.
+    // Si hace mas de 400 ms del ultimo marco, se vuelve a arrancar.
+    if (!corriendo || Date.now() - sello > 400) {
+      corriendo = true; ultimo = 0; sello = Date.now();
+      requestAnimationFrame(marco);
+    }
+  }
+
+  addEventListener('scroll', alScroll, {passive:true});
+  addEventListener('resize', medir);
+  addEventListener('load', medir);
+  if(reduce.addEventListener) reduce.addEventListener('change', medir);
+  medir();
+})();
+</script>
+
+<script>
+/* ---------- el conmutador de idioma ----------
+   Cada texto traducible lleva su version inglesa en data-en. Al cambiar se
+   intercambian: asi el aleman nunca se pierde y solo hay un archivo. */
+(function(){
+  var cajas = document.querySelectorAll('[data-en]');
+  var botones = document.querySelectorAll('#lang button');
+  var actual = 'de';
+
+  function poner(l, guardar){
+    if(l === actual) return;
+    cajas.forEach(function(el){
+      var otro = el.getAttribute('data-en');
+      el.setAttribute('data-en', el.innerHTML);
+      el.innerHTML = otro;
+    });
+    actual = l;
+    document.documentElement.lang = l;
+    botones.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.l === l ? 'true' : 'false'); });
+    if(guardar){ try{ localStorage.setItem('em-lang', l); }catch(e){} }
+  }
+
+  botones.forEach(function(b){
+    b.addEventListener('click', function(){ poner(b.dataset.l, true); });
+  });
+
+  var guardado = null;
+  try{ guardado = localStorage.getItem('em-lang'); }catch(e){}
+  var navegador = (navigator.language || 'de').slice(0,2).toLowerCase();
+  poner(guardado || (navegador === 'de' ? 'de' : 'en'), false);
+})();
+</script>
+</body>
+</html>
