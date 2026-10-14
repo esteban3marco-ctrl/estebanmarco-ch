@@ -537,6 +537,45 @@ h2{font-size:var(--h2-size);letter-spacing:-.05em;}
 </head>
 <body>
 
+<!-- ===== Aviso permanente: maqueta, no cliente ===== -->
+<style>
+  body { padding-bottom: 52px; }
+  .em-entwurf{
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 99999;
+    display: flex; align-items: center; justify-content: center; gap: .6rem;
+    flex-wrap: wrap; box-sizing: border-box;
+    padding: .62rem 1rem calc(.62rem + env(safe-area-inset-bottom, 0px));
+    background: #140f0e; color: #efe9e3;
+    font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: .8125rem; line-height: 1.35; letter-spacing: .005em;
+    text-align: center; border-top: 1px solid rgba(255,255,255,.14);
+    box-shadow: 0 -8px 24px rgba(0,0,0,.28);
+  }
+  .em-entwurf__tag{
+    flex: 0 0 auto; padding: .18rem .5rem; border-radius: 999px;
+    background: #d8653c; color: #fff;
+    font-weight: 600; font-size: .6875rem; letter-spacing: .09em; text-transform: uppercase;
+  }
+  .em-entwurf__txt{ flex: 0 1 auto; opacity: .92; }
+  .em-entwurf__kurz{ display: none; }
+  .em-entwurf a{ color: #fff; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+  .em-entwurf a:hover{ opacity: .8; }
+  @media (max-width: 600px){
+    body { padding-bottom: 72px; }
+    .em-entwurf__lang{ display: none; }
+    .em-entwurf__kurz{ display: inline; }
+    .em-entwurf{ font-size: .75rem; padding: .55rem .75rem calc(.55rem + env(safe-area-inset-bottom, 0px)); }
+  }
+  @media print{ .em-entwurf{ display: none; } }
+</style>
+<aside class="em-entwurf" role="note" aria-label="Hinweis zu dieser Seite">
+  <span class="em-entwurf__tag">Entwurf</span>
+  <span class="em-entwurf__txt em-entwurf__lang">Dieser Club ist erfunden &mdash; kein Kunde, keine echten Daten.</span>
+  <span class="em-entwurf__txt em-entwurf__kurz">Erfundener Club &mdash; kein Kunde.</span>
+  <a href="https://estebanmarco.ch/arbeiten/" target="_blank" rel="noopener">Gebaut von Esteban Marco &rarr;</a>
+</aside>
+
+
 <!-- NAV -->
 <header class="atc-nav is-glass" id="nav">
   <div class="atc-nav__inner">
