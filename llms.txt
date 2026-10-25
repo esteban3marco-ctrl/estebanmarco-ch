@@ -2,7 +2,7 @@
 > Einzelunternehmen in Zollikon/Zürich. Digitalisierung aus einer Hand für KMU und Treuhänder: private KI on-premise, KI-Automatisierung, CRM und Software nach Mass, lokale SEO inkl. KI-SEO.
 
 ## Leistungen
-- [Sichtbarkeit & SEO](https://estebanmarco.ch/service-seo.html): Lokale SEO Zürich, Google Maps, KI-SEO (ChatGPT/Gemini). Audit CHF 890, ab CHF 690/Monat.
+- [Sichtbarkeit & SEO](https://estebanmarco.ch/service-seo.html): Lokale SEO Zürich, Google Maps, KI-SEO (ChatGPT/Gemini). Start mit Audit, danach monatlich kündbar. Preis auf Anfrage.
 - [KI-Automatisierung](https://estebanmarco.ch/service-ki.html): Belegerfassung (~4 Sek./Beleg), Bankabgleich, Dossier-Fragen — auf dem eigenen Server.
 - [Private KI · lokal](https://estebanmarco.ch/service-ai.html): Eigenes Sprachmodell on-premise, DSG-konform, kein Datenabfluss.
 - [CRM nach Mass](https://estebanmarco.ch/service-crm.html): Kundensystem zum Festpreis statt Abo pro Sitzplatz.
