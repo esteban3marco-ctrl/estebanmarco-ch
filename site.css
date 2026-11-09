@@ -305,7 +305,7 @@ body{background:#d9d4ce url(/media/lienzo-tile.jpg) 0 0/1024px repeat;color:var(
 body::before{display:none}
 /* letras pintadas: relleno con pincelada oscura (sigue siendo texto real: se lee, se copia y Google lo indexa) */
 .h1,.h2,.h3,.eyebrow,.lead,.p,.small,.quote,.marquee span,.qa button,.menu nav a,.ftr .mail,.ftr nav a,.ftr .contact,.mods .n,.step .h3,.tcard .h3{
-  background-image:url(/media/tinta.jpg);background-size:340px;background-position:center;
+  background-image:url(/media/tinta.jpg);background-size:260px;background-position:center;
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--ink)}
 .h1,.h2{filter:url(#pintado)}
 .marquee span{background-image:none;-webkit-text-fill-color:#8c847b}
@@ -346,3 +346,14 @@ body::before{display:none}
 }
 .tiers .tcard:nth-child(1) .p,.tiers .tcard:nth-child(1) .sub,.tiers .tcard:nth-child(1) .inc,.tiers .tcard:nth-child(1) li{background-image:url(/media/tinta.jpg);background-size:340px;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--ink)}
 .tcard li::before{content:"";flex:0 0 6px;height:6px;margin-top:7px;border-radius:50%;background:currentColor;font-size:0}
+
+/* letras pintadas a pincel (9-11, mas marcado): borde irregular de pincel y grosor de pintura */
+.h1,.h2{filter:url(#pintado) drop-shadow(0 1px 0 rgba(255,250,240,.45))}
+.h3,.eyebrow,.lead,.p,.quote,.qa button,.menu nav a,.ftr .mail,.ftr nav a{filter:url(#pintado-s)}
+.svc .h3,.svc .p,.case .h3,.tiers .h2,.tiers .eyebrow,.tiers .p{filter:none}
+/* botones y tarjetas como pinceladas, no planos */
+.btn{border-radius:3px 7px 4px 8px/7px 3px 8px 4px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 1px 0 rgba(255,250,240,.4)}
+.card,.tcard{border-radius:22px 28px 24px 30px/28px 22px 30px 24px;box-shadow:inset 0 0 0 1px rgba(60,48,38,.06),inset 0 2px 0 rgba(255,255,255,.3),0 3px 14px rgba(60,48,38,.07)}
+.qa{border-color:rgba(60,48,38,.18)}
+.step svg,.card svg{filter:url(#pintado-s);color:var(--ink)}
+.btn.ghost{box-shadow:none;border-radius:0}
