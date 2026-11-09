@@ -16,7 +16,12 @@
       "permanent": true
     },
     {
-      "source": "/arbeiten/:path*",
+      "source": "/arbeiten/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/arbeiten/:path+",
       "destination": "/",
       "permanent": true
     }
