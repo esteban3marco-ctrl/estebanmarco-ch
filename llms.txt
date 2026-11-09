@@ -14,11 +14,6 @@
 - Signature: eine Seite pro Leistung, Bearbeitungspanel, vier Sprachen, online in 6–8 Wochen.
 Preise auf Anfrage, als Festpreis.
 
-## Arbeiten
-- ALMA Image Consulting, Zürich (Kundin, in Betrieb): https://almaimage.ch/
-- Zollik Homes (Entwurf, kein Kunde): https://real-estate-esteban.vercel.app/
-- Zurich Tennis Competition (Entwurf, kein Kunde): https://estebanmarco.ch/demos/zurich-tennis/
-
 ## Sprachen
 - Deutsch: https://estebanmarco.ch/
 - English: https://estebanmarco.ch/en/
