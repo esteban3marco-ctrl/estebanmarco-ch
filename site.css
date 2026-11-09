@@ -297,3 +297,52 @@ section{position:relative;z-index:1}
   .shero .ctas{flex-direction:column}
   .more{grid-template-columns:1fr 1fr}
 }
+
+/* ===== Estilo cuadro (9-11-2026): el lienzo del cuadro en toda la web y letras pintadas =====
+   Texturas sacadas del propio cuadro: lienzo-tile.jpg (fondo) y tinta.jpg (pintura de las letras). */
+:root{--bg:#d9d4ce;--ink:#2e2a26;--ink2:#4e4842;--ink3:#6a635c;--line:rgba(60,48,38,.10);--card:rgba(255,252,247,.42)}
+body{background:#d9d4ce url(/media/lienzo-tile.jpg) 0 0/1024px repeat;color:var(--ink)}
+body::before{display:none}
+/* letras pintadas: relleno con pincelada oscura (sigue siendo texto real: se lee, se copia y Google lo indexa) */
+.h1,.h2,.h3,.eyebrow,.lead,.p,.small,.quote,.marquee span,.qa button,.menu nav a,.ftr .mail,.ftr nav a,.ftr .contact,.mods .n,.step .h3,.tcard .h3{
+  background-image:url(/media/tinta.jpg);background-size:340px;background-position:center;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--ink)}
+.h1,.h2{filter:url(#pintado)}
+.marquee span{background-image:none;-webkit-text-fill-color:#8c847b}
+/* textos sobre fotos o fondos oscuros: claros, sin textura */
+.svc .h3,.svc .p,.case .h3,.tiers .h2,.tiers .eyebrow,.tiers .p,.tiers .note,.tcard:nth-child(n+2) *{background-image:none;-webkit-text-fill-color:#fff;color:#fff;filter:none}
+.tcard:nth-child(n+2) .btn.light{-webkit-text-fill-color:#2e2a26;color:#2e2a26}
+/* botones pintados */
+.btn{background:#2e2a26 url(/media/tinta.jpg) center/300px}
+.btn:hover{background:#3a3530 url(/media/tinta.jpg) center/300px}
+.btn.light{background:#efe9e2;color:#2e2a26}
+.btn.ghost{background:none;color:var(--ink)}
+.burger i,.qa button i::before,.qa button i::after{background:var(--ink)}
+/* superficies: papel claro translucido sobre el lienzo */
+.card{background:var(--card);box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 2px 10px rgba(60,48,38,.06)}
+.hdr::before{background:#d9d4ce url(/media/lienzo-tile.jpg) 0 0/1024px;-webkit-mask-image:linear-gradient(#000 40%,transparent);mask-image:linear-gradient(#000 40%,transparent)}
+.menu{background:#d9d4ce url(/media/lienzo-tile.jpg) 0 0/1024px}
+.modal .box,.modal .x{background:#e6e0d9 url(/media/lienzo-tile.jpg) 0 0/1024px}
+.field input,.field textarea{background:rgba(255,252,247,.55);border-color:rgba(60,48,38,.18)}
+.panel{background:rgba(255,252,247,.35)}
+/* seccion oscura (pagina de Websites): lienzo en penumbra */
+.tiers{background:#4a4541 url(/media/lienzo-tile.jpg) 0 0/1024px;background-blend-mode:multiply}
+.tiers::before{display:none}
+.tcard:nth-child(1){background:rgba(239,233,226,.9)}
+.tcard:nth-child(2){background:#69625b url(/media/lienzo-tile.jpg) 0 0/1024px;background-blend-mode:multiply}
+.tcard:nth-child(3){background:#26221f url(/media/tinta.jpg) center/400px}
+
+/* el lienzo del inicio y el cuadro del pie se funden con el lienzo de la pagina (sin corte) */
+.hero{background:none}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;background:url(/media/hero-oleo-lienzo.jpg) center/cover no-repeat;
+  -webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+.ftr{background:none}
+.ftr::before{content:"";position:absolute;inset:0;z-index:-1;background:url(/media/hero-oleo.jpg) center bottom/100% auto no-repeat;
+  -webkit-mask-image:linear-gradient(transparent,#000 22%);mask-image:linear-gradient(transparent,#000 22%)}
+@media (max-width:820px){
+  .hero{background:none}
+  .ftr{background:none}
+  .ftr::before{background:url(/media/hero-oleo-pair-m.png) center bottom/100% auto no-repeat,url(/media/hero-oleo-lienzo.jpg) center/cover no-repeat}
+}
+.tiers .tcard:nth-child(1) .p,.tiers .tcard:nth-child(1) .sub,.tiers .tcard:nth-child(1) .inc,.tiers .tcard:nth-child(1) li{background-image:url(/media/tinta.jpg);background-size:340px;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--ink)}
+.tcard li::before{content:"";flex:0 0 6px;height:6px;margin-top:7px;border-radius:50%;background:currentColor;font-size:0}
