@@ -1,12 +1,12 @@
-# Esteban Marco: Websites, KI & Software für KMU in der Schweiz
-> Einzelunternehmen in Zollikon (Kanton Zürich), tätig für KMU in der ganzen Schweiz. Websites mit eigenem Backoffice, SEO und GEO (gefunden bei Google und in KI-Antworten), KI-Automatisierung, private KI auf eigener Hardware und Software & CRM nach Mass. Festpreis, schriftlich vereinbart. Code und Daten gehören dem Kunden, keine Lizenz pro Nutzer.
+# Esteban Marco: Websites, KI und Software für KMU in der Schweiz
+> Einzelunternehmen in Zollikon (Kanton Zürich), tätig für KMU in der ganzen Schweiz. Websites mit eigenem Backoffice, SEO und GEO (gefunden bei Google und in KI-Antworten), KI-Automatisierung, private KI auf eigener Hardware und Software und CRM nach Mass. Festpreis, schriftlich vereinbart. Code und Daten gehören dem Kunden, keine Lizenz pro Nutzer.
 
 ## Leistungen
 - [Websites](https://estebanmarco.ch/service-web.html): mehrsprachig, jede Sprache mit eigener Adresse, eigenes Bearbeitungspanel, Shop mit TWINT und Stripe, Hosting und Wartung. Festpreis.
-- [SEO & GEO](https://estebanmarco.ch/service-seo.html): Google-Unternehmensprofil, Maps-Ranking, strukturierte Daten und Inhalte, die ChatGPT und Gemini zitieren. Start mit Audit, danach monatlich kündbar.
+- [SEO und GEO](https://estebanmarco.ch/service-seo.html): Google-Unternehmensprofil, Maps-Ranking, strukturierte Daten und Inhalte, die ChatGPT und Gemini zitieren. Start mit Audit, danach monatlich kündbar.
 - [KI-Automatisierung](https://estebanmarco.ch/service-ki.html): Belegerfassung, Bankabgleich (CAMT.053, MT940), Fragen an Dossiers, auf dem eigenen Server. Pilot zum Festpreis.
 - [Private KI](https://estebanmarco.ch/service-ai.html): eigenes Sprachmodell auf eigener Hardware, Antworten mit Quellenangabe, offline möglich, kein Abo pro Nutzer.
-- [Software & CRM nach Mass](https://estebanmarco.ch/service-software.html): CRM, Web-Apps, Kundenportale, Anbindung an Bexio und Abacus. Festpreis pro Phase, Quellcode gehört dem Kunden.
+- [Software und CRM nach Mass](https://estebanmarco.ch/service-software.html): CRM, Web-Apps, Kundenportale, Anbindung an Bexio und Abacus. Festpreis pro Phase, Quellcode gehört dem Kunden.
 
 ## Drei Wege zur neuen Website
 - Essential: eine Seite, eigene Domain und E-Mail, eine Sprache, online in 1–2 Wochen.
