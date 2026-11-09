@@ -357,3 +357,24 @@ body::before{display:none}
 .qa{border-color:rgba(60,48,38,.18)}
 .step svg,.card svg{filter:url(#pintado-s);color:var(--ink)}
 .btn.ghost{box-shadow:none;border-radius:0}
+
+/* ===== Movil como theugency (9-11): portada a pantalla completa con las manos grandes abajo,
+   la portada se queda fija y la siguiente seccion sube por encima al hacer scroll ===== */
+@media (max-width:820px){
+  .hero{position:sticky;top:0;z-index:0;min-height:100vh;min-height:100svh;padding-bottom:0}
+  .hero::before{-webkit-mask-image:none;mask-image:none}
+  .hero .hand{display:none}
+  .hero .lead-w .lead{max-width:none}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:96vw;z-index:0;pointer-events:none;
+    background:url(/media/hero-oleo-pair-m.png) center bottom/155vw auto no-repeat;animation:manos-entran 1.1s .35s both cubic-bezier(.2,.7,.2,1)}
+  main > section:not(.hero){position:relative;z-index:1;background:#d9d4ce url(/media/lienzo-tile.jpg) 0 0/1024px repeat}
+  main > section.hero + section{box-shadow:0 -18px 40px rgba(60,48,38,.10)}
+}
+@keyframes manos-entran{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){@keyframes manos-entran{from{opacity:0}to{opacity:1}}}
+@media (max-width:820px) and (max-height:700px){.hero::after{height:76vw;background-size:122vw auto}}
+@media (max-width:820px){
+  .hero .ctas{margin-top:28px;padding:0 var(--pad)}
+  .hero .ctas .btn:not(.ghost){width:100%;max-width:none;height:44px;align-self:stretch}
+  .hero .lead{font-size:16px;line-height:1.55}
+}
