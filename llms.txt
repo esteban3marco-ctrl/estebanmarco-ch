@@ -1,19 +1,30 @@
-# Esteban Marco — KI, SEO & Software für KMU in Zürich
-> Einzelunternehmen in Zollikon/Zürich. Digitalisierung aus einer Hand für KMU und Treuhänder: private KI on-premise, KI-Automatisierung, CRM und Software nach Mass, lokale SEO inkl. KI-SEO.
+# Esteban Marco: Websites, KI & Software für KMU in der Schweiz
+> Einzelunternehmen in Zollikon (Kanton Zürich), tätig für KMU in der ganzen Schweiz. Websites mit eigenem Backoffice, SEO und GEO (gefunden bei Google und in KI-Antworten), KI-Automatisierung, private KI auf eigener Hardware und Software & CRM nach Mass. Festpreis, schriftlich vereinbart. Code und Daten gehören dem Kunden, keine Lizenz pro Nutzer.
 
 ## Leistungen
-- [Sichtbarkeit & SEO](https://estebanmarco.ch/service-seo.html): Lokale SEO Zürich, Google Maps, KI-SEO (ChatGPT/Gemini). Start mit Audit, danach monatlich kündbar. Preis auf Anfrage.
-- [KI-Automatisierung](https://estebanmarco.ch/service-ki.html): Belegerfassung (~4 Sek./Beleg), Bankabgleich, Dossier-Fragen — auf dem eigenen Server.
-- [Private KI · lokal](https://estebanmarco.ch/service-ai.html): Eigenes Sprachmodell on-premise, DSG-konform, kein Datenabfluss.
-- [CRM nach Mass](https://estebanmarco.ch/service-crm.html): Kundensystem zum Festpreis statt Abo pro Sitzplatz.
-- [Software nach Mass](https://estebanmarco.ch/service-software.html): Web-Apps, Portale, Schnittstellen (Abacus, Bexio, CAMT.053). Quellcode gehört dem Kunden.
+- [Websites](https://estebanmarco.ch/service-web.html): mehrsprachig, jede Sprache mit eigener Adresse, eigenes Bearbeitungspanel, Shop mit TWINT und Stripe, Hosting und Wartung. Festpreis.
+- [SEO & GEO](https://estebanmarco.ch/service-seo.html): Google-Unternehmensprofil, Maps-Ranking, strukturierte Daten und Inhalte, die ChatGPT und Gemini zitieren. Start mit Audit, danach monatlich kündbar.
+- [KI-Automatisierung](https://estebanmarco.ch/service-ki.html): Belegerfassung, Bankabgleich (CAMT.053, MT940), Fragen an Dossiers, auf dem eigenen Server. Pilot zum Festpreis.
+- [Private KI](https://estebanmarco.ch/service-ai.html): eigenes Sprachmodell auf eigener Hardware, Antworten mit Quellenangabe, offline möglich, kein Abo pro Nutzer.
+- [Software & CRM nach Mass](https://estebanmarco.ch/service-software.html): CRM, Web-Apps, Kundenportale, Anbindung an Bexio und Abacus. Festpreis pro Phase, Quellcode gehört dem Kunden.
+
+## Drei Wege zur neuen Website
+- Essential: eine Seite, eigene Domain und E-Mail, eine Sprache, online in 1–2 Wochen.
+- Launch: fünf Seiten, eigenes Bearbeitungspanel, Google-Unternehmensprofil, zwei Sprachen, online in 4–6 Wochen.
+- Signature: eine Seite pro Leistung, Bearbeitungspanel, vier Sprachen, online in 6–8 Wochen.
+Preise auf Anfrage, als Festpreis.
+
+## Arbeiten
+- ALMA Image Consulting, Zürich (Kundin, in Betrieb): https://almaimage.ch/
+- Zollik Homes (Entwurf, kein Kunde): https://real-estate-esteban.vercel.app/
+- Zurich Tennis Competition (Entwurf, kein Kunde): https://estebanmarco.ch/demos/zurich-tennis/
+
+## Sprachen
+- Deutsch: https://estebanmarco.ch/
+- English: https://estebanmarco.ch/en/
+- Français: https://estebanmarco.ch/fr/
 
 ## Kontakt
-- Adresse: Dufourstrasse 27, 8702 Zollikon ZH, Schweiz
-- E-Mail: info@estebanmarco.ch · Telefon: +41 76 742 15 48
-- Erreichbarkeit: 24/7 (Anfragen jederzeit, Chat-Assistent rund um die Uhr)
-- Sprachen: Deutsch, Englisch, Französisch, Spanisch
-
-## Profile
-- [LinkedIn](https://www.linkedin.com/in/esteban-marco-dev/)
-- [Instagram](https://www.instagram.com/estebanmarco3/)
+Esteban Marco, Dufourstrasse 27, 8702 Zollikon, Schweiz
+info@estebanmarco.ch · +41 76 742 15 48
+LinkedIn: https://www.linkedin.com/in/esteban-marco-dev/

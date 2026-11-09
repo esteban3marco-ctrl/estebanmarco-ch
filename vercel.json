@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/service-voice.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/service-crm.html",
+      "destination": "/service-software.html",
+      "permanent": true
+    }
+  ]
+}
