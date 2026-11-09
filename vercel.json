@@ -9,6 +9,16 @@
       "source": "/service-crm.html",
       "destination": "/service-software.html",
       "permanent": true
+    },
+    {
+      "source": "/arbeiten",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/arbeiten/:path*",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
