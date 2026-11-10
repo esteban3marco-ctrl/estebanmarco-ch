@@ -9,6 +9,10 @@
 - [Lokale KI für Unternehmen in der Schweiz](https://estebanmarco.ch/service-ai.html): eigenes Sprachmodell auf eigener Hardware, Antworten aus den eigenen Dokumenten mit Quellenangabe, offline möglich, kein Abo pro Nutzer.
 - [Software und CRM nach Mass](https://estebanmarco.ch/service-software.html): CRM, Web-Apps, Kundenportale, Fristen und Rechnungen, Anbindung an Bexio, Abacus, Microsoft 365 und Google Workspace. Festpreis pro Phase, Quellcode gehört dem Kunden.
 
+## Beispiele aus der Arbeit (Namen vertraulich)
+- Secondhand-Boutique in Zürich: Online-Shop in drei Sprachen mit eigenem Panel, Kommission, Zahlung mit TWINT und Karte, automatische Bestell- und Versandmails, Katalog direkt im HTML. Nach wenigen Wochen mehrere Plätze weiter oben bei Google, in der oberen Hälfte der ersten Seite, und mehr als doppelt so viele Besuche aus Google.
+- Internationale Beratung: Website auf Deutsch, Englisch, Italienisch und Französisch mit eigenen Adressen und Texten pro Sprache, Suchbegriffe vorher mit echten Suchvolumen gemessen.
+
 ## Drei Wege zur neuen Website
 - Essential: eine Seite, eigene Domain und E-Mail, eine Sprache, online in 1–2 Wochen.
 - Launch: fünf Seiten, eigenes Bearbeitungspanel, Google-Unternehmensprofil, zwei Sprachen, online in 4–6 Wochen.
