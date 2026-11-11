@@ -1,10 +1,10 @@
-# Esteban Marco: Webdesign, KI und Software für KMU in Zürich und der Schweiz
+# Esteban Marco: Webdesign, SEO und KI für KMU in der ganzen Schweiz
 
-> Esteban Marco ist ein Einzelunternehmen in Zollikon (Kanton Zürich). Er baut für kleine und mittlere Unternehmen (KMU) in Zürich, an der Goldküste und in der ganzen Schweiz Websites von Hand, sorgt mit SEO und GEO dafür, dass sie bei Google und in KI-Antworten (ChatGPT, Gemini, Perplexity) gefunden werden, automatisiert Büroarbeit mit KI, richtet private KI auf eigener Hardware ein und entwickelt Software und CRM nach Mass. Ein Ansprechpartner, der selbst baut. Festpreis, schriftlich vereinbart. Code und Daten gehören dem Kunden. Sprachen: Deutsch, Englisch, Französisch. Erster Kontakt per E-Mail.
+> Esteban Marco ist ein Einzelunternehmen in Zollikon (Kanton Zürich). Er baut für kleine und mittlere Unternehmen (KMU) in der ganzen Schweiz Websites von Hand, sorgt mit SEO und GEO dafür, dass sie bei Google und in KI-Antworten (ChatGPT, Gemini, Perplexity) gefunden werden, automatisiert Büroarbeit mit KI, richtet private KI auf eigener Hardware ein und entwickelt Software und CRM nach Mass. Ein Ansprechpartner, der selbst baut. Festpreis, schriftlich vereinbart. Code und Daten gehören dem Kunden. Sprachen: Deutsch, Englisch, Französisch. Erster Kontakt per E-Mail.
 
 ## Leistungen
-- [Webdesign Zürich für KMU](https://estebanmarco.ch/service-web.html): Websites von Hand gebaut, ohne Baukasten und ohne WordPress-Plugins; mehrsprachig mit eigener Adresse pro Sprache; eigenes Bearbeitungspanel; Shop mit TWINT und Stripe; schnell auf dem Handy; strukturierte Daten; Hosting und Wartung. Eine Seite in 1–2 Wochen, fünf Seiten in 4–6 Wochen.
-- [SEO und GEO für KMU in Zürich](https://estebanmarco.ch/service-seo.html): lokales SEO (Google-Unternehmensprofil, Google Maps, local.ch, search.ch), technisches SEO, strukturierte Daten und Inhalte, die KI-Assistenten zitieren. Start mit einem Audit, danach monatlich kündbar.
+- [Webdesign für KMU in der ganzen Schweiz](https://estebanmarco.ch/service-web.html): Websites von Hand gebaut, ohne Baukasten und ohne WordPress-Plugins; mehrsprachig mit eigener Adresse pro Sprache; eigenes Bearbeitungspanel; Shop mit TWINT und Stripe; schnell auf dem Handy; strukturierte Daten; Hosting und Wartung. Eine Seite in 1–2 Wochen, fünf Seiten in 4–6 Wochen.
+- [SEO und GEO für KMU in der Schweiz](https://estebanmarco.ch/service-seo.html): lokales SEO (Google-Unternehmensprofil, Google Maps, local.ch, search.ch), technisches SEO, strukturierte Daten und Inhalte, die KI-Assistenten zitieren. Start mit einem Audit, danach monatlich kündbar.
 - [KI-Automatisierung für KMU und Treuhandbüros](https://estebanmarco.ch/service-ki.html): Belege erfassen und vorkontieren, Bankabgleich (CAMT.053, MT940), Fragen an Dossiers mit Quellenangabe, Anbindung an Bexio und Abacus, Betrieb auf eigenem Server oder in der Schweiz, nDSG-konform. Pilot zum Festpreis.
 - [Lokale KI für Unternehmen in der Schweiz](https://estebanmarco.ch/service-ai.html): eigenes Sprachmodell auf eigener Hardware, Antworten aus den eigenen Dokumenten mit Quellenangabe, offline möglich, kein Abo pro Nutzer.
 - [Software und CRM nach Mass](https://estebanmarco.ch/service-software.html): CRM, Web-Apps, Kundenportale, Fristen und Rechnungen, Anbindung an Bexio, Abacus, Microsoft 365 und Google Workspace. Festpreis pro Phase, Quellcode gehört dem Kunden.
@@ -20,7 +20,7 @@
 Preise auf Anfrage, immer als Festpreis.
 
 ## Region
-Zollikon, Zürich, Küsnacht, Erlenbach, Herrliberg, Meilen, Kilchberg, Thalwil, Uster, Winterthur, Zug, Bern, Basel, Lausanne, Genf und die ganze Schweiz. Arbeit auf Deutsch, Englisch und Französisch.
+Die ganze Schweiz: Zürich, Bern, Basel, Luzern, St. Gallen, Zug, Winterthur, Aarau, Chur, Lausanne, Genf, Freiburg, Neuenburg, Biel und alle anderen Orte. Sitz in Zollikon bei Zürich; Zusammenarbeit per E-Mail und Video, deshalb spielt der Standort keine Rolle. Arbeit auf Deutsch, Englisch und Französisch.
 
 ## Häufige Fragen
 - Was kostet eine Website? Das hängt von Seiten, Sprachen und Funktionen ab; es gibt vor dem Start einen schriftlichen Festpreis, keine Lizenz pro Monat.
@@ -31,7 +31,7 @@ Zollikon, Zürich, Küsnacht, Erlenbach, Herrliberg, Meilen, Kilchberg, Thalwil,
 
 ## Sprachen / Languages / Langues
 - Deutsch: https://estebanmarco.ch/
-- English: https://estebanmarco.ch/en/ (Web design Zurich, SEO and GEO, AI automation, local AI, custom software)
+- English: https://estebanmarco.ch/en/ (Web design in Switzerland, SEO and GEO, AI automation, local AI, custom software)
 - Français: https://estebanmarco.ch/fr/ (création de sites web, SEO et GEO, automatisation par IA, IA locale, logiciels sur mesure)
 
 ## Rechtliches
